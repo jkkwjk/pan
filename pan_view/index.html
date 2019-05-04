@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>网盘,让美好常驻于世间</title>
+    <link rel="stylesheet" href="css/default.css"> <!--link_tag -->
+    <link rel="stylesheet" href="css/onepage-scroll.css"> <!--link_tag -->
+    <script src="js/jquery.min.js"></script><!--link_tag -->
+    <script src="js/jquery.onepage-scroll.min.js"></script><!--link_tag -->
+    <script type="text/javascript"> //背景图片滚动
+        var max = 5; //图片最大数
+        $(function(){
+            $('.pic_scoll').onepage_scroll({
+                pagination:false, //不显示右侧的小点点
+                loop:false,
+                keyboard:false,
+                direction:'horizontal'
+            });
+            setTimeout("time_loop_img_scoll(1)",5000);
+        });
+        function time_loop_img_scoll(index){
+            var add = '<section class="bg_can_resize pic_blur section" style="background-image: url(\'img/index/{0}.jpg\'); position: absolute; top: 0px; left: {1}00%;" data-index="{2}"></section>';
+            
+            add=add.replace("{0}",index%max);
+            add=add.replace("{1}",index);
+            add=add.replace("{2}",eval(index)+1);
+            $('.pic_scoll').append(add);
+            $('.pic_scoll').moveDown();
+            setTimeout("time_loop_img_scoll({0})".replace("{0}",index+1),5000);
+        }
+    </script>
+</head>
+<body>
+    <div id="warp">
+        <div class="pic_scoll">
+            <section class="bg_can_resize pic_blur" style="background-image: url(img/index/0.jpg);"></section> <!-- init -->
+            <!-- 修改这里代码需要改js的才能生效 -->
+        </div>
+        <div style="position: absolute;left: 0px;top: 0px;">
+            
+        </div>
+    </div>
+</body>
+</html>
