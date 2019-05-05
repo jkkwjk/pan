@@ -11,6 +11,9 @@
     <script src="js/jquery.onepage-scroll.min.js"></script><!--link_tag -->
     <script type="text/javascript"> //背景图片滚动
         var max = 5; //图片最大数
+        var up_text=new Array("青春的我们","无缝衔接","保存美好","美丽的风景","精彩比赛");
+        var down_text=new Array("值得去纪念","享受快捷办公","随时可以回忆","与你一起享受","随时随地回看");
+        var div_width=new Array("316","353","353","353","353");
         $(function(){
             $('.pic_scoll').onepage_scroll({
                 pagination:false, //不显示右侧的小点点
@@ -18,14 +21,17 @@
                 keyboard:false,
                 direction:'horizontal'
             });
-            //setTimeout("time_loop_img_scoll(1)",5000);
+            setTimeout("time_loop_img_scoll(1)",5000);
         });
         function time_loop_img_scoll(index){
-            var add = '<section style="width: 100%; height: 100%; position: absolute; top: 0px; left: {1}00%;" data-index="{2}"><div class="bg_can_resize pic_blur" style="position: absolute; background-image: url(img/index/{0}.jpg);"></div></section>';
+            var add = '<section style="width: 100%; height: 100%; position: absolute; top: 0px; left: {1}00%;" data-index="{2}"><div class="bg_can_resize pic_blur" style="position: absolute; background-image: url(img/index/{0}.jpg);z-index: -1;"></div><div id="text_pic" style="height: 100px;width: {3}px;"><img src="img/index/leftquote.png" alt=""><div class="quote_text" style="margin-left: 48px; margin-top: -23px;">{4}</div><img src="img/index/rightquote.png" alt="" style="float: right;margin-top: 10px;"><div class="quote_text" style="margin-left: 83px;">{5}</div></div></section>';
             
             add=add.replace("{0}",index%max);
             add=add.replace("{1}",index);
             add=add.replace("{2}",eval(index)+1);
+            add=add.replace("{3}",div_width[index%max]);
+            add=add.replace("{4}",up_text[index%max]);
+            add=add.replace("{5}",down_text[index%max]);
             $('.pic_scoll').append(add);
             $('.pic_scoll').moveDown();
             setTimeout("time_loop_img_scoll({0})".replace("{0}",index+1),5000);
@@ -33,19 +39,17 @@
     </script>
 </head>
 <body>
-    <div id="warp">
+    <div id="warp" style="min-height: 800px;">
         <div class="pic_scoll">
             <section style="width: 100%; height: 100%;">
-                <div class="bg_can_resize pic_blur" style="position: absolute; background-image: url(img/index/1.jpg);z-index: -1;"></div>
-                <div id="text_pic" style="height: 100px;width: 392px;">
+                <div class="bg_can_resize pic_blur" style="position: absolute; background-image: url(img/index/0.jpg);z-index: -1;"></div>
+                <div id="text_pic" style="height: 100px;width: 316px;">
                     <img src="img/index/leftquote.png" alt="">
-                    <div class="quote_text" style="margin-left: 48px; margin-top: -23px;">记录生活的美好</div>
-                    <div>
-                        <img src="img/index/rightquote.png" alt="" style="float: right;margin-top: 10px;">
-                        <div class="quote_text" style="margin-left: 83px;">记录生活的美好</div>
-                    </div>
+                    <div class="quote_text" style="margin-left: 48px; margin-top: -23px;">青春的我们</div>
+                    <img src="img/index/rightquote.png" alt="" style="float: right;margin-top: 10px;">
+                    <div class="quote_text" style="margin-left: 83px;">值得去纪念</div>
                 </div>
-            </section> <!-- init -->
+            </section>
             <!-- 修改这里代码需要改js的才能生效 -->
         </div>
         <div style="position: absolute;left: 0px;top: 0px;">
