@@ -8,3 +8,15 @@
     font-size: 37px;
     font-weight: 500;
 }
+#mask{
+    position: absolute;
+    right: 17%;
+    top: 130px;
+    background-color: white;
+    opacity: 0.6;
+    padding: 10px;
+    overflow: hidden;
+}
+.login_span{
+    font-size: 15px;
+}
