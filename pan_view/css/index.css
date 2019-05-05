@@ -1,0 +1,10 @@
+#text_pic{
+    position: absolute;
+    left: 27%;
+    bottom: 230px;
+}
+.quote_text{
+    color: white;
+    font-size: 37px;
+    font-weight: 500;
+}

@@ -6,6 +6,7 @@
     <title>网盘,让美好常驻于世间</title>
     <link rel="stylesheet" href="css/default.css"> <!--link_tag -->
     <link rel="stylesheet" href="css/onepage-scroll.css"> <!--link_tag -->
+    <link rel="stylesheet" href="css/index.css"> <!--link_tag -->
     <script src="js/jquery.min.js"></script><!--link_tag -->
     <script src="js/jquery.onepage-scroll.min.js"></script><!--link_tag -->
     <script type="text/javascript"> //背景图片滚动
@@ -17,10 +18,10 @@
                 keyboard:false,
                 direction:'horizontal'
             });
-            setTimeout("time_loop_img_scoll(1)",5000);
+            //setTimeout("time_loop_img_scoll(1)",5000);
         });
         function time_loop_img_scoll(index){
-            var add = '<section class="bg_can_resize pic_blur section" style="background-image: url(\'img/index/{0}.jpg\'); position: absolute; top: 0px; left: {1}00%;" data-index="{2}"></section>';
+            var add = '<section style="width: 100%; height: 100%; position: absolute; top: 0px; left: {1}00%;" data-index="{2}"><div class="bg_can_resize pic_blur" style="position: absolute; background-image: url(img/index/{0}.jpg);"></div></section>';
             
             add=add.replace("{0}",index%max);
             add=add.replace("{1}",index);
@@ -34,11 +35,21 @@
 <body>
     <div id="warp">
         <div class="pic_scoll">
-            <section class="bg_can_resize pic_blur" style="background-image: url(img/index/0.jpg);"></section> <!-- init -->
+            <section style="width: 100%; height: 100%;">
+                <div class="bg_can_resize pic_blur" style="position: absolute; background-image: url(img/index/1.jpg);z-index: -1;"></div>
+                <div id="text_pic" style="height: 100px;width: 392px;">
+                    <img src="img/index/leftquote.png" alt="">
+                    <div class="quote_text" style="margin-left: 48px; margin-top: -23px;">记录生活的美好</div>
+                    <div>
+                        <img src="img/index/rightquote.png" alt="" style="float: right;margin-top: 10px;">
+                        <div class="quote_text" style="margin-left: 83px;">记录生活的美好</div>
+                    </div>
+                </div>
+            </section> <!-- init -->
             <!-- 修改这里代码需要改js的才能生效 -->
         </div>
         <div style="position: absolute;left: 0px;top: 0px;">
-            
+            <!-- 没用 -->
         </div>
     </div>
 </body>

@@ -24,6 +24,6 @@ body{
     background-position: center;
 }
 .pic_blur{
-    filter: blur(3px);
+    filter: blur(1.5px);
 }
 
