@@ -1,0 +1,28 @@
+#title{
+    padding-top: 10px;
+    height: 70px;
+    width: 100%;
+}
+#title_left{
+    width: 180px;
+    height: 100%;
+    margin-left: 10px;
+    background-image: url(../img/main/logo.png);
+    display: inline-block;
+}
+#title_main{
+    margin-left: 5px;
+    height: 100%;
+    width: 60%;
+    display: inline-block;
+    vertical-align:top;   /*防止文字掉落 */
+}
+.title_main_item{
+    height: 100%;
+    display: inline-block;
+    font-size: 35px;
+}
+a{
+    display: inline-block;
+    text-decoration: none;
+}
