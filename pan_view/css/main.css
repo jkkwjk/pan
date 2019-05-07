@@ -1,28 +1,32 @@
 #title{
-    padding-top: 10px;
-    height: 70px;
+    height: 60px;
     width: 100%;
 }
 #title_left{
     width: 180px;
     height: 100%;
+    margin-top: 5px;
     margin-left: 10px;
     background-image: url(../img/main/logo.png);
     display: inline-block;
 }
-#title_main{
+.title_main{
+    background: #f8f9fa;
     margin-left: 5px;
     height: 100%;
-    width: 60%;
+    width: calc( 100% - 200px);
     display: inline-block;
     vertical-align:top;   /*防止文字掉落 */
 }
 .title_main_item{
-    height: 100%;
-    display: inline-block;
-    font-size: 35px;
+    text-align: center;
+    width: 110px;
+    font-size: 22px;
+    border-radius: 5px 5px 0 0;
 }
-a{
-    display: inline-block;
-    text-decoration: none;
+.title_main_item:hover{ 
+    background-color:white;
+    border-left: 1px solid #cecaca;
+    border-right: 1px solid #cecaca;
+    border-top: 1px solid #cecaca;
 }

@@ -7,25 +7,27 @@
     <link rel="stylesheet" href="css/default.css"> <!--link_tag -->
     <link rel="stylesheet" href="css/main.css"> <!--link_tag -->
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>欢迎您,${}!</title>
 </head>
 <body>
     <div id="warp">
         <div id="title">
             <div id="title_left"></div>
-            <div id="title_main">
-                <a href="">
-                    <div class="title_main_item">
-                        文件adas
-                    </div>
-                </a>
-                <a href="">
-                    <div class="title_main_item" style="margin-left: 10px;">
-                        分享
-                    </div>
-                </a>
-            </div>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light title_main" style="display: inline-block;padding-left: 0px;padding-bottom: 0px;">
+                <div class="navbar-collapse title_main" id="navbarNav"><!-- 删除collapse-->
+                     <ul class="navbar-nav" style="display: -webkit-box;-webkit-box-orient:unset;">
+                        <li class="nav-item title_main_item">
+                            <a class="nav-link" href="#">文件</a>
+                        </li>
+                        <li class="nav-item title_main_item">
+                            <a class="nav-link" href="#">分享</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            
         </div>
     </div>
 </body>
