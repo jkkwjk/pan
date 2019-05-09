@@ -4,32 +4,27 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
     <link rel="stylesheet" href="css/default.css"> <!--link_tag -->
     <link rel="stylesheet" href="css/file.css"> <!--link_tag -->
 
-    
-    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <title>欢迎您,${}!</title>
 </head>
 <body>
     <div id="warp" style="min-width: 1100px;">
         <div id="title">
             <div id="title_left"></div>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light title_main" style="display: inline-block;padding-left: 0px;padding-bottom: 0px;">
-                <div class="navbar-collapse title_main" id="navbarNav"><!-- 删除collapse-->
-                    <ul class="navbar-nav" style="display: -webkit-box;-webkit-box-orient:unset;height: 100%;">
-                        <li class="nav-item title_main_item">
-                            <a class="nav-link" href="#">文件</a>
-                        </li>
-                        <li class="nav-item title_main_item">
-                            <a class="nav-link" href="#">分享</a>
-                        </li>
-                    </ul>
-                    <div id="title_right">
-                        
-                    </div>
-                </div>
-            </nav>
+            <div class="title_main">
+                <ul class="ul_my" id="ul_title" style="list-style: none;height: 100%;">
+                    <li class="li_left li_title" style="margin-left: 10px;">
+                        <a href="#" class="a_block" >文件</a>
+                    </li>
+                    <li class="li_left li_title">
+                        <a href="#" class="a_block">分享</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </body>

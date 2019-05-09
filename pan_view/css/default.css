@@ -27,3 +27,16 @@ body{
     filter: blur(1.5px);
 }
 
+.li_left{
+    float: left;
+}
+.ul_my{
+    padding: 0px;
+    margin: 0px;
+}
+a{
+    text-decoration:none;
+}
+a:hover{
+    text-decoration:none;
+}

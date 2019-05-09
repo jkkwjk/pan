@@ -16,25 +16,32 @@
     height: 100%;
     width: calc( 100% - 200px);
     display: inline-block;
+    padding-top: 5px;
     vertical-align:top;   /*防止文字掉落 */
 }
 /* main 包含了 title_right */
-.title_main_item{
-    text-align: center;
-    width: 110px;
-    font-size: 20px;
-    border-radius: 5px 5px 0 0;
-}
-.title_main_item:hover{ 
-    background-color:white;
-    border-left: 1px solid #cecaca;
-    border-right: 1px solid #cecaca;
-    border-top: 1px solid #cecaca;
-}
 #title_right{
     position: absolute;
     background-color: yellow;
     width: 100px;
     height: calc(100% - 8px);
     right: 300px;
+}
+#ul_title{
+    text-align: center;
+    line-height: 55px;
+}
+.li_title{
+    width: 120px;
+}
+.li_title:hover{
+    background-color:white;
+    border-left: 1px solid #cecaca;
+    border-right: 1px solid #cecaca;
+    border-top: 1px solid #cecaca;
+}
+.a_block{
+    display: block;
+    font-size: 10px;
+    color: red;
 }
