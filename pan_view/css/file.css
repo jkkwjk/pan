@@ -10,29 +10,23 @@
     background-image: url(../img/main/logo.png);
     display: inline-block;
 }
-.title_main{
+#title_main{
     background: #f8f9fa;
     margin-left: 5px;
     height: 100%;
     width: calc( 100% - 200px);
     display: inline-block;
     padding-top: 5px;
+    line-height: 55px;
     vertical-align:top;   /*防止文字掉落 */
-}
-/* main 包含了 title_right */
-#title_right{
-    position: absolute;
-    background-color: yellow;
-    width: 100px;
-    height: calc(100% - 8px);
-    right: 300px;
 }
 #ul_title{
     text-align: center;
-    line-height: 55px;
+    list-style: none;
 }
 .li_title{
     width: 120px;
+    border-radius:5px 5px 0px 0px;
 }
 .li_title:hover{
     background-color:white;
@@ -42,6 +36,17 @@
 }
 .a_block{
     display: block;
-    font-size: 10px;
-    color: red;
+    font-size: 22px;
+    color: #a2a8b6;
+}
+.a_block:hover{
+    color: rgba(0,0,0,.7);
+}
+/* main 包含了 title_right */
+#title_right{
+    position: absolute;
+    background-color: yellow;
+    width: 100px;
+    height: calc(100% - 8px);
+    right: 300px;
 }
