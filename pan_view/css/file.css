@@ -44,9 +44,8 @@
 }
 /* main 包含了 title_right */
 #title_right{
-    position: absolute;
-    background-color: yellow;
+    float: right;
+    height: 100%;
     width: 100px;
-    height: calc(100% - 8px);
-    right: 300px;
+    margin-right: 10%;
 }
