@@ -8,15 +8,23 @@
     <link rel="stylesheet" href="css/default.css"> <!--link_tag -->
     <link rel="stylesheet" href="css/file.css"> <!--link_tag -->
 
-    <title>欢迎您,${}!</title>
+    <title>在线网盘-全部文件</title>
+    <script src="js/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#user_name_group").mouseenter(function(){
+                
+            });
+        });
+    </script>
 </head>
 <body>
     <div id="warp" style="min-width: 1100px;">
         <div id="title">
-            <div id="title_left"></div>
+            <div id="title_left" style="background-image: url(img/file/logo.png);"></div>
             <div id="title_main">
                 <ul class="ul_my" id="ul_title">
-                    <li class="li_left li_title" style="margin-left: 10px;">
+                    <li class="li_left li_title title_active" style="margin-left: 10px;">
                         <a href="#" class="a_block" >文件</a>
                     </li>
                     <li class="li_left li_title">
@@ -24,12 +32,26 @@
                     </li>
                 </ul>
                 <div id="title_right">
-                    <button style="width: 100px;font-size: 100%;">
-                        <span class="glyphicon glyphicon-search" style=""></span>
+                    <div id="user_name_group">
+                        <div id="user_name">用户名</div>
+                        <span class="glyphicon glyphicon-chevron-down" style="margin-right: 20px;"></span><!--向下箭头-->
+                        <div id="user_name_animation_nomal"><!--隐藏-->
+                            <div style="height: 80px;background-image: url(img/file/user-level-bg-0.png);padding-top: 10px;">
+                                <div style="border-radius: 50%;width: 40px;height: 40px;background-color: red;">
+                                    <img src="img/user/default.jpg" style="border-radius: 50%;width: 30px;height: 30px;">
+                                </div>
+                                <span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="password" class="form-control" placeholder="搜索文件" aria-describedby="basic-addon1" style="display: inline;width: 200px;">
+                    <button style="font-size: 100%;">
+                        <span class="glyphicon glyphicon-search" style="margin-left: 5px;font-size: 15px;"></span>
                     </button>
                 </div>
             </div>
         </div>
+        
     </div>
 </body>
 </html>

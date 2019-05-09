@@ -7,7 +7,6 @@
     height: 100%;
     margin-top: 5px;
     margin-left: 10px;
-    background-image: url(../img/main/logo.png);
     display: inline-block;
 }
 #title_main{
@@ -25,18 +24,24 @@
     list-style: none;
 }
 .li_title{
-    width: 120px;
+    width: 100px;
     border-radius:5px 5px 0px 0px;
 }
 .li_title:hover{
+    background-color: #eeeeee;
+}
+.title_active{
     background-color:white;
     border-left: 1px solid #cecaca;
     border-right: 1px solid #cecaca;
     border-top: 1px solid #cecaca;
 }
+.title_active:hover{
+    background-color:white;
+}
 .a_block{
     display: block;
-    font-size: 22px;
+    font-size: 20px;
     color: #a2a8b6;
 }
 .a_block:hover{
@@ -46,6 +51,22 @@
 #title_right{
     float: right;
     height: 100%;
-    width: 100px;
-    margin-right: 10%;
+    width: 1000px;
+}
+#user_name_group{
+    display: inline-block;
+}
+#user_name{
+    display: inline-block;
+    margin-right: 10px;
+}
+.mousein{
+
+}
+#user_name_animation_nomal{
+    position: absolute;
+    width: 260px;
+    height: 300px;
+    margin-left: -50px;
+    border-radius: 5px;
 }

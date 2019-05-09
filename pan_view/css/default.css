@@ -40,9 +40,13 @@ a{
 a:hover{
     text-decoration:none;
 }
+a:link{
+    text-decoration:none;
+}
 button{
     margin: 0px;
     border: 0px;
     padding: 0px;
     background-color: rgba(0, 0, 0, 0);
+    outline: none;
 }
