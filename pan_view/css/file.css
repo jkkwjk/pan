@@ -18,6 +18,7 @@
     display: inline-block;
     vertical-align:top;   /*防止文字掉落 */
 }
+/* main 包含了 title_right */
 .title_main_item{
     text-align: center;
     width: 110px;
@@ -29,4 +30,11 @@
     border-left: 1px solid #cecaca;
     border-right: 1px solid #cecaca;
     border-top: 1px solid #cecaca;
+}
+#title_right{
+    position: absolute;
+    background-color: yellow;
+    width: 100px;
+    height: calc(100% - 8px);
+    right: 300px;
 }
