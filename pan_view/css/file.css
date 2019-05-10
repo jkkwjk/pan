@@ -106,18 +106,14 @@
     border-radius: 0 0 5px 5px;
 }
 .a_user_name_animation{
-    background-color: red;
+    display: block;
+    padding-left: 40px;
 }
 .a_user_name_animation:visited{
     color: #337ab7;
 }
 .a_user_name_animation:hover{
     color: rgba(0,0,0,.7);
-}
-.user_name_animation_li{
-    padding-left: 40px;
-}
-.user_name_animation_li:hover{
     background-color: rgba(0, 0, 0, .1);
 }
 #main{
