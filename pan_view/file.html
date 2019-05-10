@@ -1,3 +1,4 @@
+<!-- 页面复用: 左列表 顶部列表 设置active即可 -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,8 +13,10 @@
     <script src="js/jquery.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function(){
+            var timer = null;
             $("#user_name_group").mouseenter(function(){
                 var elemt = $("#user_name_animation_nomal");
+                clearTimeout(timer);
                 elemt.stop(true);
                 elemt.css('display','inline');
                 elemt.animate({'opacity':'1'},{queue:false,duration:200});
@@ -25,7 +28,7 @@
                 elemt.stop(true);
                 elemt.animate({'margin-top':'-10px'},{queue:false,duration:200});
                 elemt.animate({'opacity':'0'},{queue:false,duration:200});
-                setTimeout("$(\"#user_name_animation_nomal\").css('display','none')",200);
+                timer = setTimeout("$(\"#user_name_animation_nomal\").css('display','none')",200);
             });
         });
     </script>
@@ -73,17 +76,51 @@
             </div>
         </div>
         <div id="main">
-            <div id="main_left">
-                <ul class="ul_my ul_left">
-                    <a href="#" class="li_left"><li style="font-size: 20px;"><span class="glyphicon glyphicon-folder-open"></span> 全部文件</li></a>
-                    <li>图片</li>
-                    <li>视频</li>
-                    <li>音乐</li>
-                    <li>文档</li>
-                    <li>其他</li>
-                    <li><span class="glyphicon glyphicon-paperclip"></span> 我的分享</li>
-                    <li><span class="glyphicon glyphicon-trash"></span> 回收站</li>
+            <div id="main_left" style="position: relative;">
+                <ul class="ul_my" id="ul_left">
+                    <a href="#" class="a_left" style="margin-top: 10px;" id="left_list_active"> <!--bug可能-->
+                        <li class="li_left">
+                            <span class="glyphicon glyphicon-folder-open" id="glyphicon_li_left"></span> <!--图标-->
+                            全部文件
+                        </li>
+                    </a>
+                    <a href="#" class="a_left"><li class="li_left">图片</li></a>
+                    <a href="#" class="a_left"><li class="li_left">视频</li></a>
+                    <a href="#" class="a_left"><li class="li_left">音乐</li></a>
+                    <a href="#" class="a_left"><li class="li_left">文档</li></a>
+                    <a href="#" class="a_left"><li class="li_left">其他</li></a>
+                    <a href="#" class="a_left">
+                        <li class="li_left">
+                            <span class="glyphicon glyphicon-paperclip" id="glyphicon_li_left"></span>
+                            我的分享
+                        </li>
+                    </a>
+                    <a href="#" class="a_left">
+                        <li class="li_left">
+                            <span class="glyphicon glyphicon-trash" id="glyphicon_li_left"></span>
+                            回收站
+                        </li>
+                    </a>
                 </ul>
+                <div id="left_bottom">
+                    <div id="left_process_bar">
+                        <!-- 进度条示例 -->
+                        <div class="progress" style="height: 5px;">
+                            <!-- 进度条填充 -->
+                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                        </div>
+                    </div>
+                    <!-- 后端交互 -->
+                    <div style="font-size: 10px;">
+                        <span id="span_used_capacity">800MB</span>
+                        <span>/</span>
+                        <span id="span_all_capacity">1G</span>
+                    </div>
+                    
+                </div>
+            </div>
+            <div style="width: calc(100% - 200px);height: 100%;background-color:red;display: inline-block;vertical-align: top;margin-left: -4px;">
+                
             </div>
         </div>
     </div>
