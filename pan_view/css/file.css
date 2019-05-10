@@ -51,7 +51,7 @@
 #title_right{
     float: right;
     height: 100%;
-    width: 1000px;
+    width: 500px;
 }
 #user_name_group{
     display: inline-block;
@@ -66,7 +66,57 @@
 #user_name_animation_nomal{
     position: absolute;
     width: 260px;
-    height: 300px;
+    height: 250px;
     margin-left: -50px;
     border-radius: 5px;
+    background: rgb(242, 248, 255);
+    box-shadow:0 0 1px #000 inset;
+    opacity: 0;
+    margin-top: -10px;
+    display: none;
+}
+#user_name_animation_top{
+    height: 80px;
+    border-radius: 5px 5px 0 0;
+    line-height: 80px;
+}
+#user_name_animation_top_img{
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    margin-left: 3px;
+    margin-bottom: 32px;
+}
+#user_name_animation_top_img_bg{
+    border-radius: 50%;
+    width: 51px;
+    height: 51px;
+    background-color: #4DACFF;
+    position: absolute;
+    top:15px;
+    left: 50px;
+}
+#user_name_animation_top_username{
+    margin-left: 110px;
+    font-size: 15px;
+    color: white;
+}
+#user_name_animation_main{
+    width: 100%;
+    border-radius: 0 0 5px 5px;
+}
+.a_user_name_animation{
+    background-color: red;
+}
+.a_user_name_animation:visited{
+    color: #337ab7;
+}
+.a_user_name_animation:hover{
+    color: rgba(0,0,0,.7);
+}
+.user_name_animation_li{
+    padding-left: 40px;
+}
+.user_name_animation_li:hover{
+    background-color: rgba(0, 0, 0, .1);
 }

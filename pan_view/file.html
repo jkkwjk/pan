@@ -13,7 +13,20 @@
     <script type="text/javascript">
         $(document).ready(function(){
             $("#user_name_group").mouseenter(function(){
-                
+                var elemt = $("#user_name_animation_nomal");
+                elemt.stop(true);
+                elemt.css('display','inline');
+                elemt.animate({'opacity':'1'},{queue:false,duration:200});
+                elemt.animate({'margin-top':'0px'},{queue:false,duration:200});
+
+            });
+            $("#user_name_group").mouseleave(function(){
+                var elemt = $("#user_name_animation_nomal");
+                elemt.stop(true);
+                elemt.animate({'margin-top':'-10px'},{queue:false,duration:200});
+                elemt.animate({'opacity':'0'},{queue:false,duration:200},function(){
+                    elemt.css('display','none');
+                });
             });
         });
     </script>
@@ -35,12 +48,21 @@
                     <div id="user_name_group">
                         <div id="user_name">用户名</div>
                         <span class="glyphicon glyphicon-chevron-down" style="margin-right: 20px;"></span><!--向下箭头-->
-                        <div id="user_name_animation_nomal"><!--隐藏-->
-                            <div style="height: 80px;background-image: url(img/file/user-level-bg-0.png);padding-top: 10px;">
-                                <div style="border-radius: 50%;width: 40px;height: 40px;background-color: red;">
-                                    <img src="img/user/default.jpg" style="border-radius: 50%;width: 30px;height: 30px;">
+                        
+                        <div id="user_name_animation_nomal"><!--隐藏动画-->
+                            <div id="user_name_animation_top" style="background-image: url(img/file/user-level-bg-0.png);"><!--顶部-->
+                                <div id="user_name_animation_top_img_bg">
+                                    <img id="user_name_animation_top_img" src="img/user/default.jpg">
                                 </div>
-                                <span></span>
+                                <span id="user_name_animation_top_username">用户名</span>
+                            </div>
+
+                            <div id="user_name_animation_main">
+                                <ul class="ul_my" style="list-style: none;">
+                                    <a href="#" class="a_user_name_animation"><li class="user_name_animation_li">个人资料</li></a>
+                                    <a href="#" class="a_user_name_animation"><li class="user_name_animation_li">设置二级密码</li></a>
+                                    <a href="#" class="a_user_name_animation"><li class="user_name_animation_li">退出</li></a>
+                                </ul>
                             </div>
                         </div>
                     </div>
