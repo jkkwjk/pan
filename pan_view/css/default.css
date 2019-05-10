@@ -27,7 +27,7 @@ body{
     filter: blur(1.5px);
 }
 
-.li_left{
+.li_float_left{
     float: left;
 }
 .ul_my{

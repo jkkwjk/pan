@@ -120,3 +120,19 @@
 .user_name_animation_li:hover{
     background-color: rgba(0, 0, 0, .1);
 }
+#main{
+    width: 100%;
+    height: 100%;
+}
+#main_left{
+    width: 200px;
+    background: #f8f9fa;
+    height: 100%;;
+}
+#ul_left{
+
+}
+.li_left{
+    display: block;
+    background: black;
+}

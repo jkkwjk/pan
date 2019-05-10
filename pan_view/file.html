@@ -24,9 +24,8 @@
                 var elemt = $("#user_name_animation_nomal");
                 elemt.stop(true);
                 elemt.animate({'margin-top':'-10px'},{queue:false,duration:200});
-                elemt.animate({'opacity':'0'},{queue:false,duration:200},function(){
-                    elemt.css('display','none');
-                });
+                elemt.animate({'opacity':'0'},{queue:false,duration:200});
+                setTimeout("$(\"#user_name_animation_nomal\").css('display','none')",200);
             });
         });
     </script>
@@ -37,10 +36,10 @@
             <div id="title_left" style="background-image: url(img/file/logo.png);"></div>
             <div id="title_main">
                 <ul class="ul_my" id="ul_title">
-                    <li class="li_left li_title title_active" style="margin-left: 10px;">
-                        <a href="#" class="a_block" >文件</a>
+                    <li class="li_float_left li_title title_active" style="margin-left: 10px;">
+                        <a href="#" class="a_block">文件</a>
                     </li>
-                    <li class="li_left li_title">
+                    <li class="li_float_left li_title">
                         <a href="#" class="a_block">分享</a>
                     </li>
                 </ul>
@@ -73,7 +72,21 @@
                 </div>
             </div>
         </div>
-        
+        <div id="main">
+            <div id="main_left">
+                <ul class="ul_my ul_left">
+                    <!-- 有时间重构下,a写在外面加上display: block; 可以对box内背景操作 -->
+                    <a href="#" class="li_left"><li style="font-size: 20px;"><span class="glyphicon glyphicon-folder-open"></span> 全部文件</li></a>
+                    <li>图片</li>
+                    <li>视频</li>
+                    <li>音乐</li>
+                    <li>文档</li>
+                    <li>其他</li>
+                    <li><span class="glyphicon glyphicon-paperclip"></span> 我的分享</li>
+                    <li><span class="glyphicon glyphicon-trash"></span> 回收站</li>
+                </ul>
+            </div>
+        </div>
     </div>
 </body>
 </html>
