@@ -213,6 +213,22 @@ input[type=checkbox]:checked{
 .span_file_attr{
     color: #666;
 }
+#filehead_left{
+    width: 60%;
+    display: inline-block;
+}
+#filehead_mid{
+    width: 20%;
+    height: 100%;
+    vertical-align:middle;
+    display: inline-block;
+}
+#filehead_right{
+    width: calc(20% - 8px);
+    height: 100%;
+    vertical-align:middle;
+    display: inline-block;
+}
 #file_main{
     width: 100%;
     height: calc(100% - 103px);
