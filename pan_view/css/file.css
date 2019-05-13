@@ -43,6 +43,10 @@
     font-size: 20px;
     color: #a2a8b6;
 }
+
+.a_block:focus{
+    color: #a2a8b6;      
+}
 .a_block:hover{
     color: rgba(0,0,0,.7);
 }
@@ -144,6 +148,9 @@
     background-color: rgba(0, 0, 0, .1);
     color: #666;
 }
+.a_left:focus{
+    color: #666;
+}
 #glyphicon_li_left{
     position: absolute;
     left: -20px;
@@ -187,10 +194,17 @@
     margin-left: 10px;
     font-size: 15px;
     color: #0098EA;
-    border: 1px #C3EAFF solid;
 }
 .button_main_main_top:hover{
     color: #0098EA;
+}
+.button_main_main_top:focus{
+    outline: none !important;
+    color: #0098EA;
+}
+.button_main_main_top:active{
+    outline: none !important;
+    color: rgb(27, 175, 255) !important;
 }
 div{
     font: "Microsoft YaHei";
@@ -203,9 +217,12 @@ input[type='checkbox']{
     -webkit-appearance:none;
     border: 1px solid #c9c9c9;
     border-radius: 2px;
-    outline: none;
+    outline:none;
     display: inline-block;
     vertical-align:sub;
+}
+input[type='checkbox']:focus{
+    outline:none;
 }
 input[type=checkbox]:checked{
     background: url("../img/file/checkbox_select.png")no-repeat center;
@@ -231,6 +248,7 @@ input[type=checkbox]:checked{
     display: inline-block;
 }
 #file_main{
+    padding-top: 10px;
     width: 100%;
     height: calc(100% - 103px);
     padding-right: 10px;
@@ -272,4 +290,7 @@ input[type=checkbox]:checked{
 }
 .file_name{
     margin-left: 7px;
+}
+.file_tr:hover{
+    background-color:rgba(65, 159, 247, 0.1);
 }
