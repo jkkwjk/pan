@@ -192,10 +192,6 @@
 .button_main_main_top:hover{
     color: #0098EA;
 }
-/* 字体设置 */
-div{
-    font: 12px/1.5 "Microsoft YaHei", arial, SimSun, 宋体;
-}
 input[type='checkbox']{
     width: 15px;
     height: 15px;
