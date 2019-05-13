@@ -7,7 +7,7 @@
                     if (b==true){
                         $(item).parent().parent().css('background-color','rgba(65, 159, 247, 0.18)');
                     }else {
-                        $(item).parent().parent().css('background-color','white');
+                        $(item).parent().parent().removeAttr('style');
                     }
                 }
             });

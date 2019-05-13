@@ -249,13 +249,29 @@ input[type=checkbox]:checked{
     display: inline-block;
 }
 #file_main{
+    overflow:scroll;
+    overflow-x: hidden;
     padding-top: 10px;
     width: 100%;
     height: calc(100% - 103px);
     padding-right: 10px;
 }
+#file_main::-webkit-scrollbar {
+    width: 8px;
+    height: 1px;
+}
+#file_main::-webkit-scrollbar-thumb { /*滚动条*/
+    border-radius: 10px;
+     -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    background: #969693;
+}
+#file_main::-webkit-scrollbar-track { /*滑轨*/
+    -webkit-box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    background: #EDEDED;
+}
 .file_left{
-    width: calc(60% + 10px);
+    width: calc(60% + 13px);
     display: inline-block;
     padding-left: 20px;
 }

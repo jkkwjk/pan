@@ -1,3 +1,6 @@
+//对于文件夹 lable为文件夹名 filetype=0
+//对于文件 lable为md5 filetype=1
+//安全可选: 交提下载请求后 应判断md5和文件名是否为该用户
 $(document).ready(function(){
     //动画
     var timer = null;
@@ -62,6 +65,14 @@ $(document).ready(function(){
             $(this).check_all();
         }
         btn_group_display();
+    });
+    ///
+    /// 文件链接被单击
+    ///
+    $(".a_file_name").click(function(){
+        //文件夹 则打开
+        //文件 则下载
+        return false;
     });
 });
 function div_disable(elemt){
