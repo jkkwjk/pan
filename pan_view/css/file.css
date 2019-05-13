@@ -72,6 +72,7 @@
 }
 #user_name_animation_nomal{
     position: absolute;
+    z-index: 10;
     width: 260px;
     height: 250px;
     margin-left: -50px;
@@ -92,7 +93,7 @@
     width: 45px;
     height: 45px;
     margin-left: 3px;
-    margin-bottom: 32px;
+    margin-bottom: 30px;
 }
 #user_name_animation_top_img_bg{
     border-radius: 50%;
@@ -293,4 +294,14 @@ input[type=checkbox]:checked{
 }
 .file_tr:hover{
     background-color:rgba(65, 159, 247, 0.1);
+}
+.a_file_name{
+    color: black;
+}
+.a_file_name:hover{
+    color: black;
+}
+.a_file_name:focus{
+    color: black;
+
 }

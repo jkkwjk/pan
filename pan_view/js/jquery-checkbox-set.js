@@ -2,6 +2,15 @@
     $.fn.extend({
         "set_checked": function (b) {
             this.prop("checked",b);
+            $.each(this,function(i,item){
+                if ($(item).attr('id')!="all_file"){
+                    if (b==true){
+                        $(item).parent().parent().css('background-color','rgba(65, 159, 247, 0.18)');
+                    }else {
+                        $(item).parent().parent().css('background-color','white');
+                    }
+                }
+            });
         },
         "get_checked": function() {
             return !this.prop("checked");
@@ -12,7 +21,6 @@
         "uncheck_all": function() {
             $(":checked").set_checked(false);
         }
-
     });
     $.fn.extend({
         "only_select": function () {
@@ -25,13 +33,8 @@ jQuery.extend({
     set_elemt_check: function(elemt,check) {
         elemt.set_checked(check);
     },
-    has_any_check: function(){
+    check_num: function(){
         var len = $(":checked[id!='all_file']").length;
-        if (len!=0) {
-            return true;
-        }
-        else {
-            return false;
-        }
+        return len;
     }
 });

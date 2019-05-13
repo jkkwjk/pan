@@ -120,16 +120,16 @@
                     <button type="button" class="btn btn-light button_main_main_top" style="border: 1px #C3EAFF solid;">
                         <span class="glyphicon glyphicon-hdd" style="margin-right: 2px;"></span> 新建文件夹
                     </button>
-                    <div class="btn-group  button_main_main_top" role="group" style="outline: none;">
-                        <button type="button" class="btn btn-default button_main_main_top">
+                    <div class="btn-group  button_main_main_top" id="btn_group" role="group" style="display: none;">
+                        <button id="btn_download" type="button" class="btn btn-default button_main_main_top">
                             <span class="glyphicon glyphicon-cloud-download" style="margin-right: 2px;"></span>下载
                         </button>
-                        <button type="button" class="btn btn-default button_main_main_top">
+                        <button id="btn_share" type="button" class="btn btn-default button_main_main_top">
                             <span class="glyphicon glyphicon-tags" style="margin-right: 2px;"></span>
                             分享
                         </button>
-                        <button type="button" class="btn btn-default button_main_main_top">删除</button>
-                        <button type="button" class="btn btn-default button_main_main_top">重命名</button>
+                        <button id="btn_delete" type="button" class="btn btn-default button_main_main_top">删除</button>
+                        <button id="btn_rename" type="button" class="btn btn-default button_main_main_top">重命名</button>
                     </div>
                 </div>
 
@@ -170,7 +170,7 @@
                             <td class="file_left">
                                 <input type="checkbox" name="" id="">
                                 <img src="img/file/file_ico/folder.png" class="file_img">
-                                <span class="file_name">麻瓜编程2017</span>
+                                <a href="#" class="a_file_name"><span class="file_name">麻瓜编程2017</span></a>
                             </td>
                             <td class="file_mid">34</td>
                             <td class="file_right">34</td>
