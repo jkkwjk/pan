@@ -192,6 +192,10 @@
 .button_main_main_top:hover{
     color: #0098EA;
 }
+div{
+    font: "Microsoft YaHei";
+    font-size: 12px;
+}
 input[type='checkbox']{
     width: 15px;
     height: 15px;
