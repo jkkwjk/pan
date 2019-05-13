@@ -12,27 +12,10 @@
 
     <title>在线网盘-全部文件</title>
     <script src="js/jquery.min.js"></script>
+    <script src="js/file.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script type="text/javascript">
-        $(document).ready(function(){
-            var timer = null;
-            $("#user_name_group").mouseenter(function(){
-                var elemt = $("#user_name_animation_nomal");
-                clearTimeout(timer);
-                elemt.stop(true);
-                elemt.css('display','inline');
-                elemt.animate({'opacity':'1'},{queue:false,duration:200});
-                elemt.animate({'margin-top':'0px'},{queue:false,duration:200});
-
-            });
-            $("#user_name_group").mouseleave(function(){
-                var elemt = $("#user_name_animation_nomal");
-                elemt.stop(true);
-                elemt.animate({'margin-top':'-10px'},{queue:false,duration:200});
-                elemt.animate({'opacity':'0'},{queue:false,duration:200});
-                timer = setTimeout("$(\"#user_name_animation_nomal\").css('display','none')",200);
-            });
-        });
+        
     </script>
 </head>
 <body>
@@ -143,7 +126,7 @@
                     </button>
                 </div>
 
-                <div style="padding-right: 20px;">
+                <div style="padding-right: 20px;padding-left: 20px;">
                     <span>全部文件</span>
                     <div style="float: right">
                         <span id="file_load_all">已全部加载</span>
@@ -178,8 +161,18 @@
                         </tr>
                         <tr class="file_tr">
                             <td class="file_left">
-                                <input type="checkbox" name="" id="" style="">
-                                34
+                                <input type="checkbox" name="" id="">
+                                <img src="img/file/file_ico/folder.png" class="file_img">
+                                <span class="file_name">麻瓜编程2017</span>
+                            </td>
+                            <td class="file_mid">34</td>
+                            <td class="file_right">34</td>
+                        </tr>
+                        <tr class="file_tr">
+                            <td class="file_left">
+                                <input type="checkbox" name="" id="">
+                                <img src="img/file/file_ico/folder.png" class="file_img">
+                                <span class="file_name">麻瓜编程2017</span>
                             </td>
                             <td class="file_mid">34</td>
                             <td class="file_right">34</td>
