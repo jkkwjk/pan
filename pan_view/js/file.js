@@ -2,25 +2,6 @@
 //对于文件 lable为md5 filetype=1
 //安全可选: 交提下载请求后 应判断md5和文件名是否为该用户
 $(document).ready(function(){
-    //动画
-    var timer = null;
-    $("#user_name_group").mouseenter(function(){
-        var elemt = $("#user_name_animation_nomal");
-        clearTimeout(timer);
-        elemt.stop(true);
-        elemt.css('display','inline');
-        elemt.animate({'opacity':'1'},{queue:false,duration:200});
-        elemt.animate({'margin-top':'0px'},{queue:false,duration:200});
-
-    });
-    $("#user_name_group").mouseleave(function(){
-        var elemt = $("#user_name_animation_nomal");
-        elemt.stop(true);
-        elemt.animate({'margin-top':'-10px'},{queue:false,duration:200});
-        elemt.animate({'opacity':'0'},{queue:false,duration:200});
-        timer = setTimeout("$(\"#user_name_animation_nomal\").css('display','none')",200);
-    });
-
     // file 逻辑
     var file_num = 3; //显示的文件数
     var check_file_arr = new Array();
