@@ -8,9 +8,6 @@
     height: 100%;
     display: inline-block;
 }
-#ul_left{
-    list-style: none;
-}
 .a_left{
     display: block;
     padding-left: 40px;

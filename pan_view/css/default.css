@@ -33,6 +33,7 @@ body{
 .ul_my{
     padding: 0px;
     margin: 0px;
+    list-style: none;
 }
 a{
     text-decoration:none;

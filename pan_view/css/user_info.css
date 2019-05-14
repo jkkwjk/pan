@@ -1,28 +1,47 @@
+p{
+    margin: 0px;
+    padding: 0px;
+}
 #main{
    position: absolute;
    right: 0px;
    width: 80%;
    min-width: 900px;
-   height: calc(100% - 60px);
+   height: calc(100% - 90px);
 }
 #main_content{
     width: 900px;
     height: 100%;
-    background-color: pink;
+    border: 1px #eee solid;
+    margin-top: 30px;
 }
 #left_list{
     width: 300px;
     height: 100%;
+    background: #FBFBFB;
+    border-left: 1px #DDDDDD solid;
+    border-right: 1px #DDDDDD solid;
 }
 #left_list_userinfo{
-    height: 250px;
+    height: 130px;
     padding-left: 30px;
     padding-top: 30px;
 }
 #left_list_userinfo_username{
-    height: 150px;
+    height: 70px;
+    width: 100%;
+    display: inline-block;
 }
-#span_left_list_userinfo_username{
+.span_left_list_userinfo_username{
     font-size: 15px;
-    margin-left: 20px;
+    margin-left: 15px;
+}
+#left_list_userinfo_username_right{
+    height: 100%;
+    width: calc(100% - 70px);
+    float: right;
+}
+#left_ul{
+    height: calc(100% - 130px);
+    width: 100%;
 }
