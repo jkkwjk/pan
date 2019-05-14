@@ -1,0 +1,28 @@
+#main{
+   position: absolute;
+   right: 0px;
+   width: 80%;
+   min-width: 900px;
+   height: calc(100% - 60px);
+}
+#main_content{
+    width: 900px;
+    height: 100%;
+    background-color: pink;
+}
+#left_list{
+    width: 300px;
+    height: 100%;
+}
+#left_list_userinfo{
+    height: 250px;
+    padding-left: 30px;
+    padding-top: 30px;
+}
+#left_list_userinfo_username{
+    height: 150px;
+}
+#span_left_list_userinfo_username{
+    font-size: 15px;
+    margin-left: 20px;
+}

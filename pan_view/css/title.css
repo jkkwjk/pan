@@ -124,3 +124,8 @@
     color: rgba(0,0,0,.7);
     background-color: rgba(0, 0, 0, .1);
 }
+/* 小心!!! 所有字体尽量在style重新设置 */
+div{
+    font: "Microsoft YaHei";
+    font-size: 12px;
+}

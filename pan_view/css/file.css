@@ -81,10 +81,6 @@
     outline: none !important;
     color: rgb(27, 175, 255) !important;
 }
-div{
-    font: "Microsoft YaHei";
-    font-size: 12px;
-}
 input[type='checkbox']{
     width: 15px;
     height: 15px;
