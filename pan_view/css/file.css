@@ -195,3 +195,6 @@ input[type=checkbox]:checked{
     color: black;
 
 }
+.btn_search:focus{
+    outline: none;
+}

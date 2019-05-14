@@ -3,7 +3,7 @@
 //安全可选: 交提下载请求后 应判断md5和文件名是否为该用户
 $(document).ready(function(){
     // file 逻辑
-    var file_num = 3; //显示的文件数
+    var file_num = 16; //显示的文件数
     var check_file_arr = new Array();
 
     ///
@@ -12,10 +12,10 @@ $(document).ready(function(){
     $(".file_tr").click(function(){
         var checkbox = $(this).find("td")[0];
         checkbox = $(checkbox).find("input");
-        $(checkbox).set_checked(true);
+        $(checkbox).only_select();
         var select_file_num = $(":checked[id!='all_file']").length;
-        if (select_file_num == file_num) {
-            $.set_elemt_check($("#all_file"),true);
+        if (select_file_num < file_num) {
+            $.set_elemt_check($("#all_file"),false);
         }
         btn_group_display();
     });
@@ -23,14 +23,14 @@ $(document).ready(function(){
     /// 除了全选之外的所有checkbox被单击
     ///
     $(":checkbox").click(function(e){
-        if ($(this).get_checked()) { //减少check
+        if ($(this).get_checked()){
             $(this).set_checked(false);
-            var select_file_num = $(":checked[id!='all_file']").length;
-            if (select_file_num < file_num) {
-                $.set_elemt_check($("#all_file"),false);
-            }
-        }else { //增加或减少check
-            $(this).only_select();
+        } else{
+            $(this).set_checked(true);
+        }
+        var select_file_num = $(":checked[id!='all_file']").length;
+        if (select_file_num == file_num) {
+            $.set_elemt_check($("#all_file"),true);
         }
         btn_group_display();
         e.stopPropagation();
@@ -57,10 +57,10 @@ $(document).ready(function(){
     });
 });
 function div_disable(elemt){
-    elemt.css('display','none');
+    elemt.fadeOut(100);
 }
 function div_able(elemt){
-    elemt.css('display','inline-block');
+    elemt.fadeIn(100);
 }
 function btn_group_display(){
     var num = $.check_num();
