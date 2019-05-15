@@ -29,6 +29,11 @@
                 }else {
                     $("#span_confim").css("display","none");
                 }
+                if(can_submit()) {
+                    $("#submit").attr("disabled",false);
+                }else {
+                    $("#submit").attr("disabled",true);
+                }
             });
             $("#confim_pwd").keyup(function(){
                 if ($("#pwd").val() != $("#confim_pwd").val()){
@@ -36,8 +41,20 @@
                 }else {
                     $("#span_confim").css("display","none");
                 }
+                if(can_submit()) {
+                    $("#submit").attr("disabled",false);
+                }else {
+                    $("#submit").attr("disabled",true);
+                }
             });
         });
+        function can_submit(){
+            if (($("#pwd").isPassword()) && $("#pwd").val() == $("#confim_pwd").val()) {
+                return true;
+            }else {
+                return false;
+            }
+        };
     </script>
 </head>
 <body>
@@ -83,15 +100,15 @@
             <div id="main_main">
                 <span style="margin-right: 10px;">二级密码:</span>
                 <input id="pwd" type="password" class="form-control" style="width: 170px;height: 30px;display: inline-block;">
-                <span class="pwd_tip" id="span_pwd">密码长度为6-16个字符，区分大小写</span>
+                <span class="pwd_tip" id="span_pwd">*密码长度为6-16个字符，需要大小写字符</span>
                 <br>
                 <div style="margin-top: 10px;">
                     <span style="margin-right: 10px;font-size: 15px;">确认密码:</span>
                     <input id="confim_pwd" type="password" class="form-control" style="width: 170px;height: 30px;;display: inline-block;">
-                    <span class="pwd_tip" id="span_confim" style="margin-left: 2px;">密码需与上面一致</span>
+                    <span class="pwd_tip" id="span_confim" style="margin-left: 2px;">*密码需与上面一致</span>
                 </div>
                 <div style="margin-top: 10px;">
-                    <button type="button" class="btn btn-primary" style="width: 80px;">确定</button>
+                    <button type="button" class="btn btn-primary" style="width: 80px;" id="submit" disabled>确定</button>
                 </div>
             </div>
         </div>
