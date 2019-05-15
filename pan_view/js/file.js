@@ -55,6 +55,13 @@ $(document).ready(function(){
         //文件 则下载
         return false;
     });
+    ///
+    /// 扩大checkbox的点击范围
+    ///
+    $(".checkbox_div").click(function(e){
+        $($(this).find("input")).trigger('click');
+        e.stopPropagation();
+    });
 });
 function div_disable(elemt){
     elemt.fadeOut(100);

@@ -5,9 +5,9 @@
             $.each(this,function(i,item){
                 if ($(item).attr('id')!="all_file"){
                     if (b==true){
-                        $(item).parent().parent().css('background-color','rgba(65, 159, 247, 0.18)');
+                        $(item).parent().parent().parent().css('background-color','rgba(65, 159, 247, 0.18)');
                     }else {
-                        $(item).parent().parent().removeAttr('style');
+                        $(item).parent().parent().parent().removeAttr('style');
                     }
                 }
             });

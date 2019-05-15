@@ -55,31 +55,96 @@
             </div>
         </div>
         <div id="main">
-           <div id="main_content">
-               <div id="left_list">
+            <div id="main_content">
+                <div id="left_list">
                     <div id="left_list_userinfo">
                         <div id="left_list_userinfo_username">
                             <img src="img/user/default.jpg" style="width: 70px;height: 70px;">
                             <div id="left_list_userinfo_username_right">
                                 <p style="margin-top: 20px;">
-                                    <span class="span_left_list_userinfo_username">用户名</span>
+                                    <span class="span_left_list_userinfo_username" style="font-family: 微软雅黑;">用户名</span>
                                 </p>
                                 <p style="margin-top: 5px;">
-                                    <span class="span_left_list_userinfo_username" style="font-size: 12px;">欢迎您!</span>
+                                    <span class="span_left_list_userinfo_username" style="font-size: 12px;color: #666;">欢迎您!</span>
                                 </p>
                             </div>
                         </div>
+                        <div id="left_list_userinfo_bottom">
+                            <p><span class="span_left_list_userinfo_username" style="font-weight: 600;">最近一次登录在:</span></p>
+                            <p><span class="span_left_list_userinfo_username" style="margin-left: 45px;">2019-5-14 22:06:58</span></p>
+                        </div>
                     </div>
-                    <div id="left_ul">
-                        <ul class="ul_my">
-                            <li>修改资料</li>
-                            <li>修改密码</li>
-                            <li>账号注销</li>
+                    <div id="div_left_ul">
+                        <ul class="ul_my" style="margin-top: 20px;">
+                            <a href="#" class="a_left" style="margin-top: 10px;" id="left_list_active">
+                                <li class="li_left">
+                                    <span class="glyphicon glyphicon-user" id="glyphicon_li_left"></span> <!--图标-->
+                                    个人信息
+                                </li>
+                            </a>
+                            <a href="#" class="a_left">
+                                <li class="li_left">
+                                    <span class="glyphicon glyphicon-lock" id="glyphicon_li_left"></span> <!--图标-->
+                                    修改密码
+                                </li>
+                            </a>
+                            <a href="#" class="a_left">
+                                <li class="li_left">
+                                    <span class="glyphicon glyphicon-off" id="glyphicon_li_left"></span> <!--图标-->
+                                    账号注销
+                                </li>
+                            </a>
                         </ul>
                     </div>
-               </div>
-           </div> 
+                </div>
+                <div id="right_main">
+                    <div id="right_main_top">
+                        <span class="span_right_main_top">个人信息</span>
+                   </div>
+                    <div id="right_main_main">
+                        <div id="right_main_main_left">
+                            <div class="right_main_main_left_item">
+                                <span class="span_right_main_main_left_attr">用户名:</span>
+                                <input type="text" class="form-control input_right_main_main_left" placeholder="UserName">
+                            </div>
+                            <div class="right_main_main_left_item">
+                                <span class="span_right_main_main_left_attr">性别:</span>
+                                <input type="radio" name="sex" id="man" style="margin-left: 15px;">男
+                                <input type="radio" name="sex" id="women" style="margin-left: 30px;">女
+                            </div>
+                            <div class="right_main_main_left_item">
+                                <span class="span_right_main_main_left_attr">公开邮箱:</span>
+                                <input type="text" class="form-control input_right_main_main_left" placeholder="E-mail">
+                            </div>
+                            <div class="right_main_main_left_item">
+                                <span class="span_right_main_main_left_attr">手机号:</span>
+                                <input type="text" class="form-control input_right_main_main_left" placeholder="PhoneNumber">
+                            </div>
+                            <div class="right_main_main_left_item">
+                                <span class="span_right_main_main_left_attr">个人网站:</span>
+                                <input type="text" class="form-control input_right_main_main_left" placeholder="URL">
+                            </div>
+                            <div class="right_main_main_left_item">
+                                <span class="span_right_main_main_left_attr">地理位置:</span>
+                                <input type="text" class="form-control input_right_main_main_left" placeholder="Location">
+                            </div>
+                            <div class="right_main_main_left_item" style="float: right;">
+                                <button type="button" class="btn btn-success" style="margin-right: 5px;width: 100px;">交提更新</button>
+                            </div>
+                        </div>
+                        <div id="right_main_main_right">
+                            <input id="change_img" type="image" src="img/user/default.jpg" width="100" height="100">
+                            <div id="in_img_tip">
+                                <span class="glyphicon glyphicon-pencil"></span>
+                                <span>点击以编辑</span>
+                            </div>
+                            <span>100×100</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
+        <div id="warp_bottom"></div>
     </div>
 </body>
 </html>
