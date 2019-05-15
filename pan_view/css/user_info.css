@@ -1,119 +1,9 @@
-p{
-    margin: 0px;
-    padding: 0px;
-}
-#main{
-   position: absolute;
-   right: 0px;
-   width: 80%;
-   min-width: 1100px;
-   height: calc(100% - 90px);
-}
-#main_content{
-    width: 1100px;
-    height: calc(100% - 2px); /*莫名有上下滚动*/
-    border: 1px #eee solid;
-    margin-top: 30px;
-}
-#left_list{
-    width: 280px;
-    height: 100%;
-    background: #FBFBFB;
-    border-left: 1px #DDDDDD solid;
-    border-right: 1px #DDDDDD solid;
-    display: inline-block;
-    vertical-align: top;
-}
-#left_list_userinfo{
-    height: 180px;
-    padding-left: 30px;
-    padding-top: 30px;
-}
-#left_list_userinfo_username{
-    height: 70px;
-    width: 100%;
-    display: inline-block;
-}
-.span_left_list_userinfo_username{
-    font-size: 15px;
-    margin-left: 15px;
-}
-#left_list_userinfo_username_right{
-    height: 100%;
-    width: calc(100% - 70px);
-    float: right;
-}
-#left_list_userinfo_bottom{
-    width: 100%;
-    height: calc(100% - 90px);
-    margin-top: 20px;
-}
-#div_left_ul{
-    height: calc(100% - 199px);
-    width: 100%;
-}
-.a_left{
-    display: block;
-    padding-left: 40px;
-    height: 45px;
-    font: 12px/1.5 "Microsoft YaHei", arial, SimSun, 宋体;
-    font-size: 15px;
-    color: #666;
-}
-.a_left:hover{
-    background-color: rgba(0, 0, 0, .1);
-    color: #666;
-}
-.a_left:focus{
-    color: #666;
-}
-#glyphicon_li_left{
-    position: absolute;
-    left: -20px;
-    top: 15px;
-}
-.li_left{
-    position: relative;
-    line-height: 45px;
-    padding-left: 20px;
-}
-#left_list_active{
-    background-color: rgba(0, 0, 0, .1);
-    color: rgb(68, 158, 231);
-}
-#right_main{
-    width: calc(100% - 283px);
-    height: 100%;
-    display: inline-block;
-    padding-left: 40px;
-}
-#right_main_top{
-    height: 70px;
-    border-bottom: 1px #e1e4e8 solid;
-    line-height: 90px;
-}
-.span_right_main_top{
-    font-family: \9ed1\4f53;/*黑体*/
-    font-size: 23px;
-}
 #right_main_main{
     width: 100%;
     height: calc(100% - 70px);
 }
-#right_main_main_left{
-    display: inline-block;
-    width: 500px;
-    height: 100%;
-    padding-top: 5px;
-    padding-right: 30px;
-}
 .right_main_main_left_item{
     margin-top: 20px;
-}
-.span_right_main_main_left_attr{
-    font-family: 微软雅黑;
-    font-size: 14px;
-    font-weight: 600;
 }
 .input_right_main_main_left{
     margin-top: 5px;
@@ -138,15 +28,4 @@ p{
     border-radius: 5px;
     color: white;
     pointer-events:none; /*点击穿透*/
-}
-#warp_bottom{
-    position: fixed;
-    bottom: 0px;
-    margin-bottom: 0px;
-    width: 100%;
-    height: 60px;
-    pointer-events:none;
-    background: #EEE;
-    border-top: 1px #AAA solid;
-    text-align: center;
 }
