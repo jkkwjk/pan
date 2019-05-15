@@ -68,7 +68,11 @@
     color: #0098EA;
 }
 .button_main_main_top:hover{
+    outline: none !important;
     color: #0098EA;
+}
+.button_main_main_top>.button_main_main_top:focus{
+    box-shadow: 0px 0px 0px;
 }
 .button_main_main_top:focus{
     outline: none !important;
