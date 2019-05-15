@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/default.css"> <!--link_tag -->
+    <link rel="stylesheet" href="css/title.css"> <!--link_tag -->
+    <link rel="stylesheet" href="css/user_info_default.css"> <!--link_tag -->
+    <link rel="stylesheet" href="css/del_account.css"> <!--link_tag -->
+
+    <title>修改密码</title>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/title.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            timer(3);
+        });
+        function timer(num){
+            if(num == 0){
+                $("#btn").text("确定注销");
+                $("#btn").attr("disabled",false);
+            }else {
+                $("#btn").text("确定注销 ( " + (num-1).toString()+" )");
+                setTimeout("timer("+ (num-1).toString() +")",1000);
+            }
+            
+        }
+    </script>
+</head>
+<body>
+    <div id="warp" style="min-width: 1100px;">
+        <div id="title">
+            <div id="title_left" style="background-image: url(img/file/logo.png);"></div>
+            <div id="title_main">
+                <ul class="ul_my" id="ul_title">
+                    <li class="li_float_left li_title title_active" style="margin-left: 10px;">
+                        <a href="#" class="a_block">个人资料</a>
+                    </li>
+                </ul>
+                <div id="title_right">
+                    <div id="user_name_group">
+                        <img src="img/user/default.jpg" id="user_name_img">
+                        <div id="user_name">用户名</div>
+                        <span class="glyphicon glyphicon-chevron-down" style="margin-right: 20px;"></span><!--向下箭头-->
+                        <div id="user_name_animation_nomal"><!--隐藏动画-->
+                            <div id="user_name_animation_top" style="background-image: url(img/file/user-level-bg-0.png);"><!--顶部-->
+                                <div id="user_name_animation_top_img_bg">
+                                    <img id="user_name_animation_top_img" src="img/user/default.jpg">
+                                </div>
+                                <span id="user_name_animation_top_username">用户名</span>
+                            </div>
+
+                            <div id="user_name_animation_main">
+                                <ul class="ul_my">
+                                    <a href="#" class="a_user_name_animation"><li>个人资料</li></a>
+                                    <a href="#" class="a_user_name_animation"><li>二级密码</li></a>
+                                    <a href="#" class="a_user_name_animation"><li>退出</li></a>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="main">
+            <div id="main_content">
+                <div id="left_list">
+                    <div id="left_list_userinfo">
+                        <div id="left_list_userinfo_username">
+                            <img src="img/user/default.jpg" style="width: 70px;height: 70px;">
+                            <div id="left_list_userinfo_username_right">
+                                <p style="margin-top: 20px;">
+                                    <span class="span_left_list_userinfo_username" style="font-family: 微软雅黑;">用户名</span>
+                                </p>
+                                <p style="margin-top: 5px;">
+                                    <span class="span_left_list_userinfo_username" style="font-size: 12px;color: #666;">欢迎您!</span>
+                                </p>
+                            </div>
+                        </div>
+                        <div id="left_list_userinfo_bottom">
+                            <p><span class="span_left_list_userinfo_username" style="font-weight: 600;">最近一次登录在:</span></p>
+                            <p><span class="span_left_list_userinfo_username" style="margin-left: 45px;">2019-5-14 22:06:58</span></p>
+                        </div>
+                    </div>
+                    <div id="div_left_ul">
+                        <ul class="ul_my" style="margin-top: 20px;">
+                            <a href="#" class="a_left" style="margin-top: 10px;">
+                                <li class="li_left">
+                                    <span class="glyphicon glyphicon-user" id="glyphicon_li_left"></span> <!--图标-->
+                                    个人信息
+                                </li>
+                            </a>
+                            <a href="#" class="a_left">
+                                <li class="li_left">
+                                    <span class="glyphicon glyphicon-lock" id="glyphicon_li_left"></span> <!--图标-->
+                                    修改密码
+                                </li>
+                            </a>
+                            <a href="#" class="a_left" id="left_list_active">
+                                <li class="li_left">
+                                    <span class="glyphicon glyphicon-off" id="glyphicon_li_left"></span> <!--图标-->
+                                    账号注销
+                                </li>
+                            </a>
+                        </ul>
+                    </div>
+                </div>
+                <div id="right_main">
+                    <div id="right_main_top">
+                        <span class="span_right_main_top" style="color: red">账号注销</span>
+                    </div>
+                    <div id="right_main_main" style="display: inline-block;">
+                        <div id="right_main_main_left" style="padding-top: 50px;">
+                            <center><span style="font-size: 20px">确定注销账号?</span></center>
+                            <div id="span_tip">注销后您将:</div>
+                            <div id="main_main">
+                                <ul class="ul_main">
+                                    <li class="ul_main_li"><span class="span_li_black">无法登录网盘</span></li>
+                                    <li class="ul_main_li"><span class="span_li_black">丢失文件数据</span></li>
+                                    <li class="ul_main_li"><span class="span_li_black">分享链接失效</span></li>
+                                </ul>
+                                <button type="button" class="btn btn-danger my_btn" id="btn" disabled>确定注销</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="right_main_main_right">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="warp_bottom"></div>
+    </div>
+</body>
+</html>
