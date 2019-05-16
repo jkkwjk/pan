@@ -173,7 +173,7 @@ input[type=checkbox]:checked{
 }
 .file_img{
     width: 30px;
-    height: 30px;
+    height: 24px;
 }
 .file_name{
     margin-left: 7px;
