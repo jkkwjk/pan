@@ -7,3 +7,5 @@ test/
 *.zip
 *.7z
 *.rar
+# maven生成文件
+target/
