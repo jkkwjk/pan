@@ -2,7 +2,9 @@
   <dictionary name="Administrator">
     <words>
       <w>confim</w>
+      <w>isstrong</w>
       <w>regedit</w>
+      <w>valcode</w>
     </words>
   </dictionary>
 </component>

@@ -1,0 +1,44 @@
+package com.jkk.service.impl.User;
+
+import com.jkk.dao.impl.User.RegeditDAOimpl;
+import com.jkk.service.inter.User.RegeditBiz;
+import com.jkk.tools.ValcodeTool;
+
+import java.util.Map;
+import java.util.regex.Pattern;
+
+public class RegeditImpl implements RegeditBiz {
+	RegeditDAOimpl regeditDAO = new RegeditDAOimpl();
+	@Override
+	public Boolean checkUsernameIsstrong(String userName) {
+		String pattern = "^[a-zA-Z]{1}([a-zA-Z0-9]|[._]){3,19}$";
+		return Pattern.matches(pattern,userName);
+	}
+
+	@Override
+	public Boolean checkUsernameIsSame(String userName) {
+		return regeditDAO.checkUsernameIsSame(userName);
+	}
+
+	@Override
+	public Boolean checkPwdIsstrong(String pwd) {
+		String pattern = "^.*(?=.{6,16})(?=.*\\d)(?=.*[A-Z]{1,})(?=.*[a-z]{1,}).*$";
+		return Pattern.matches(pattern,pwd);
+	}
+
+	@Override
+	public Map<String, Object> getValcode() {
+		return ValcodeTool.getValcode();
+	}
+
+	@Override
+	public Boolean checkValcode(String userCode, Map<String, Object> codeMap) {
+		String codeText = (String) codeMap.get("code");
+		return codeText.equals(userCode);
+	}
+
+	@Override
+	public Boolean addUser(String userName, String pwd) {
+		return regeditDAO.addUser(userName,pwd);
+	}
+}

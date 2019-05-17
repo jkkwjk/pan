@@ -66,7 +66,7 @@
                     my_show();
                     setTimeout("my_hide();",1000);
                 } else {
-                    alert("yes");
+                    $("#regedit_form").submit();
                 }
             });
             $("#regedit_code_btn").click(function () {
