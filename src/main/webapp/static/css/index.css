@@ -23,3 +23,15 @@
 .login_span{
     font-size: 15px;
 }
+#login_main{
+    position: absolute;
+    margin-left: 0px;
+    overflow: hidden;
+    white-space: nowrap;
+}
+#regedit_main{
+    position: absolute;
+    margin-left: -400px;
+    overflow: hidden;
+    white-space: nowrap;
+}

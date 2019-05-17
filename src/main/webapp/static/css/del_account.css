@@ -1,0 +1,33 @@
+#span_tip{
+    font-size: 16px;
+    margin-top: 10px;
+}
+#main_main{
+    padding-left: 25px;
+}
+.ul_main{
+    margin-top: 10px;
+    font-size: 20px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+.ul_main_li{
+    padding: 0px 10px;
+    color: red;
+}
+.span_li_black{
+    color: black;
+}
+.my_btn{
+    float: right;
+    margin-top: 5px;
+    margin-right: 100px;
+}
+#right_main_main_right{
+    display: inline-block;
+    vertical-align: top;
+    width: calc(100% - 505px);
+    height: calc(100% - 127px);
+    padding: 30px 60px;
+    background-color: rgb(214, 243, 255);
+    margin: 0 auto;
+}
