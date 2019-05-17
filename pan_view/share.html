@@ -54,10 +54,47 @@
             <div id="main_main">
                 <div id="main_main_left">
                     <div id="main_main_left_top">
-                        <img src="img/file/file_ico/folder.png" width=25 height=20 style="vertical-align: text-bottom;">
-                        <span id="span_file_name">文件名</span>
+                        <div class="div_over_hid1" style="width: 200px;">
+                            <img src="img/file/file_ico/folder.png" width=25 height=20 style="vertical-align: text-bottom;">
+                            <span id="span_file_name">文件名</span>
+                        </div>
+                        <div style="float: right">
+                            <button type="button" class="btn btn-light button_main_main_left_top" id="share_btn">
+                                <span class="glyphicon glyphicon-ban-circle" style="margin-right: 2px;"></span> 取消分享
+                            </button>
+                            <button type="button" class="btn btn-light button_main_main_left_top" id="download_btn">
+                                <span class="glyphicon glyphicon-download-alt" style="margin-right: 2px;"></span>
+                                <span id="download_span">下载</span>
+                            </button>
+                        </div>
                     </div>
-                    123
+                    <div id="main_main_left_mid">
+                        <span class="glyphicon glyphicon-time" style="font-size: 16px; color: rgba(158, 158, 158, 0.753);"></span>
+                        <span class="span_nomal" style="margin-left: 5px;">2019-5-16 23:15:24</span>
+                        <span class="span_nomal" style="margin-left: 15px;">失效时间 : </span>
+                        <span class="span_nomal" id="limit_time">2019-5-16 23:18:40</span>
+                    </div>
+                    <div id="main_main_left_main">
+                        <div id="main_main_left_main_contain">
+                            <div id="file_main">
+                                <div>
+                                    <img id="file_ico" src="img/file/file_ico/exe.png">
+                                </div>
+                                <div class="span_nomal" id="file_main_size">
+                                    <span>文件大小:</span>
+                                    <span id="file_size">165MB</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="main_main_right">
+                    <div id="main_main_right_main">
+                        <div id="main_main_right_main_img_bg">
+                            <img src="img/user/default.jpg" id="main_main_right_main_img">
+                        </div>
+                        <div class="span_nomal" id="share_username">分享者名字</div>
+                    </div>
                 </div>
             </div>
         </div>

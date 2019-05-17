@@ -71,9 +71,6 @@
     outline: none !important;
     color: #0098EA;
 }
-.button_main_main_top>.button_main_main_top:focus{
-    box-shadow: 0px 0px 0px;
-}
 .button_main_main_top:focus{
     outline: none !important;
     color: #0098EA;
@@ -81,6 +78,19 @@
 .button_main_main_top:active{
     outline: none !important;
     color: rgb(27, 175, 255) !important;
+}
+.button_main_main_top>.button_main_main_top:focus{
+    box-shadow: 0px 0px 0px;
+    border: 1px #ccc solid;
+    background-color: white;
+}
+.button_main_main_top>.button_main_main_top:hover{
+    border: 1px rgba(0, 0, 0, .4) solid;
+    background-color: rgba(227, 229, 231, 0.5);
+}
+.button_main_main_top>.button_main_main_top:active{
+    color: rgb(27, 175, 255);
+    background-color: rgba(227, 229, 231, 0.7);
 }
 input[type='checkbox']{
     width: 15px;
@@ -173,7 +183,7 @@ input[type=checkbox]:checked{
 }
 .file_img{
     width: 30px;
-    height: 24px;
+    height: 30px;
 }
 .file_name{
     margin-left: 7px;
