@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script><!--link_tag -->
     <script src="${pageContext.request.contextPath}/static/js/jquery.onepage-scroll.min.js"></script><!--link_tag -->
+    <script src="${pageContext.request.contextPath}/static/js/jquery-from.js"></script>
     <script type="text/javascript"> //背景图片滚动
     var max = 5; //图片最大数
     var up_text=["青春的我们","无缝衔接","保存美好","美丽的风景","精彩比赛"];
@@ -51,11 +52,72 @@
                 $("#login_main").animate({'margin-left':'400px'});
                 setTimeout(function (){$("#regedit_main").animate({'margin-left':'0px'});},500);
             });
+            $("#login_btn").click(function () {
+                $("#login_form").submit();
+            })
         });
     </script>
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#regedit_btn").click(function () {
+                var s = can_submit();
+                if (s != null) {
+                    $("#tip_text").text(s);
+                    my_show();
+                    setTimeout("my_hide();",1000);
+                } else {
+                    alert("yes");
+                }
+            });
+            $("#regedit_code_btn").click(function () {
+                $.get();
+                return false;
+            });
+        });
+
+        function can_submit(){
+            if (!$("#regedit_name").isUserName()) {
+                return "用户名非法!";
+            } else if(check_username()) {
+                return "用户名重复!";
+            } else if (!$("#regedit_pwd").isPassword()) {
+                return "密码强度不够或太长!";
+            } else if ($("#regedit_confim_pwd").val() != $("#regedit_pwd").val()) {
+                return "两次输入密码不同!"
+            } else if ($("#regedit_code").val().length != 4 || check_code()) {
+                return "验证码错误"
+            }  else {
+                return null;
+            }
+        }
+        function check_username() {
+            $.get()
+        }
+        function check_code() {
+            return false;
+        }
+    </script> <!-- 表单验证 -->
+    <script type="text/javascript">
+        var timer = null;
+        function my_show(){
+            var elemt = $("#tip");
+            clearTimeout(timer);
+            elemt.stop(true);
+            elemt.css('display','inline');
+            elemt.css('margin-top','20px');
+            elemt.css('opacity','1');
+        }
+        function my_hide(){
+            var elemt = $("#tip");
+            elemt.stop(true);
+            elemt.animate({'margin-top':'50px'},{queue:false,duration:400});
+            elemt.animate({'opacity':'0'},{queue:false,duration:400});
+            timer = setTimeout("$(\"#tip\").css('display','none')",400);
+        }
+    </script> <!-- 动画 -->
 </head>
 <body>
-<div id="warp" style="min-height: 800px;min-width: 800px;">
+<div id="warp" style="min-height: 800px;min-width: 800px;user-select: none;">
     <div class="pic_scoll">
         <section style="width: 100%; height: 100%;">
             <div class="bg_can_resize pic_blur" style="position: absolute; background-image: url(${pageContext.request.contextPath}/static/img/index/0.jpg);z-index: -1;"></div>
@@ -70,40 +132,59 @@
     </div>
     <div id="mask"> <!--主登录界面-->
         <div id="login_main">
-            <center>
-                <div style="font-size: 35px;margin-top: 15px;">登录</div>
-            </center>
-            <div style="margin-top: 30px;">
-                <span class="login_span">账号:</span>
-                <input type="text" class="form-control" placeholder="用户名" aria-describedby="basic-addon1" style="display: inline;width: 340px;">
-            </div>
-            <div style="margin-top: 5px;">
-                <span class="login_span">密码:</span>
-                <input type="password" class="form-control" placeholder="密码" aria-describedby="basic-addon1" style="display: inline;width: 340px;">
-            </div>
-            <div style="margin-top: 10px;">
-                <button type="button" class="btn btn-primary" style="width:379px;height: 40px;">立刻登录</button>
-            </div>
-            <div style="margin-top: 10px;">
-                <button type="button" class="btn btn-info" style="width: 379px;height: 40px;" id="to_regedit">没有账号? &nbsp;&nbsp;马上注册！</button>
-            </div>
+            <form action="${pageContext.request.contextPath}/login" method="post" id="login_form">
+                <center>
+                    <div style="font-size: 35px;margin-top: 15px;">登录</div>
+                </center>
+                <div style="margin-top: 30px;">
+                    <span class="login_span">账号:</span>
+                    <input type="text" class="form-control input_my" placeholder="用户名" name="username">
+                </div>
+                <div style="margin-top: 5px;">
+                    <span class="login_span">密码:</span>
+                    <input type="password" class="form-control input_my" placeholder="密码" name="pwd">
+                </div>
+                <div style="margin-top: 10px;">
+                    <button id="login_btn" type="button" class="btn btn-primary" style="width:379px;height: 40px;">立刻登录</button>
+                </div>
+                <div style="margin-top: 10px;">
+                    <button id="to_regedit" type="button" class="btn btn-info" style="width: 379px;height: 40px;">没有账号? &nbsp;&nbsp;马上注册！</button>
+                </div>
+            </form>
         </div>
         <div id="regedit_main">
-            <center>
-                <div style="font-size: 35px;margin-top: 15px;">注册</div>
-            </center>
-            <div style="margin-top: 30px;">
-                <span class="login_span">账号:</span>
-                <input type="text" class="form-control" placeholder="用户名" aria-describedby="basic-addon1" style="display: inline;width: 340px;">
-            </div>
-            <div style="margin-top: 5px;">
-                <span class="login_span">密码:</span>
-                <input type="password" class="form-control" placeholder="密码" aria-describedby="basic-addon1" style="display: inline;width: 340px;">
-            </div>
-            <div style="margin-top: 10px;">
-                <button type="button" class="btn btn-success" style="width:379px;height: 40px;">注册</button>
+            <form action="${pageContext.request.contextPath}/regedit" method="post" id="regedit_form">
+                <center>
+                    <div style="font-size: 35px;margin-top: 15px;">注册</div>
+                </center>
+                <div style="margin-top: 30px;">
+                    <span class="login_span">账&nbsp;&nbsp;号:</span>
+                    <input id="regedit_name" type="text" style="width: 310px !important;margin-left: 20px;" class="form-control input_my" placeholder="用户名" name="username">
+                </div>
+                <div style="margin-top: 5px;">
+                    <span class="login_span">密&nbsp;&nbsp;码:</span>
+                    <input id="regedit_pwd" type="password" style="width: 310px !important;margin-left: 20px;" class="form-control input_my" placeholder="密码" name="pwd">
+                </div>
+                <div style="margin-top: 5px;">
+                    <span class="login_span">确认密码:</span>
+                    <input id="regedit_confim_pwd" style="width: 310px !important;" type="password" class="form-control input_my" placeholder="再次输入密码">
+                </div>
+                <div style="margin-top: 5px;">
+                    <span class="login_span">验 证 码:</span>
+                    <input id="regedit_code" type="text" style="width: 190px !important;margin-left: 7px;" class="form-control input_my" placeholder="验证码" name="code" maxlength="4">
+                    <input id="regedit_code_btn" type="image" style="vertical-align:bottom" src="test_code.jpg" width="115" height="35">
+                </div>
+                <div style="margin-top: 10px;">
+                    <button id="regedit_btn" type="button" class="btn btn-success" style="width:379px;height: 40px;">注册</button>
+                </div>
+            </form>
+        </div>
+        <div id="tip">
+            <div id="tip_text" class="alert alert-danger" role="alert" style="text-align: center">
+                This is a danger alert—check it out!
             </div>
         </div>
+
     </div>
 </div>
 </body>

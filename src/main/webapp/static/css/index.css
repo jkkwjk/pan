@@ -35,3 +35,17 @@
     overflow: hidden;
     white-space: nowrap;
 }
+.input_my{
+    display: inline !important;
+    width: 340px !important;
+}
+#tip{
+    width: 380px;
+    z-index: 2;
+    position: absolute;
+    display: none;
+    margin-top: 20px;
+}
+#regedit_code_btn:focus{
+    outline: none;
+}
