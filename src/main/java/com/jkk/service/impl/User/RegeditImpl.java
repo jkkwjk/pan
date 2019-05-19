@@ -4,10 +4,8 @@ import com.jkk.dao.impl.User.RegeditDAOimpl;
 import com.jkk.model.User;
 import com.jkk.service.impl.Tools.ValcodeImpl;
 import com.jkk.service.inter.User.RegeditBiz;
-import com.jkk.tools.MD5Tool;
-import com.jkk.tools.ValcodeTool;
+import com.jkk.utils.MDUtil;
 
-import java.util.Map;
 import java.util.regex.Pattern;
 
 public class RegeditImpl extends ValcodeImpl implements RegeditBiz{
@@ -31,6 +29,6 @@ public class RegeditImpl extends ValcodeImpl implements RegeditBiz{
 
 	@Override
 	public User addUser(String userName, String pwd) {
-		return regeditDAO.addUser(userName, MD5Tool.md5two(pwd));
+		return regeditDAO.addUser(userName, MDUtil.md5two(pwd));
 	}
 }

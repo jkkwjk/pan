@@ -1,4 +1,6 @@
 <!-- 页面复用: 左列表 顶部列表 设置active即可 -->
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,22 +9,22 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/default.css"> <!--link_tag -->
-    <link rel="stylesheet" href="css/file.css"> <!--link_tag -->
-    <link rel="stylesheet" href="css/title.css"> <!--link_tag -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/default.css"> <!--link_tag -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/file.css"> <!--link_tag -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/title.css"> <!--link_tag -->
 
     <title>在线网盘-全部文件</title>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/jquery-checkbox-set.js"></script>
-    <script src="js/title.js"></script>
-    <script src="js/file.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/jquery-checkbox-set.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/title.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/file.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     
 </head>
 <body>
     <div id="warp" style="min-width: 1100px;">
         <div id="title">
-            <div id="title_left" style="background-image: url(img/file/logo.png);"></div>
+            <div id="title_left" style="background-image: url(${pageContext.request.contextPath}/static/img/file/logo.png);"></div>
             <div id="title_main">
                 <ul class="ul_my" id="ul_title">
                     <li class="li_float_left li_title title_active" style="margin-left: 10px;">
@@ -34,14 +36,14 @@
                 </ul>
                 <div id="title_right">
                     <div id="user_name_group">
-                        <img src="img/user/default.jpg" id="user_name_img">
+                        <img src="${pageContext.request.contextPath}/static/img/user/default.jpg" id="user_name_img">
                         <div id="user_name">用户名</div>
                         <span class="glyphicon glyphicon-chevron-down" style="margin-right: 20px;"></span><!--向下箭头-->
                         
                         <div id="user_name_animation_nomal"><!--隐藏动画-->
-                            <div id="user_name_animation_top" style="background-image: url(img/file/user-level-bg-0.png);"><!--顶部-->
+                            <div id="user_name_animation_top" style="background-image: url(${pageContext.request.contextPath}/static/img/file/user-level-bg-0.png);"><!--顶部-->
                                 <div id="user_name_animation_top_img_bg">
-                                    <img id="user_name_animation_top_img" src="img/user/default.jpg">
+                                    <img id="user_name_animation_top_img" src="${pageContext.request.contextPath}/static/img/user/default.jpg">
                                 </div>
                                 <span id="user_name_animation_top_username">用户名</span>
                             </div>
@@ -165,18 +167,7 @@
                                 <div class="checkbox_div">
                                     <input type="checkbox" name="" id="">
                                 </div>
-                                <img src="img/file/file_ico/folder.png" class="file_img">
-                                <a href="#" class="a_file_name"><span class="file_name">麻瓜编程2017</span></a>
-                            </td>
-                            <td class="file_mid">34</td>
-                            <td class="file_right">34</td>
-                        </tr>
-                        <tr class="file_tr">
-                            <td class="file_left">
-                                <div class="checkbox_div">
-                                    <input type="checkbox" name="" id="">
-                                </div>                                
-                                <img src="img/file/file_ico/folder.png" class="file_img">
+                                <img src="${pageContext.request.contextPath}/static/img/file/file_ico/folder.png" class="file_img">
                                 <a href="#" class="a_file_name"><span class="file_name">麻瓜编程2017</span></a>
                             </td>
                             <td class="file_mid">34</td>
@@ -187,7 +178,7 @@
                                 <div class="checkbox_div">
                                     <input type="checkbox" name="" id="">
                                 </div>
-                                <img src="img/file/file_ico/folder.png" class="file_img">
+                                <img src="${pageContext.request.contextPath}/static/img/file/file_ico/folder.png" class="file_img">
                                 <a href="#" class="a_file_name"><span class="file_name">麻瓜编程2017</span></a>
                             </td>
                             <td class="file_mid">34</td>
@@ -197,8 +188,8 @@
                             <td class="file_left">
                                 <div class="checkbox_div">
                                     <input type="checkbox" name="" id="">
-                                </div> 
-                                <img src="img/file/file_ico/folder.png" class="file_img">
+                                </div>
+                                <img src="${pageContext.request.contextPath}/static/img/file/file_ico/folder.png" class="file_img">
                                 <a href="#" class="a_file_name"><span class="file_name">麻瓜编程2017</span></a>
                             </td>
                             <td class="file_mid">34</td>
@@ -208,8 +199,8 @@
                             <td class="file_left">
                                 <div class="checkbox_div">
                                     <input type="checkbox" name="" id="">
-                                </div> 
-                                <img src="img/file/file_ico/folder.png" class="file_img">
+                                </div>
+                                <img src="${pageContext.request.contextPath}/static/img/file/file_ico/folder.png" class="file_img">
                                 <a href="#" class="a_file_name"><span class="file_name">麻瓜编程2017</span></a>
                             </td>
                             <td class="file_mid">34</td>
@@ -219,124 +210,103 @@
                             <td class="file_left">
                                 <div class="checkbox_div">
                                     <input type="checkbox" name="" id="">
-                                </div> 
-                                <img src="img/file/file_ico/folder.png" class="file_img">
+                                </div>
+                                <img src="${pageContext.request.contextPath}/static/img/file/file_ico/folder.png" class="file_img">
+                                <a href="#" class="a_file_name"><span class="file_name">麻瓜编程2017</span></a>
+                            </td>
+                            <td class="file_mid">34</td>
+                            <td class="file_right">34</td>
+                        </tr>
+                        <tr class="file_tr">
+                            <td class="file_left">
+                                <div class="checkbox_div">
+                                    <input type="checkbox" name="" id="">
+                                </div>
+                                <img src="${pageContext.request.contextPath}/static/img/file/file_ico/folder.png" class="file_img">
+                                <a href="#" class="a_file_name"><span class="file_name">麻瓜编程2017</span></a>
+                            </td>
+                            <td class="file_mid">34</td>
+                            <td class="file_right">34</td>
+                        </tr>
+                        <tr class="file_tr">
+                            <td class="file_left">
+                                <div class="checkbox_div">
+                                    <input type="checkbox" name="" id="">
+                                </div>
+                                <img src="${pageContext.request.contextPath}/static/img/file/file_ico/folder.png" class="file_img">
+                                <a href="#" class="a_file_name"><span class="file_name">麻瓜编程2017</span></a>
+                            </td>
+                            <td class="file_mid">34</td>
+                            <td class="file_right">34</td>
+                        </tr>
+                        <tr class="file_tr">
+                            <td class="file_left">
+                                <div class="checkbox_div">
+                                    <input type="checkbox" name="" id="">
+                                </div>
+                                <img src="${pageContext.request.contextPath}/static/img/file/file_ico/folder.png" class="file_img">
+                                <a href="#" class="a_file_name"><span class="file_name">麻瓜编程2017</span></a>
+                            </td>
+                            <td class="file_mid">34</td>
+                            <td class="file_right">34</td>
+                        </tr>
+                        <tr class="file_tr">
+                            <td class="file_left">
+                                <div class="checkbox_div">
+                                    <input type="checkbox" name="" id="">
+                                </div>
+                                <img src="${pageContext.request.contextPath}/static/img/file/file_ico/folder.png" class="file_img">
+                                <a href="#" class="a_file_name"><span class="file_name">麻瓜编程2017</span></a>
+                            </td>
+                            <td class="file_mid">34</td>
+                            <td class="file_right">34</td>
+                        </tr>
+                        <tr class="file_tr">
+                            <td class="file_left">
+                                <div class="checkbox_div">
+                                    <input type="checkbox" name="" id="">
+                                </div>
+                                <img src="${pageContext.request.contextPath}/static/img/file/file_ico/folder.png" class="file_img">
+                                <a href="#" class="a_file_name"><span class="file_name">麻瓜编程2017</span></a>
+                            </td>
+                            <td class="file_mid">34</td>
+                            <td class="file_right">34</td>
+                        </tr>
+                        <tr class="file_tr">
+                            <td class="file_left">
+                                <div class="checkbox_div">
+                                    <input type="checkbox" name="" id="">
+                                </div>
+                                <img src="${pageContext.request.contextPath}/static/img/file/file_ico/folder.png" class="file_img">
+                                <a href="#" class="a_file_name"><span class="file_name">麻瓜编程2017</span></a>
+                            </td>
+                            <td class="file_mid">34</td>
+                            <td class="file_right">34</td>
+                        </tr>
+                        <tr class="file_tr">
+                            <td class="file_left">
+                                <div class="checkbox_div">
+                                    <input type="checkbox" name="" id="">
+                                </div>
+                                <img src="${pageContext.request.contextPath}/static/img/file/file_ico/folder.png" class="file_img">
+                                <a href="#" class="a_file_name"><span class="file_name">麻瓜编程2017</span></a>
+                            </td>
+                            <td class="file_mid">34</td>
+                            <td class="file_right">34</td>
+                        </tr>
+                        <tr class="file_tr">
+                            <td class="file_left">
+                                <div class="checkbox_div">
+                                    <input type="checkbox" name="" id="">
+                                </div>
+                                <img src="${pageContext.request.contextPath}/static/img/file/file_ico/folder.png" class="file_img">
                                 <a href="#" class="a_file_name"><span class="file_name">麻瓜编程2017</span></a>
                             </td>
                             <td class="file_mid">34</td>
                             <td class="file_right">34</td>
                         </tr>
 
-                        <tr class="file_tr">
-                            <td class="file_left">
-                                <div class="checkbox_div">
-                                    <input type="checkbox" name="" id="">
-                                </div> 
-                                <img src="img/file/file_ico/folder.png" class="file_img">
-                                <a href="#" class="a_file_name"><span class="file_name">麻瓜编程2017</span></a>
-                            </td>
-                            <td class="file_mid">34</td>
-                            <td class="file_right">34</td>
-                        </tr>
-                        <tr class="file_tr">
-                            <td class="file_left">
-                                <div class="checkbox_div">
-                                    <input type="checkbox" name="" id="">
-                                </div> 
-                                <img src="img/file/file_ico/folder.png" class="file_img">
-                                <a href="#" class="a_file_name"><span class="file_name">麻瓜编程2017</span></a>
-                            </td>
-                            <td class="file_mid">34</td>
-                            <td class="file_right">34</td>
-                        </tr>
-                        <tr class="file_tr">
-                            <td class="file_left">
-                                <div class="checkbox_div">
-                                    <input type="checkbox" name="" id="">
-                                </div> 
-                                <img src="img/file/file_ico/folder.png" class="file_img">
-                                <a href="#" class="a_file_name"><span class="file_name">麻瓜编程2017</span></a>
-                            </td>
-                            <td class="file_mid">34</td>
-                            <td class="file_right">34</td>
-                        </tr>
-                        <tr class="file_tr">
-                            <td class="file_left">
-                                <div class="checkbox_div">
-                                    <input type="checkbox" name="" id="">
-                                </div> 
-                                <img src="img/file/file_ico/folder.png" class="file_img">
-                                <a href="#" class="a_file_name"><span class="file_name">麻瓜编程2017</span></a>
-                            </td>
-                            <td class="file_mid">34</td>
-                            <td class="file_right">34</td>
-                        </tr>
-                        <tr class="file_tr">
-                            <td class="file_left">
-                                <div class="checkbox_div">
-                                    <input type="checkbox" name="" id="">
-                                </div> 
-                                <img src="img/file/file_ico/folder.png" class="file_img">
-                                <a href="#" class="a_file_name"><span class="file_name">麻瓜编程2017</span></a>
-                            </td>
-                            <td class="file_mid">34</td>
-                            <td class="file_right">34</td>
-                        </tr>
-                        <tr class="file_tr">
-                            <td class="file_left">
-                                <div class="checkbox_div">
-                                    <input type="checkbox" name="" id="">
-                                </div> 
-                                <img src="img/file/file_ico/folder.png" class="file_img">
-                                <a href="#" class="a_file_name"><span class="file_name">麻瓜编程2017</span></a>
-                            </td>
-                            <td class="file_mid">34</td>
-                            <td class="file_right">34</td>
-                        </tr>
-                        <tr class="file_tr">
-                            <td class="file_left">
-                                <div class="checkbox_div">
-                                    <input type="checkbox" name="" id="">
-                                </div> 
-                                <img src="img/file/file_ico/folder.png" class="file_img">
-                                <a href="#" class="a_file_name"><span class="file_name">麻瓜编程2017</span></a>
-                            </td>
-                            <td class="file_mid">34</td>
-                            <td class="file_right">34</td>
-                        </tr>
-                        <tr class="file_tr">
-                            <td class="file_left">
-                                <div class="checkbox_div">
-                                    <input type="checkbox" name="" id="">
-                                </div> 
-                                <img src="img/file/file_ico/folder.png" class="file_img">
-                                <a href="#" class="a_file_name"><span class="file_name">麻瓜编程2017</span></a>
-                            </td>
-                            <td class="file_mid">34</td>
-                            <td class="file_right">34</td>
-                        </tr>
-                        <tr class="file_tr">
-                            <td class="file_left">
-                                <div class="checkbox_div">
-                                    <input type="checkbox" name="" id="">
-                                </div> 
-                                <img src="img/file/file_ico/folder.png" class="file_img">
-                                <a href="#" class="a_file_name"><span class="file_name">麻瓜编程2017</span></a>
-                            </td>
-                            <td class="file_mid">34</td>
-                            <td class="file_right">34</td>
-                        </tr>
-                        <tr class="file_tr">
-                            <td class="file_left">
-                                <div class="checkbox_div">
-                                    <input type="checkbox" name="" id="">
-                                </div> 
-                                <img src="img/file/file_ico/folder.png" class="file_img">
-                                <a href="#" class="a_file_name"><span class="file_name">麻瓜编程2017</span></a>
-                            </td>
-                            <td class="file_mid">34</td>
-                            <td class="file_right">34</td>
-                        </tr>
+
                     </table>
                 </div>
             </div>

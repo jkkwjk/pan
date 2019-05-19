@@ -1,8 +1,8 @@
-package com.jkk.tools;
+package com.jkk.utils;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-public class MD5Tool {
+public class MDUtil {
 	public static String md5(String pwd) {
 		return DigestUtils.md5Hex(pwd);
 	}

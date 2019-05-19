@@ -3,10 +3,8 @@ package com.jkk.dao.impl.User;
 import com.jkk.dao.inter.User.LoginDAO;
 import com.jkk.model.DBInfo;
 import com.jkk.model.User;
-import com.jkk.tools.MD5Tool;
 import com.jkk.utils.DButil;
 
-import java.util.List;
 import java.util.Map;
 
 public class LoginDAOimpl implements LoginDAO {
