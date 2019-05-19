@@ -1,13 +1,16 @@
 package com.jkk.service.impl.User;
 
 import com.jkk.dao.impl.User.RegeditDAOimpl;
+import com.jkk.model.User;
+import com.jkk.service.impl.Tools.ValcodeImpl;
 import com.jkk.service.inter.User.RegeditBiz;
+import com.jkk.tools.MD5Tool;
 import com.jkk.tools.ValcodeTool;
 
 import java.util.Map;
 import java.util.regex.Pattern;
 
-public class RegeditImpl implements RegeditBiz {
+public class RegeditImpl extends ValcodeImpl implements RegeditBiz{
 	RegeditDAOimpl regeditDAO = new RegeditDAOimpl();
 	@Override
 	public Boolean checkUsernameIsstrong(String userName) {
@@ -27,18 +30,7 @@ public class RegeditImpl implements RegeditBiz {
 	}
 
 	@Override
-	public Map<String, Object> getValcode() {
-		return ValcodeTool.getValcode();
-	}
-
-	@Override
-	public Boolean checkValcode(String userCode, Map<String, Object> codeMap) {
-		String codeText = (String) codeMap.get("code");
-		return codeText.equals(userCode);
-	}
-
-	@Override
-	public Boolean addUser(String userName, String pwd) {
-		return regeditDAO.addUser(userName,pwd);
+	public User addUser(String userName, String pwd) {
+		return regeditDAO.addUser(userName, MD5Tool.md5two(pwd));
 	}
 }

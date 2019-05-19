@@ -1,3 +1,4 @@
+<%@ page import="com.jkk.service.AttrToken" %>
 <%--
   Created by IntelliJ IDEA.
   User: Administrator
@@ -5,6 +6,7 @@
   Time: 14:19
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -18,7 +20,7 @@
     <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script><!--link_tag -->
     <script src="${pageContext.request.contextPath}/static/js/jquery.onepage-scroll.min.js"></script><!--link_tag -->
     <script src="${pageContext.request.contextPath}/static/js/jquery-from.js"></script>
-    <script type="text/javascript"> //背景图片滚动
+    <script type="text/javascript">
     var max = 5; //图片最大数
     var up_text=["青春的我们","无缝衔接","保存美好","美丽的风景","精彩比赛"];
     var down_text=["值得去纪念","享受快捷办公","随时可以回忆","与你一起享受","随时随地回看"];
@@ -45,7 +47,7 @@
         $('.pic_scoll').moveDown();
         setTimeout("time_loop_img_scoll({0})".replace("{0}",index+1),5000);
     }
-    </script>
+    </script> <!-- 背景图片滚动 -->
     <script type="text/javascript">
         $(document).ready(function(){
             $("#to_regedit").click(function(){
@@ -54,51 +56,90 @@
             });
             $("#login_btn").click(function () {
                 $("#login_form").submit();
-            })
+            });
+            $("#regedit_code_btn").click(function () {
+                change_imgcode();
+                return false;
+            });
+            change_imgcode();
         });
-    </script>
+        function change_imgcode() {
+            $("#regedit_code_btn").attr("src","${pageContext.request.contextPath}/getcode?ts="+(new Date()).valueOf());
+        }
+    </script> <!-- 登录界面 验证码 -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            <c:if test="${!empty sessionScope[AttrToken.ERRORMSG]}">
+            $("#login_name").val("${sessionScope[AttrToken.LOGINNAME]}");
+            tip_show("${sessionScope[AttrToken.ERRORMSG]}");
+            <%
+            session.removeAttribute(AttrToken.ERRORMSG);
+            session.removeAttribute(AttrToken.LOGINNAME);
+            %>
+            <%--<c:remove var="error-msg" scope="session" />--%>
+            <%--<c:remove var="login-name" scope="session" />--%>
+            </c:if>
+        });
+    </script><!-- 用户名或密码错误 -->
     <script type="text/javascript">
         $(document).ready(function(){
             $("#regedit_btn").click(function () {
-                var s = can_submit();
-                if (s != null) {
-                    $("#tip_text").text(s);
-                    my_show();
-                    setTimeout("my_hide();",1000);
-                } else {
-                    $("#regedit_form").submit();
-                }
-            });
-            $("#regedit_code_btn").click(function () {
-                $.get();
-                return false;
+                $("#regedit_btn").attr('disabled',true);
+                var dtd = $.Deferred();
+                $.when(regedit_submit(dtd)).done(function () {
+                    $("#regedit_btn").attr('disabled',false);
+                })
             });
         });
-
-        function can_submit(){
+        function regedit_submit(dtd){
             if (!$("#regedit_name").isUserName()) {
-                return "用户名非法!";
-            } else if(check_username()) {
-                return "用户名重复!";
+                dtd.resolve();
+                tip_show("用户名非法!");
+                return dtd;
             } else if (!$("#regedit_pwd").isPassword()) {
-                return "密码强度不够或太长!";
-            } else if ($("#regedit_confim_pwd").val() != $("#regedit_pwd").val()) {
-                return "两次输入密码不同!"
-            } else if ($("#regedit_code").val().length != 4 || check_code()) {
-                return "验证码错误"
-            }  else {
-                return null;
+                dtd.resolve();
+                tip_show("密码强度不够或太长!");
+                return dtd;
+            } else if($("#regedit_confim_pwd").val() != $("#regedit_pwd").val()) {
+                dtd.resolve();
+                tip_show("两次输入密码不同!");
+                return dtd;
+            } else if($("#regedit_code").val().length != 4) {
+                dtd.resolve();
+                tip_show("验证码错误");
+                change_imgcode();
+                return dtd;
+            } else{
+                $.getJSON("${pageContext.request.contextPath}/regedit",{'c':'username','val':$("#regedit_name").val()},function (data) {
+                    if (data.ret == '1') {
+                        $.getJSON("${pageContext.request.contextPath}/regedit",{'c':'valcode','val':$("#regedit_code").val()},function (data) {
+                            if (data.ret == '1'){
+                                dtd.resolve();
+                                $("#regedit_form").submit();
+                                return dtd;
+                            } else if (data.ret == '0'){
+                                dtd.resolve();
+                                tip_show("验证码错误");
+                                change_imgcode();
+                                return dtd;
+                            }
+                        });
+                    } else if (data.ret == '0') {
+                        dtd.resolve();
+                        tip_show("用户名重复!");
+                        return dtd;
+                    }
+                });
             }
         }
-        function check_username() {
-            $.get()
-        }
-        function check_code() {
-            return false;
-        }
-    </script> <!-- 表单验证 -->
+    </script> <!-- 注册表单验证 -->
     <script type="text/javascript">
         var timer = null;
+        function tip_show(s) {
+            $("#tip_text").text(s);
+            my_show();
+            setTimeout("my_hide();",1000);
+        }
         function my_show(){
             var elemt = $("#tip");
             clearTimeout(timer);
@@ -138,7 +179,7 @@
                 </center>
                 <div style="margin-top: 30px;">
                     <span class="login_span">账号:</span>
-                    <input type="text" class="form-control input_my" placeholder="用户名" name="username">
+                    <input id="login_name" type="text" class="form-control input_my" placeholder="用户名" name="username">
                 </div>
                 <div style="margin-top: 5px;">
                     <span class="login_span">密码:</span>
@@ -172,7 +213,7 @@
                 <div style="margin-top: 5px;">
                     <span class="login_span">验 证 码:</span>
                     <input id="regedit_code" type="text" style="width: 190px !important;margin-left: 7px;" class="form-control input_my" placeholder="验证码" name="code" maxlength="4">
-                    <input id="regedit_code_btn" type="image" style="vertical-align:bottom" src="test_code.jpg" width="115" height="35">
+                    <input id="regedit_code_btn" type="image" style="vertical-align:bottom" src="" width="115" height="35">
                 </div>
                 <div style="margin-top: 10px;">
                     <button id="regedit_btn" type="button" class="btn btn-success" style="width:379px;height: 40px;">注册</button>

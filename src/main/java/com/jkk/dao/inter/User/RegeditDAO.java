@@ -1,7 +1,9 @@
 package com.jkk.dao.inter.User;
 
+import com.jkk.model.User;
+
 public interface RegeditDAO {
 	Boolean checkUsernameIsSame(String userName);
 
-	Boolean addUser(String userName,String pwd);
+	User addUser(String userName, String Md5pwd);
 }
