@@ -1,4 +1,4 @@
-package com.jkk.controller;
+package com.jkk.controller.User;
 
 import com.jkk.model.User;
 import com.jkk.service.AttrToken;
@@ -46,7 +46,7 @@ public class ServletLogin extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		if (session.getAttribute(AttrToken.USER) == null) {
-			response.sendRedirect("/login.jsp");
+			response.sendRedirect(request.getContextPath()+"/login.jsp");
 		}else {
 			request.getRequestDispatcher("/WEB-INF/disk.jsp").forward(request,response);
 		}

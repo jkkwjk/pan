@@ -6,8 +6,8 @@
 <%--测试用--%>
 <%
     User user = new User();
-    user.setName("test");
-    user.setUserId(1002);
+    user.setName("admin");
+    user.setUserId(1004);
     user.setPermissionId(0);
     session.setAttribute(AttrToken.USER,user);
 %>

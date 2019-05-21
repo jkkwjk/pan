@@ -83,4 +83,16 @@ function btn_group_display(){
         $("#btn_share").attr('disabled',true);
         $("#btn_rename").attr('disabled',true);
     }
+    // 文件夹不能下载
+    var b=1;
+    $.each($(":checked"),function (i,item) {
+        if(($(item).parent().parent().parent().attr("type")) == 1){
+            $("#btn_download").attr('disabled',true);
+            b=0;
+            return false;
+        }
+    });
+    if (b==1) {
+        $("#btn_download").attr('disabled',false);
+    }
 }

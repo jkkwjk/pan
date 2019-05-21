@@ -17,7 +17,5 @@ public interface FileWithUserDAO extends FileBaseDAO{
 
 	List<File> findFileByNameBlurry(String fileNameLike);
 
-	String findFileTimeByFileId(int folderId,int fileId);
-
-	List<File> findFileByNameInFolder(int folderId,String fileName);
+	File findFileByNameInFolder(int folderId,String fileName);
 }

@@ -1,4 +1,4 @@
-package com.jkk.controller;
+package com.jkk.controller.User;
 
 import com.jkk.model.User;
 import com.jkk.service.AttrToken;

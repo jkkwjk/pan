@@ -14,8 +14,8 @@ import java.util.Map;
 
 public class FileWithUserDAOimpl extends FileBaseDAOimpl implements FileWithUserDAO{
 	private String userId;
-	public FileWithUserDAOimpl(User user){
-		this.userId = String.valueOf(user.getUserId());
+	public FileWithUserDAOimpl(String userId){
+		this.userId = userId;
 	}
 	public String getUserId() {
 		return userId;
@@ -73,14 +73,10 @@ public class FileWithUserDAOimpl extends FileBaseDAOimpl implements FileWithUser
 	}
 
 	@Override
-	public String findFileTimeByFileId(int folderId,int fileId) {
-		return StampDate.dateToStamp(dButil.exePresqlSelect(String.format("SELECT file_time from %s where user_id=? and file_id =? and folder_id = ?", DBInfo.USER_FILE_FOLDER),new String[]{userId,String.valueOf(fileId),String.valueOf(folderId)}).get(0)[0]);
-	}
+	public File findFileByNameInFolder(int folderId, String fileName) {
+		List<Map<String,String>> map = dButil.exePresqlGetmap(String.format("SELECT * from %s where user_id=? and file_name =? and folder_id = ?", DBInfo.USER_FILE_FOLDER),new String[]{userId,fileName,String.valueOf(folderId)});
 
-	@Override
-	public List<File> findFileByNameInFolder(int folderId, String fileName) {
-		//todo
-		return null;
+		return getFileFromMapList(map).get(0);
 	}
 
 	/**

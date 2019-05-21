@@ -1,5 +1,6 @@
 package com.jkk.service.impl.Disk;
 
+import com.jkk.dao.impl.Disk.FileWithUserDAOimpl;
 import com.jkk.model.File;
 import com.jkk.model.User;
 import com.jkk.service.inter.Disk.FileWithUserBiz;
@@ -19,43 +20,40 @@ public class FileWithUserImpl extends FileBaseImpl implements FileWithUserBiz{
 		this.userId = userId;
 	}
 
+	private FileWithUserDAOimpl fileWithUserDAOimpl = new FileWithUserDAOimpl(userId);
+
 	@Override
 	public List<File> getFileInfo(Integer start,Integer limitSize) {
-		return null;
+		return fileWithUserDAOimpl.getFileInfo(start,limitSize);
 	}
 
 	@Override
 	public int getAllFileCount() {
-		return 0;
+		return fileWithUserDAOimpl.getAllFileCount();
 	}
 
 	@Override
 	public String getAllFileSize() {
-		return null;
+		return fileWithUserDAOimpl.getAllFileSize();
 	}
 
 	@Override
 	public List<File> findSameFileByFileId(int fileId) {
-		return null;
+		return fileWithUserDAOimpl.findSameFileByFileId(fileId);
 	}
 
 	@Override
 	public List<File> findFileByNamePrecise(String fileName) {
-		return null;
+		return fileWithUserDAOimpl.findFileByNamePrecise(fileName);
 	}
 
 	@Override
 	public List<File> findFileByNameBlurry(String fileNameLike) {
-		return null;
+		return fileWithUserDAOimpl.findFileByNameBlurry(fileNameLike);
 	}
 
 	@Override
-	public String findFileTimeByFileId(int folderId,int fileId) {
-		return null;
-	}
-
-	@Override
-	public List<File> findFileByNameInFolder(int folderId, String fileName) {
-		return null;
+	public File findFileByNameInFolder(int folderId, String fileName) {
+		return fileWithUserDAOimpl.findFileByNameInFolder(folderId,fileName);
 	}
 }

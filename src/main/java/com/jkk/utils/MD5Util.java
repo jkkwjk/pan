@@ -2,7 +2,7 @@ package com.jkk.utils;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-public class MDUtil {
+public class MD5Util {
 	public static String md5(String pwd) {
 		return DigestUtils.md5Hex(pwd);
 	}

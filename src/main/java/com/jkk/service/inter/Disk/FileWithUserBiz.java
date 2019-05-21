@@ -11,13 +11,11 @@ public interface FileWithUserBiz extends FileBaseBiz{
 
 	String getAllFileSize();
 
-	List<File> findSameFileByFileId(int fileId); //指 查找用户上传的重复文件
+	List<File> findSameFileByFileId(int fileId); //用来 查找用户上传的重复文件
 
 	List<File> findFileByNamePrecise(String fileName);
 
 	List<File> findFileByNameBlurry(String fileNameLike);
 
-	String findFileTimeByFileId(int folderId,int fileId);
-
-	List<File> findFileByNameInFolder(int folderId,String fileName);
+	File findFileByNameInFolder(int folderId,String fileName);
 }
