@@ -5,6 +5,15 @@ public class User {
 	private String name;
 	private int permissionId;
 
+	public User(int userId, String name, int permissionId) {
+		this.userId = userId;
+		this.name = name;
+		this.permissionId = permissionId;
+	}
+
+	public User() {
+	}
+
 	public int getUserId() {
 		return userId;
 	}

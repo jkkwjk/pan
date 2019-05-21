@@ -15,6 +15,8 @@ public class RegeditDAOimpl implements RegeditDAO {
 	@Override
 	public User addUser(String userName, String md5Pwd) {
 		int id = dButil.addDataGetIncrement(String.format("INSERT into %s(name,password) VALUES (?,?)", DBInfo.USER),new String[]{userName,md5Pwd});
+		dButil.exePresqlModifyData(String.format("INSERT into %s(userid,username) VALUES (?,?)", DBInfo.USER_INFO),new String[]{String.valueOf(id),userName});
+
 		User user = new User();
 		user.setName(userName);
 		user.setUserId(id);

@@ -69,12 +69,12 @@
     </script> <!-- 登录界面 验证码 -->
     <script type="text/javascript">
         $(document).ready(function () {
-            <c:if test="${!empty sessionScope[AttrToken.ERRORMSG]}">
-            $("#login_name").val("${sessionScope[AttrToken.LOGINNAME]}");
-            tip_show("${sessionScope[AttrToken.ERRORMSG]}");
+            <c:if test="${!empty sessionScope[AttrToken.ERROR_MSG]}">
+            $("#login_name").val("${sessionScope[AttrToken.LOGIN_NAME]}");
+            tip_show("${sessionScope[AttrToken.ERROR_MSG]}");
             <%
-            session.removeAttribute(AttrToken.ERRORMSG);
-            session.removeAttribute(AttrToken.LOGINNAME);
+            session.removeAttribute(AttrToken.ERROR_MSG);
+            session.removeAttribute(AttrToken.LOGIN_NAME);
             %>
             <%--<c:remove var="error-msg" scope="session" />--%>
             <%--<c:remove var="login-name" scope="session" />--%>
@@ -158,7 +158,7 @@
     </script> <!-- 动画 -->
 </head>
 <body>
-<div id="warp" style="min-height: 800px;min-width: 800px;user-select: none;">
+<div id="warp" style="min-height: 800px;min-width: 800px;">
     <div class="pic_scoll">
         <section style="width: 100%; height: 100%;">
             <div class="bg_can_resize pic_blur" style="position: absolute; background-image: url(${pageContext.request.contextPath}/static/img/index/0.jpg);z-index: -1;"></div>
@@ -179,7 +179,7 @@
                 </center>
                 <div style="margin-top: 30px;">
                     <span class="login_span">账号:</span>
-                    <input id="login_name" type="text" class="form-control input_my" placeholder="用户名" name="username">
+                    <input id="login_name" type="text" class="form-control input_my" placeholder="账号" name="username">
                 </div>
                 <div style="margin-top: 5px;">
                     <span class="login_span">密码:</span>

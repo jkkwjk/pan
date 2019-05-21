@@ -17,8 +17,9 @@ import java.util.Map;
 
 @WebServlet(name = "ServletRegedit",urlPatterns = "/regedit")
 public class ServletRegedit extends HttpServlet {
-	private RegeditImpl regedit = new RegeditImpl();
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RegeditImpl regedit = new RegeditImpl();
 		Map<String,String[]> map = request.getParameterMap();
 		HttpSession session = request.getSession();
 		String name = map.get("username")[0];
@@ -27,12 +28,12 @@ public class ServletRegedit extends HttpServlet {
 
 		// 服务端二次验证
 		if (!regedit.checkUsernameIsSame(name) && regedit.checkPwdIsstrong(pwd) && code.equals(session.getAttribute(AttrToken.VALCODE))) {
-			response.sendRedirect(ErrorPath.basePath+"500.html");
+			response.sendRedirect(request.getContextPath()+ErrorPath.html500);
 		} else {
 			User user = regedit.addUser(name,pwd);
 			session.setAttribute(AttrToken.USER,user);
 			session.removeAttribute(AttrToken.VALCODE);
-			response.sendRedirect("/login");
+			response.sendRedirect(request.getContextPath()+"/login");
 		}
 	}
 
@@ -44,6 +45,7 @@ public class ServletRegedit extends HttpServlet {
 	 * @throws IOException
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		RegeditImpl regedit = new RegeditImpl();
 		Map<String,String[]> map = request.getParameterMap();
 		String checkToken = map.get("c")[0];
 		String val = map.get("val")[0];

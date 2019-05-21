@@ -1,4 +1,5 @@
 <!-- 页面复用: 左列表 顶部列表 设置active即可 -->
+<%@ page import="com.jkk.service.AttrToken" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -19,10 +20,18 @@
     <script src="${pageContext.request.contextPath}/static/js/title.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/file.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-    
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $(".a_file_name").click(function () {
+
+                alert("${sessionScope[AttrToken.USER].name}");
+            })
+        });
+    </script> <!-- 事件处理 -->
+
 </head>
 <body>
-    <div id="warp" style="min-width: 1100px;">
+    <div id="warp" style="min-width: 1100px;user-select: none;">
         <div id="title">
             <div id="title_left" style="background-image: url(${pageContext.request.contextPath}/static/img/file/logo.png);"></div>
             <div id="title_main">

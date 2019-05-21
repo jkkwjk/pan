@@ -2,8 +2,12 @@
   <dictionary name="Administrator">
     <words>
       <w>confim</w>
+      <w>filesizeb</w>
       <w>isstrong</w>
+      <w>lastch</w>
+      <w>oimpl</w>
       <w>regedit</w>
+      <w>sizeb</w>
       <w>userpwd</w>
       <w>valcode</w>
     </words>

@@ -1,0 +1,23 @@
+package com.jkk.service.inter.Disk;
+
+import com.jkk.model.File;
+
+import java.util.List;
+
+public interface FileWithUserBiz extends FileBaseBiz{
+	List<File> getFileInfo(Integer start,Integer limitSize);
+
+	int getAllFileCount();
+
+	String getAllFileSize();
+
+	List<File> findSameFileByFileId(int fileId); //指 查找用户上传的重复文件
+
+	List<File> findFileByNamePrecise(String fileName);
+
+	List<File> findFileByNameBlurry(String fileNameLike);
+
+	String findFileTimeByFileId(int folderId,int fileId);
+
+	List<File> findFileByNameInFolder(int folderId,String fileName);
+}
