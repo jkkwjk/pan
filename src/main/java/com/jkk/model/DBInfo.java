@@ -8,7 +8,7 @@ public class DBInfo {
 	public static final String SHARE_BASE = "share_base";
 	public static final String SHARE_FILE = "share_file";
 	public static final String SHARE_FOLDER = "share_folder";
-	public static final String USER_FILE_FOLDER = "user_file_folder";
+	public static final String USER_FILE_FOLDER = "user_file";
 	public static final String USER_INFO = "user_info";
 
 

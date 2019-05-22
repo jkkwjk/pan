@@ -9,8 +9,12 @@ import java.util.List;
 
 public class FileWithUserImpl extends FileBaseImpl implements FileWithUserBiz{
 	private String userId;
+
+	private FileWithUserDAOimpl fileWithUserDAOimpl;
+
 	public FileWithUserImpl(User user){
 		this.userId = String.valueOf(user.getUserId());
+		fileWithUserDAOimpl= new FileWithUserDAOimpl(this.userId);
 	}
 	public String getUserId() {
 		return userId;
@@ -19,8 +23,6 @@ public class FileWithUserImpl extends FileBaseImpl implements FileWithUserBiz{
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
-
-	private FileWithUserDAOimpl fileWithUserDAOimpl = new FileWithUserDAOimpl(userId);
 
 	@Override
 	public List<File> getFileInfo(Integer start,Integer limitSize) {

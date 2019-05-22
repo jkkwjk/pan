@@ -38,7 +38,7 @@ public class DButil {
 	 * @param param 替换sql的参数 无写 null
 	 * @return 返回结果list 遇null则返回null
 	 */
-	public List<String[]> exePresqlSelect(String sql, String[] param){
+	public List<String[]> exePresqlSelect(String sql, Object[] param){
 		List<String[]> res = new ArrayList<>();
 		try {
 			conn = getConn();
@@ -56,7 +56,7 @@ public class DButil {
 			return res;
 		}
 	}
-	public List<Map<String,String>> exePresqlGetmap(String sql, String[] param){
+	public List<Map<String,String>> exePresqlGetmap(String sql, Object[] param){
 		List<Map<String,String>> res = new ArrayList<>();
 		try {
 			conn = getConn();
@@ -89,7 +89,7 @@ public class DButil {
 	 * @param conn
 	 * @return
 	 */
-	public List<String[]> exePresqlSelect(String sql, String[] param,Connection conn){
+	public List<String[]> exePresqlSelect(String sql, Object[] param,Connection conn){
 		List<String[]> res = new ArrayList<>();
 		try {
 			PreparedStatement preSmt = conn.prepareStatement(sql);

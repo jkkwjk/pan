@@ -5,15 +5,25 @@ public class File {
 	private String fileName;
 	private Integer folderId; //可以为null
 	private String fileTime;
+	private Integer rsId;
+
+	public Integer getRsId() {
+		return rsId;
+	}
+
+	public void setRsId(Integer rsId) {
+		this.rsId = rsId;
+	}
 
 	public File() {
 	}
 
-	public File(int fileId, String fileName, Integer folderId, String fileTime) {
+	public File(int fileId, String fileName, Integer folderId, String fileTime, Integer rsId) {
 		this.fileId = fileId;
 		this.fileName = fileName;
 		this.folderId = folderId;
 		this.fileTime = fileTime;
+		this.rsId = rsId;
 	}
 
 	public int getFileId() {

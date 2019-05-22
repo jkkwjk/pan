@@ -29,7 +29,7 @@ public class FileWithUserDAOimpl extends FileBaseDAOimpl implements FileWithUser
 	@Override
 	public List<File> getFileInfo(Integer start,Integer limitSize) {
 		List<Map<String,String>> map = dButil.exePresqlGetmap(String.format("SELECT * FROM %s where user_id=? limit ?,?", DBInfo.USER_FILE_FOLDER),
-				new String[]{userId,start.toString(),limitSize.toString()});
+				new Object[]{userId,start,limitSize});
 
 		return getFileFromMapList(map);
 	}
@@ -92,8 +92,8 @@ public class FileWithUserDAOimpl extends FileBaseDAOimpl implements FileWithUser
 			String folderIdStr = stringStringMap.get("folder_id");
 			Integer folderId = folderIdStr==null? null:Integer.parseInt(folderIdStr);
 			String fileTime = StampDate.dateToStamp(stringStringMap.get("file_time"));
-
-			File file = new File(fileId, fileName, folderId, fileTime);
+			Integer rsId = Integer.parseInt(stringStringMap.get("id"));
+			File file = new File(fileId, fileName, folderId, fileTime,rsId);
 			list.add(file);
 		}
 		return list;

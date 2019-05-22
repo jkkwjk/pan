@@ -3,13 +3,14 @@
 //安全可选: 交提下载请求后 应判断md5和文件名是否为该用户
 $(document).ready(function(){
     // file 逻辑
-    var file_num = 16; //显示的文件数
+    var file_num = 2; //显示的文件数
     var check_file_arr = new Array();
 
     ///
     /// 表格列单击 只会增加check数量
     ///
-    $(".file_tr").click(function(){
+    $(document).on("click",".file_tr",file_tr_click);
+    function file_tr_click(){
         var checkbox = $(this).find("td")[0];
         checkbox = $(checkbox).find("input");
         $(checkbox).only_select();
@@ -18,11 +19,12 @@ $(document).ready(function(){
             $.set_elemt_check($("#all_file"),false);
         }
         btn_group_display();
-    });
+    }
     ///
     /// 除了全选之外的所有checkbox被单击
     ///
-    $(":checkbox").click(function(e){
+    $(document).on("click",":checkbox",checkbox_checked_click);
+    function checkbox_checked_click(){
         if ($(this).get_checked()){
             $(this).set_checked(false);
         } else{
@@ -33,8 +35,7 @@ $(document).ready(function(){
             $.set_elemt_check($("#all_file"),true);
         }
         btn_group_display();
-        e.stopPropagation();
-    });
+    }
     $("#all_file").unbind("click");
     ///
     /// 全选被单击
@@ -50,18 +51,20 @@ $(document).ready(function(){
     ///
     /// 文件链接被单击
     ///
-    $(".a_file_name").click(function(){
+    $(document).on("click",".a_file_name",a_file_name_click);
+    function a_file_name_click(){
         //文件夹 则打开
         //文件 则下载
         return false;
-    });
+    }
     ///
     /// 扩大checkbox的点击范围
     ///
-    $(".checkbox_div").click(function(e){
+    $(document).on("click",".checkbox_div",checkbox_div_click);
+    function checkbox_div_click(){
         $($(this).find("input")).trigger('click');
         e.stopPropagation();
-    });
+    }
 });
 function div_disable(elemt){
     elemt.fadeOut(100);
@@ -86,7 +89,7 @@ function btn_group_display(){
     // 文件夹不能下载
     var b=1;
     $.each($(":checked"),function (i,item) {
-        if(($(item).parent().parent().parent().attr("type")) == 1){
+        if(($(item).parent().parent().parent().attr("type")) == 0){
             $("#btn_download").attr('disabled',true);
             b=0;
             return false;
