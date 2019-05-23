@@ -209,3 +209,9 @@ input[type=checkbox]:checked{
     width: 20px;
     display: inline-block;
 }
+#tip{
+    width: 200px;
+    height: 50px;
+    background-color: red;
+    position: absolute;
+}

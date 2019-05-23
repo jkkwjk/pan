@@ -22,15 +22,18 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script src="${pageContext.request.contextPath}/static/js/file-fn.js"></script>
     <script type="text/javascript">
+        var file_num = 0; //显示的文件数
+        var check_file_arr = new Array();
+    </script> <!-- 全局变量 -->
+
+    <script type="text/javascript">
         var file_start = 0;
         var base_path= "${pageContext.request.contextPath}";
         $(document).ready(function () {
-
             $(".a_file_name").click(function () {
-
                 alert("${sessionScope[AttrToken.USER].name}");
             });
-            get_next_file(file_start);
+            get_next_file(file_start,0);
         });
     </script> <!-- 事件处理 -->
     <script type="text/javascript">
@@ -157,9 +160,8 @@
                 <div style="padding-right: 20px;padding-left: 20px;">
                     <span>全部文件</span>
                     <div style="float: right">
-                        <span id="file_load_all">已全部加载</span>
-                        <span>,共</span>
-                        <span id="file_num">1</span>
+                        <span>共加载</span>
+                        <span id="file_num">0</span>
                         <span>个</span>
                     </div>
                 </div>
@@ -188,6 +190,9 @@
                 </div>
             </div>
             
+        </div>
+        <div id="tip">
+            123123
         </div>
     </div>
 </body>

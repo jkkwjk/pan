@@ -3,7 +3,7 @@ package com.jkk.tools;
 import java.util.HashMap;
 import java.util.Map;
 
-public class getFileIco {
+public class FileIcoTool {
 	public static String getIco(String fileName){
 		Map map = getIcoMap();
 		String fileIco = (String) map.get("default");

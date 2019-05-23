@@ -5,7 +5,7 @@ import com.jkk.model.File;
 import java.util.List;
 
 public interface FileWithUserDAO extends FileBaseDAO{
-	List<File> getFileInfo(Integer start,Integer limitSize);
+	List<File> getFileInfo(Integer start,Integer limitSize,Integer folderId);
 
 	int getAllFileCount();
 

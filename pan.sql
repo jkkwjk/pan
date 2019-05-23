@@ -11,7 +11,7 @@
  Target Server Version : 80015
  File Encoding         : 65001
 
- Date: 21/05/2019 12:24:18
+ Date: 23/05/2019 13:09:19
 */
 
 SET NAMES utf8mb4;
@@ -27,14 +27,13 @@ CREATE TABLE `file`  (
   `file_size` varchar(60) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '文件大小 单位B',
   `folder_path` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '文件在服务器上的位置',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of file
 -- ----------------------------
-INSERT INTO `file` VALUES (1, 'testmd5', '485615689', '1');
-INSERT INTO `file` VALUES (2, 'testmd5_2', '1024', '1');
-INSERT INTO `file` VALUES (3, 'testmd5_3', '2040', '2');
+INSERT INTO `file` VALUES (1, '5A105E8B9D40E1329780D62EA2265D8A', '5', '1');
+INSERT INTO `file` VALUES (2, '7E9A5A68E62486CC1D9295C6C304F08C', '14', '1');
 
 -- ----------------------------
 -- Table structure for folder
@@ -43,15 +42,19 @@ DROP TABLE IF EXISTS `folder`;
 CREATE TABLE `folder`  (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '文件夹ID',
   `name` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '文件夹名字',
+  `user_id` int(11) NOT NULL COMMENT '所属用户ID',
   `folder_time` timestamp(0) NOT NULL COMMENT '修改文件夹内容的时间',
   `p_folder_id` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '上级文件夹ID 顶部为0',
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+  PRIMARY KEY (`id`) USING BTREE,
+  INDEX `用户ID`(`user_id`) USING BTREE,
+  CONSTRAINT `用户ID` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of folder
 -- ----------------------------
-INSERT INTO `folder` VALUES (1, '一级文件夹', '2019-05-07 00:00:00', '0');
+INSERT INTO `folder` VALUES (1, '一级文件夹', 1004, '2019-05-07 00:00:00', '0');
+INSERT INTO `folder` VALUES (4, 'SDF', 1004, '2019-05-22 22:06:22', '0');
 
 -- ----------------------------
 -- Table structure for permission
@@ -91,7 +94,7 @@ CREATE TABLE `share_file`  (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '分享typeID',
   `user_file_id` int(11) NOT NULL COMMENT '关联表中的主ID',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Table structure for share_folder
@@ -113,7 +116,7 @@ CREATE TABLE `user`  (
   `password` varchar(255) CHARACTER SET utf8 COLLATE utf8_bin NOT NULL COMMENT '用户密码 两遍md5',
   `permission_id` int(1) NOT NULL DEFAULT 0 COMMENT '权限ID',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1005 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 1004 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of user
@@ -121,10 +124,10 @@ CREATE TABLE `user`  (
 INSERT INTO `user` VALUES (1004, 'admin', '0c909a141f1f2c0a1cb602b0b2d7d050', 1);
 
 -- ----------------------------
--- Table structure for user_file_folder
+-- Table structure for user_file
 -- ----------------------------
-DROP TABLE IF EXISTS `user_file_folder`;
-CREATE TABLE `user_file_folder`  (
+DROP TABLE IF EXISTS `user_file`;
+CREATE TABLE `user_file`  (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '文件ID',
   `user_id` int(11) NOT NULL COMMENT '用户ID',
   `file_id` int(11) NOT NULL COMMENT '文件ID',
@@ -132,13 +135,15 @@ CREATE TABLE `user_file_folder`  (
   `file_time` timestamp(0) NOT NULL COMMENT '上传文件的时间',
   `folder_id` int(11) NOT NULL COMMENT '文件所处用户文件夹ID',
   PRIMARY KEY (`id`) USING BTREE,
-  INDEX `user_id`(`user_id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
+  INDEX `userID`(`user_id`) USING BTREE,
+  CONSTRAINT `userID` FOREIGN KEY (`user_id`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE RESTRICT
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_bin ROW_FORMAT = Dynamic;
 
 -- ----------------------------
--- Records of user_file_folder
+-- Records of user_file
 -- ----------------------------
-INSERT INTO `user_file_folder` VALUES (4, 1004, 1, 'adminname', '2019-04-07 22:04:16', 0);
+INSERT INTO `user_file` VALUES (4, 1004, 1, 'adminname', '2019-04-07 22:04:16', 0);
+INSERT INTO `user_file` VALUES (5, 1004, 1, 'flename2', '2019-05-22 21:52:45', 0);
 
 -- ----------------------------
 -- Table structure for user_info

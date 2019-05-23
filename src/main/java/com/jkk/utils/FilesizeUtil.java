@@ -21,7 +21,7 @@ public class FilesizeUtil {
 			bigDecimal = bigDecimal.divide(new BigDecimal("1024"));
 			++unitSize;
 		}
-		return bigDecimal.setScale(2,BigDecimal.ROUND_HALF_UP).toString()+ unit[unitSize];
+		return bigDecimal.setScale(2,BigDecimal.ROUND_HALF_UP).stripTrailingZeros().toPlainString()+ " "+unit[unitSize];
 	}
 
 	/**
@@ -50,11 +50,11 @@ public class FilesizeUtil {
 		// 到此只剩下数字
 		BigDecimal result = new BigDecimal(str.toString());
 		result = result.multiply(new BigDecimal(String.valueOf(Math.pow(1024,unitSize))));
-		return result.setScale(0,BigDecimal.ROUND_HALF_UP).toString()+'b';
+		return result.setScale(0,BigDecimal.ROUND_HALF_UP).toString();
 
 
 	}
 	public static void main(String[] args) {
-		System.out.print(OtherToB("1gb"));
+		System.out.print(OtherToB("45mb"));
 	}
 }

@@ -5,6 +5,9 @@ import com.jkk.model.File;
 import com.jkk.model.User;
 import com.jkk.service.AttrToken;
 import com.jkk.service.impl.Disk.FileWithUserImpl;
+import com.jkk.tools.FileIcoTool;
+import com.jkk.utils.FilesizeUtil;
+import com.jkk.utils.StampDate;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -31,7 +34,7 @@ public class ServletGetFile extends HttpServlet {
 		// 找文件
 		User user = (User) session.getAttribute(AttrToken.USER);
 		FileWithUserImpl fileWithUser = new FileWithUserImpl(user);
-		List<File> fileList = fileWithUser.getFileInfo(Integer.parseInt(start),30);
+		List<File> fileList = fileWithUser.getFileInfo(Integer.parseInt(start),30,Integer.parseInt(folder));
 
 		JSONObject objectBase = new JSONObject();
 		objectBase.put("file_num",fileList.size());
@@ -43,11 +46,10 @@ public class ServletGetFile extends HttpServlet {
 			o.put("file_type","1");
 			String fileName = file.getFileName();
 			o.put("file_name",fileName);
-			o.put("file_size",fileWithUser.getFileSizeByID(file.getFileId()));
-			o.put("file_time",file.getFileTime());
-			//String ico = file.getFileName().indexOf('.');
-			// TODO: 2019/5/23 获得图标属性 以及 完成文件类型传输 
-			o.put("file_ico",file.getFileTime());
+			o.put("file_size", FilesizeUtil.BToOther(fileWithUser.getFileSizeByID(file.getFileId())));
+			o.put("file_time", StampDate.stampToDate(file.getFileTime()));
+
+			o.put("file_ico", FileIcoTool.getIco(fileName));
 			objectData.add(o);
 		}
 

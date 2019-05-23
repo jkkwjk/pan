@@ -3,8 +3,6 @@
 //安全可选: 交提下载请求后 应判断md5和文件名是否为该用户
 $(document).ready(function(){
     // file 逻辑
-    var file_num = 2; //显示的文件数
-    var check_file_arr = new Array();
 
     ///
     /// 表格列单击 只会增加check数量
@@ -24,7 +22,7 @@ $(document).ready(function(){
     /// 除了全选之外的所有checkbox被单击
     ///
     $(document).on("click",":checkbox",checkbox_checked_click);
-    function checkbox_checked_click(){
+    function checkbox_checked_click(e){
         if ($(this).get_checked()){
             $(this).set_checked(false);
         } else{
@@ -33,8 +31,11 @@ $(document).ready(function(){
         var select_file_num = $(":checked[id!='all_file']").length;
         if (select_file_num == file_num) {
             $.set_elemt_check($("#all_file"),true);
+        } else if (select_file_num < file_num) {
+            $.set_elemt_check($("#all_file"),false);
         }
         btn_group_display();
+        e.stopPropagation();
     }
     $("#all_file").unbind("click");
     ///
@@ -61,7 +62,7 @@ $(document).ready(function(){
     /// 扩大checkbox的点击范围
     ///
     $(document).on("click",".checkbox_div",checkbox_div_click);
-    function checkbox_div_click(){
+    function checkbox_div_click(e){
         $($(this).find("input")).trigger('click');
         e.stopPropagation();
     }

@@ -27,9 +27,9 @@ public class FileWithUserDAOimpl extends FileBaseDAOimpl implements FileWithUser
 
 	DButil dButil = new DButil();
 	@Override
-	public List<File> getFileInfo(Integer start,Integer limitSize) {
-		List<Map<String,String>> map = dButil.exePresqlGetmap(String.format("SELECT * FROM %s where user_id=? limit ?,?", DBInfo.USER_FILE_FOLDER),
-				new Object[]{userId,start,limitSize});
+	public List<File> getFileInfo(Integer start,Integer limitSize,Integer folderId) {
+		List<Map<String,String>> map = dButil.exePresqlGetmap(String.format("SELECT * FROM %s where user_id=? and folder_id=? limit ?,?", DBInfo.USER_FILE_FOLDER),
+				new Object[]{userId,folderId,start,limitSize});
 
 		return getFileFromMapList(map);
 	}

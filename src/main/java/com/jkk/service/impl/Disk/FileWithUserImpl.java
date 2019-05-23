@@ -25,8 +25,8 @@ public class FileWithUserImpl extends FileBaseImpl implements FileWithUserBiz{
 	}
 
 	@Override
-	public List<File> getFileInfo(Integer start,Integer limitSize) {
-		return fileWithUserDAOimpl.getFileInfo(start,limitSize);
+	public List<File> getFileInfo(Integer start,Integer limitSize,Integer folderId) {
+		return fileWithUserDAOimpl.getFileInfo(start,limitSize,folderId);
 	}
 
 	@Override
