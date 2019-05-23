@@ -34,6 +34,25 @@
                 alert("${sessionScope[AttrToken.USER].name}");
             });
             get_next_file(file_start,0);
+
+            $('#tipModal').on('show.bs.modal', function (event) {
+                var button = $(event.relatedTarget);
+                var recipient = button.data('title');
+                var modal = $(this);
+                var modal_title = modal.find('.modal-title');
+                var modal_input = modal.find('.modal-body input');
+                var modal_span = modal.find('#modal_span');
+                modal_title.text("");
+                modal_input.attr('placeholder',"");
+                modal_input.val('');
+                modal_span.text("");
+                modal_title.text(recipient);
+                modal_input.attr('placeholder',recipient);
+                modal_span.text(recipient);
+            });
+            $('#tipModal').find("#modal_btn").click(function () {
+                alert($('#tipModal').find(".modal-body input").val());
+            });
         });
     </script> <!-- 事件处理 -->
     <script type="text/javascript">
@@ -141,7 +160,7 @@
                             <li><a href="#">上传文件夹</a></li>
                         </ul>
                     </div>
-                    <button type="button" class="btn btn-light button_main_main_top" style="border: 1px #C3EAFF solid;">
+                    <button type="button" class="btn btn-light button_main_main_top" data-toggle="modal" data-target="#tipModal" data-title="新建文件夹" style="border: 1px #C3EAFF solid;">
                         <span class="glyphicon glyphicon-hdd" style="margin-right: 2px;"></span> 新建文件夹
                     </button>
                     <div class="btn-group button_main_main_top" id="btn_group" style="display: none;">
@@ -180,19 +199,37 @@
                 </div>
                 <div id="file_main" style="">
                     <table id="file_table">
-                        <%--1代表文件夹--%>
-                        <%--<tr class="file_tr" id="{rs_id}" type={file_type}><td class="file_left"><div class="checkbox_div"><input type="checkbox"></div><img src="${pageContext.request.contextPath}/static/img/file/file_ico/{file_type}.png" class="file_img"><a href="#" class="a_file_name"><span class="file_name">{file_name}</span></a></td><td class="file_mid">{file_size}</td><td class="file_right">{file_time}</td></tr>--%>
-                        <%--<tr class="file_tr" id="{rs_id}" type=0><td class="file_left"><div class="checkbox_div"><input type="checkbox"></div><img src="${pageContext.request.contextPath}/static/img/file/file_ico/{file_type}.png" class="file_img"><a href="#" class="a_file_name"><span class="file_name">{file_name}</span></a></td><td class="file_mid">{file_size}</td><td class="file_right">{file_time}</td></tr>--%>
-                        <%--<tr class="file_tr" id="{rs_id}" type=1><td class="file_left"><div class="checkbox_div"><input type="checkbox"></div><img src="${pageContext.request.contextPath}/static/img/file/file_ico/{file_type}.png" class="file_img"><a href="#" class="a_file_name"><span class="file_name">{file_name}</span></a></td><td class="file_mid">{file_size}</td><td class="file_right">{file_time}</td></tr>--%>
-                        <%--<tr class="file_tr" id="{rs_id}" type=1><td class="file_left"><div class="checkbox_div"><input type="checkbox"></div><img src="${pageContext.request.contextPath}/static/img/file/file_ico/{file_type}.png" class="file_img"><a href="#" class="a_file_name"><span class="file_name">{file_name}</span></a></td><td class="file_mid">{file_size}</td><td class="file_right">{file_time}</td></tr>--%>
-                        <%----%>
+                        <%--0代表文件夹--%>
                     </table>
                 </div>
             </div>
             
         </div>
-        <div id="tip">
-            123123
+        <div id="tip" style="display: none;">
+            <div class="alert alert-danger" role="alert" style="font-size:17px;text-align: center;">
+                <span id="tip_span"></span>
+            </div>
+        </div>
+        <!-- 通用输入框 -->
+        <div class="modal fade" id="tipModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <span class="col-form-label" id="modal_span" style="font-size: 15px;"></span>
+                        <input type="text" class="form-control" id="input_text" style="margin-top: 10px;">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" id="modal_btn" data-dismiss="modal">确定</button>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </body>
