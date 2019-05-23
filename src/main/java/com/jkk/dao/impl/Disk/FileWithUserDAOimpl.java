@@ -3,7 +3,6 @@ package com.jkk.dao.impl.Disk;
 import com.jkk.dao.inter.Disk.FileWithUserDAO;
 import com.jkk.model.DBInfo;
 import com.jkk.model.File;
-import com.jkk.model.User;
 import com.jkk.utils.DButil;
 import com.jkk.utils.StampDate;
 
@@ -28,7 +27,7 @@ public class FileWithUserDAOimpl extends FileBaseDAOimpl implements FileWithUser
 	DButil dButil = new DButil();
 	@Override
 	public List<File> getFileInfo(Integer start,Integer limitSize,Integer folderId) {
-		List<Map<String,String>> map = dButil.exePresqlGetmap(String.format("SELECT * FROM %s where user_id=? and folder_id=? limit ?,?", DBInfo.USER_FILE_FOLDER),
+		List<Map<String,String>> map = dButil.exePresqlGetmap(String.format("SELECT * FROM %s where user_id=? and folder_id=? limit ?,?", DBInfo.USER_FILE),
 				new Object[]{userId,folderId,start,limitSize});
 
 		return getFileFromMapList(map);
@@ -36,13 +35,13 @@ public class FileWithUserDAOimpl extends FileBaseDAOimpl implements FileWithUser
 
 	@Override
 	public int getAllFileCount() {
-		return dButil.exePresqlSelect(String.format("SELECT id FROM %s where user_id=?", DBInfo.USER_FILE_FOLDER),new String[]{userId}).size();
+		return dButil.exePresqlSelect(String.format("SELECT id FROM %s where user_id=?", DBInfo.USER_FILE),new String[]{userId}).size();
 	}
 
 	@Override
 	public String getAllFileSize() {
 		List<String[]> list = dButil.exePresqlSelect(String.format("SELECT t2.file_size from %s t1,%s t2 where t1.user_id=? and t1.file_id=t2.id",
-				DBInfo.USER_FILE_FOLDER,DBInfo.FILE),new String[]{userId});
+				DBInfo.USER_FILE,DBInfo.FILE),new String[]{userId});
 		BigInteger res = new BigInteger("0");
 		for (String[] str : list) {
 			res = res.add(new BigInteger(str[0]));
@@ -53,34 +52,62 @@ public class FileWithUserDAOimpl extends FileBaseDAOimpl implements FileWithUser
 
 	@Override
 	public List<File> findSameFileByFileId(int fileId) {
-		List<Map<String,String>> map = dButil.exePresqlGetmap(String.format("SELECT * from %s where user_id=? and file_id=?", DBInfo.USER_FILE_FOLDER),new String[]{userId,String.valueOf(fileId)});
+		List<Map<String,String>> map = dButil.exePresqlGetmap(String.format("SELECT * from %s where user_id=? and file_id=?", DBInfo.USER_FILE),new String[]{userId,String.valueOf(fileId)});
 
 		return getFileFromMapList(map);
 	}
 
 	@Override
 	public List<File> findFileByNamePrecise(String fileName) {
-		List<Map<String,String>> map = dButil.exePresqlGetmap(String.format("SELECT * from %s where user_id=? and file_name=?", DBInfo.USER_FILE_FOLDER),new String[]{userId,fileName});
+		List<Map<String,String>> map = dButil.exePresqlGetmap(String.format("SELECT * from %s where user_id=? and file_name=?", DBInfo.USER_FILE),new String[]{userId,fileName});
 
 		return getFileFromMapList(map);
 	}
 
 	@Override
 	public List<File> findFileByNameBlurry(String fileNameLike) {
-		List<Map<String,String>> map = dButil.exePresqlGetmap(String.format("SELECT * from %s where user_id=? and file_name like concat('%%',?,'%%')", DBInfo.USER_FILE_FOLDER),new String[]{userId,fileNameLike});
+		List<Map<String,String>> map = dButil.exePresqlGetmap(String.format("SELECT * from %s where user_id=? and file_name like concat('%%',?,'%%')", DBInfo.USER_FILE),new String[]{userId,fileNameLike});
 
 		return getFileFromMapList(map);
 	}
 
 	@Override
 	public File findFileByNameInFolder(int folderId, String fileName) {
-		List<Map<String,String>> map = dButil.exePresqlGetmap(String.format("SELECT * from %s where user_id=? and file_name =? and folder_id = ?", DBInfo.USER_FILE_FOLDER),new String[]{userId,fileName,String.valueOf(folderId)});
+		List<Map<String,String>> map = dButil.exePresqlGetmap(String.format("SELECT * from %s where user_id=? and file_name =? and folder_id = ?", DBInfo.USER_FILE),new String[]{userId,fileName,String.valueOf(folderId)});
 
 		return getFileFromMapList(map).get(0);
 	}
 
+	@Override
+	public int addFile(File file,String fileMD5,String fileSize) {
+		if (file.getFileId() == null) {
+			// 获得本地存放的地址
+			String objPath = null;
+			int i;
+			List<Map<String,String>> listMap = dButil.exePresqlGetmap(String.format("SELECT * from %s", DBInfo.FILE_NUM_IN_SYSTEM),null);
+			//遍历列表
+			for (i=0; i<listMap.size(); ++i) {
+				if ( Integer.parseInt(listMap.get(i).get("num"))<FileBaseDAOimpl.MAX_FILE_IN_SYSTEM_FOLDER ) {
+					//找到符合条件的目标路径
+					objPath = listMap.get(i).get("path");
+					break;
+				}
+			}
+			//没找到
+			if (i==listMap.size()) {
+				objPath = String.valueOf(i);
+			}
+
+			int fileId = dButil.addDataGetIncrement(String.format("INSERT into %s(md5,file_size,folder_path) VALUES(?,?,?)", DBInfo.FILE),
+					new Object[]{fileMD5,fileSize,objPath});
+			file.setFileId(fileId);
+		}
+		return dButil.exePresqlModifyData(String.format("INSERT into %s(user_id,file_id,file_name,file_time,folder_id) VALUES (?,?,?,?,?)", DBInfo.USER_FILE),
+				new Object[]{userId,file.getFileId(),file.getFileName(),file.getFileTime(),file.getFolderId()});
+	}
+
 	/**
-	 * 要求 select * from DBInfo.USER_FILE_FOLDER
+	 * 要求 select * from DBInfo.USER_FILE
 	 * @param map
 	 * @return
 	 */

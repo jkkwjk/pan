@@ -26,19 +26,20 @@ public class ServletGetFile extends HttpServlet {
 		HttpSession session = request.getSession();
 		String start = request.getParameter("start");
 		String folder = request.getParameter("folder");
+		User user = (User) session.getAttribute(AttrToken.USER);
+		// TODO: 2019/5/23 判断该folder是否为当前用户的
 		PrintWriter out = response.getWriter();
 		//首先先找文件夹
 
 
 
 		// 找文件
-		User user = (User) session.getAttribute(AttrToken.USER);
 		FileWithUserImpl fileWithUser = new FileWithUserImpl(user);
 		List<File> fileList = fileWithUser.getFileInfo(Integer.parseInt(start),30,Integer.parseInt(folder));
 
 		JSONObject objectBase = new JSONObject();
 		objectBase.put("file_num",fileList.size());
-
+		objectBase.put("has_next",fileList.size()<30? '0':'1');
 		List<JSONObject> objectData = new ArrayList<>();
 		for (File file : fileList) {
 			JSONObject o = new JSONObject();

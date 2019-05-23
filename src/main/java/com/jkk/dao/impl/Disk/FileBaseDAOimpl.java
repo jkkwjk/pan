@@ -5,6 +5,8 @@ import com.jkk.model.DBInfo;
 import com.jkk.utils.DButil;
 
 public class FileBaseDAOimpl implements FileBaseDAO {
+	public static final Integer MAX_FILE_IN_SYSTEM_FOLDER = 1000;
+
 	DButil dButil = new DButil();
 	@Override
 	public int getFileIdByMD5(String MD5) {
@@ -39,5 +41,10 @@ public class FileBaseDAOimpl implements FileBaseDAO {
 	@Override
 	public String FindFilePathByMD5(String MD5) {
 		return dButil.exePresqlSelect(String.format("SELECT folder_path FROM %s where md5=? limit 1", DBInfo.FILE),new String[]{MD5}).get(0)[0];
+	}
+
+	@Override
+	public int getFileNumInSystemFolder(String folder) {
+		return Integer.parseInt(dButil.exePresqlSelect(String.format("SELECT num FROM %s where path=?", DBInfo.FILE_NUM_IN_SYSTEM),new String[]{folder}).get(0)[0]);
 	}
 }

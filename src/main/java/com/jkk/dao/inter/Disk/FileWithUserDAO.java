@@ -18,4 +18,6 @@ public interface FileWithUserDAO extends FileBaseDAO{
 	List<File> findFileByNameBlurry(String fileNameLike);
 
 	File findFileByNameInFolder(int folderId,String fileName);
+
+	int addFile(File file,String fileMD5,String fileSize);
 }

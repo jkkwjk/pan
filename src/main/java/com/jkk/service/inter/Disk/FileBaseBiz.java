@@ -14,4 +14,6 @@ public interface FileBaseBiz {
 	String FindFilePathByID(int id);
 
 	String FindFilePathByMD5(String MD5);
+
+	int getFileNumInSystemFolder(String folder);
 }

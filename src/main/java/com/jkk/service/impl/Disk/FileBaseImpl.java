@@ -39,4 +39,9 @@ public class FileBaseImpl implements FileBaseBiz {
 	public String FindFilePathByMD5(String MD5) {
 		return file.FindFilePathByMD5(MD5);
 	}
+
+	@Override
+	public int getFileNumInSystemFolder(String folder) {
+		return file.getFileNumInSystemFolder(folder);
+	}
 }

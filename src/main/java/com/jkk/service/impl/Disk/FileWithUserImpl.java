@@ -58,4 +58,16 @@ public class FileWithUserImpl extends FileBaseImpl implements FileWithUserBiz{
 	public File findFileByNameInFolder(int folderId, String fileName) {
 		return fileWithUserDAOimpl.findFileByNameInFolder(folderId,fileName);
 	}
+
+	/**
+	 * 添加文件 包含两表的操作
+	 * @param file File对象 如果fileID=null  则会往file表中加入该文件
+	 * @param fileMD5
+	 * @param fileSize
+	 * @return 返回是否添加成功
+	 */
+	@Override
+	public boolean addFile(File file, String fileMD5, String fileSize) {
+		return fileWithUserDAOimpl.addFile(file,fileMD5,fileSize) == 1;
+	}
 }

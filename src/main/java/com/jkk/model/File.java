@@ -1,9 +1,9 @@
 package com.jkk.model;
 
 public class File {
-	private int fileId;
+	private Integer fileId;
 	private String fileName;
-	private Integer folderId; //可以为null
+	private Integer folderId;
 	private String fileTime;
 	private Integer rsId;
 
@@ -25,12 +25,23 @@ public class File {
 		this.fileTime = fileTime;
 		this.rsId = rsId;
 	}
+	public File(int fileId, String fileName, Integer folderId, String fileTime) {
+		this.fileId = fileId;
+		this.fileName = fileName;
+		this.folderId = folderId;
+		this.fileTime = fileTime;
+	}
+	public File(String fileName, Integer folderId, String fileTime) {
+		this.fileName = fileName;
+		this.folderId = folderId;
+		this.fileTime = fileTime;
+	}
 
-	public int getFileId() {
+	public Integer getFileId() {
 		return fileId;
 	}
 
-	public void setFileId(int fileId) {
+	public void setFileId(Integer fileId) {
 		this.fileId = fileId;
 	}
 

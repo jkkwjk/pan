@@ -18,4 +18,6 @@ public interface FileWithUserBiz extends FileBaseBiz{
 	List<File> findFileByNameBlurry(String fileNameLike);
 
 	File findFileByNameInFolder(int folderId,String fileName);
+
+	boolean addFile(File file,String fileMD5,String fileSize);
 }

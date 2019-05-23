@@ -23,18 +23,15 @@
     <script src="${pageContext.request.contextPath}/static/js/file-fn.js"></script>
     <script type="text/javascript">
         var file_num = 0; //显示的文件数
-        var check_file_arr = new Array();
+        var check_file_arr = new Array(); //选择的文件数组
+        var file_start = 0; // 文件从哪开始找 分页
+        var base_path= "${pageContext.request.contextPath}";
+        var folder_id_now = 0; // 当前页面所属用户的文件夹
+        var has_next = 1; // 用户是否还有文件
     </script> <!-- 全局变量 -->
 
     <script type="text/javascript">
-        var file_start = 0;
-        var base_path= "${pageContext.request.contextPath}";
         $(document).ready(function () {
-            $(".a_file_name").click(function () {
-                alert("${sessionScope[AttrToken.USER].name}");
-            });
-            get_next_file(file_start,0);
-
             $('#tipModal').on('show.bs.modal', function (event) {
                 var button = $(event.relatedTarget);
                 var recipient = button.data('title');
@@ -42,10 +39,12 @@
                 var modal_title = modal.find('.modal-title');
                 var modal_input = modal.find('.modal-body input');
                 var modal_span = modal.find('#modal_span');
+
                 modal_title.text("");
                 modal_input.attr('placeholder',"");
                 modal_input.val('');
                 modal_span.text("");
+
                 modal_title.text(recipient);
                 modal_input.attr('placeholder',recipient);
                 modal_span.text(recipient);
@@ -54,9 +53,24 @@
                 alert($('#tipModal').find(".modal-body input").val());
             });
         });
-    </script> <!-- 事件处理 -->
+    </script> <!-- 模态框处理 -->
     <script type="text/javascript">
-
+        $(document).ready(function () {
+            $("#upload_file").click(function () {
+                $("#upload_file_btn").click();
+                alert("1");
+                $(this).parent().parent().removeClass('open');
+                return false;
+            });
+        })
+    </script><!-- 文件上传 -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            get_next_file(file_start,folder_id_now);
+            $(".a_file_name").click(function () {
+                alert("${sessionScope[AttrToken.USER].name}");
+            });
+        });
     </script> <!-- 页面加载完成 -->
 </head>
 <body>
@@ -155,10 +169,13 @@
                             <span class="glyphicon glyphicon-cloud-upload" style="margin-right: 2px;"></span>上传
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="#">上传文件</a></li>
+                            <li id="upload_file"><a href="#">上传文件</a></li>
                             <li role="separator" class="divider" style="margin: 2px 0;"></li>
-                            <li><a href="#">上传文件夹</a></li>
+                            <li id="upload_folder"><a href="#">上传文件夹</a></li>
                         </ul>
+                        <form style="display: none;" id="upload_file_form">
+                            <input type="file" name="file" id="upload_file_btn">
+                        </form>
                     </div>
                     <button type="button" class="btn btn-light button_main_main_top" data-toggle="modal" data-target="#tipModal" data-title="新建文件夹" style="border: 1px #C3EAFF solid;">
                         <span class="glyphicon glyphicon-hdd" style="margin-right: 2px;"></span> 新建文件夹

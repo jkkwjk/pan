@@ -123,7 +123,7 @@ public class DButil {
 	 * @param param
 	 * @return 改sql影响的数据条数
 	 */
-	public int exePresqlModifyData(String sql, String[] param){
+	public int exePresqlModifyData(String sql, Object[] param){
 		int modifyNum = 0;
 		try {
 			conn = getConn();
@@ -148,7 +148,7 @@ public class DButil {
 	 * @param param
 	 * @return
 	 */
-	public int addDataGetIncrement(String sql, String[] param){
+	public int addDataGetIncrement(String sql, Object[] param){
 		int id = -1;
 		try {
 			conn = getConn();
