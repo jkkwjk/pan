@@ -19,5 +19,5 @@ public interface FileWithUserBiz extends FileBaseBiz{
 
 	File findFileByNameInFolder(int folderId,String fileName);
 
-	boolean addFile(File file,String fileMD5,String fileSize);
+	File addFile(File file,String fileMD5,String fileSize,String objPath);
 }

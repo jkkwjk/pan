@@ -18,14 +18,14 @@ public class File {
 	public File() {
 	}
 
-	public File(int fileId, String fileName, Integer folderId, String fileTime, Integer rsId) {
+	public File(Integer fileId, String fileName, Integer folderId, String fileTime, Integer rsId) {
 		this.fileId = fileId;
 		this.fileName = fileName;
 		this.folderId = folderId;
 		this.fileTime = fileTime;
 		this.rsId = rsId;
 	}
-	public File(int fileId, String fileName, Integer folderId, String fileTime) {
+	public File(Integer fileId, String fileName, Integer folderId, String fileTime) {
 		this.fileId = fileId;
 		this.fileName = fileName;
 		this.folderId = folderId;

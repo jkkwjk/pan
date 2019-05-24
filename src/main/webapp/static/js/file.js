@@ -2,8 +2,6 @@
 //对于文件 lable为md5 filetype=1
 //安全可选: 交提下载请求后 应判断md5和文件名是否为该用户
 $(document).ready(function(){
-    // file 逻辑
-
     ///
     /// 表格列单击 只会增加check数量
     ///
@@ -12,10 +10,6 @@ $(document).ready(function(){
         var checkbox = $(this).find("td")[0];
         checkbox = $(checkbox).find("input");
         $(checkbox).only_select();
-        var select_file_num = $(":checked[id!='all_file']").length;
-        if (select_file_num < file_num) {
-            $.set_elemt_check($("#all_file"),false);
-        }
         btn_group_display();
     }
     ///
@@ -27,12 +21,6 @@ $(document).ready(function(){
             $(this).set_checked(false);
         } else{
             $(this).set_checked(true);
-        }
-        var select_file_num = $(":checked[id!='all_file']").length;
-        if (select_file_num == file_num) {
-            $.set_elemt_check($("#all_file"),true);
-        } else if (select_file_num < file_num) {
-            $.set_elemt_check($("#all_file"),false);
         }
         btn_group_display();
         e.stopPropagation();
@@ -87,6 +75,13 @@ function btn_group_display(){
         $("#btn_share").attr('disabled',true);
         $("#btn_rename").attr('disabled',true);
     }
+    if (num == file_num) {
+        $.set_elemt_check($("#all_file"),true);
+    } else if (num  < file_num) {
+        $.set_elemt_check($("#all_file"),false);
+    }
+
+
     // 文件夹不能下载
     var b=1;
     $.each($(":checked"),function (i,item) {

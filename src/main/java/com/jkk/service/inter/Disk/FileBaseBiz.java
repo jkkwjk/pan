@@ -1,7 +1,7 @@
 package com.jkk.service.inter.Disk;
 
 public interface FileBaseBiz {
-	int getFileIdByMD5(String MD5);
+	Integer getFileIdByMD5(String MD5);
 
 	String getFileMD5ByID(int id);
 
@@ -16,4 +16,6 @@ public interface FileBaseBiz {
 	String FindFilePathByMD5(String MD5);
 
 	int getFileNumInSystemFolder(String folder);
+
+	String getNextFolder();
 }

@@ -4,13 +4,21 @@ import com.jkk.dao.inter.Disk.FileBaseDAO;
 import com.jkk.model.DBInfo;
 import com.jkk.utils.DButil;
 
+import java.util.List;
+import java.util.Map;
+
 public class FileBaseDAOimpl implements FileBaseDAO {
 	public static final Integer MAX_FILE_IN_SYSTEM_FOLDER = 1000;
 
 	DButil dButil = new DButil();
 	@Override
-	public int getFileIdByMD5(String MD5) {
-		return Integer.parseInt(dButil.exePresqlSelect(String.format("SELECT id FROM %s where md5=? limit 1", DBInfo.FILE),new String[]{MD5}).get(0)[0]);
+	public Integer getFileIdByMD5(String MD5) {
+		List<String[]> list = dButil.exePresqlSelect(String.format("SELECT id FROM %s where md5=? limit 1", DBInfo.FILE),new String[]{MD5});
+		if (list.isEmpty()){
+			return null;
+		}else {
+			return Integer.parseInt(list.get(0)[0]);
+		}
 	}
 
 	@Override
@@ -46,5 +54,25 @@ public class FileBaseDAOimpl implements FileBaseDAO {
 	@Override
 	public int getFileNumInSystemFolder(String folder) {
 		return Integer.parseInt(dButil.exePresqlSelect(String.format("SELECT num FROM %s where path=?", DBInfo.FILE_NUM_IN_SYSTEM),new String[]{folder}).get(0)[0]);
+	}
+
+	@Override
+	public String getNextFolder() {
+		String objPath = null;
+		int i;
+		List<Map<String,String>> listMap = dButil.exePresqlGetmap(String.format("SELECT * from %s", DBInfo.FILE_NUM_IN_SYSTEM),null);
+		//遍历列表
+		for (i=0; i<listMap.size(); ++i) {
+			if ( Integer.parseInt(listMap.get(i).get("num"))<FileBaseDAOimpl.MAX_FILE_IN_SYSTEM_FOLDER ) {
+				//找到符合条件的目标路径
+				objPath = listMap.get(i).get("path");
+				break;
+			}
+		}
+		//没找到
+		if (i==listMap.size()) {
+			objPath = String.valueOf(i);
+		}
+		return objPath;
 	}
 }

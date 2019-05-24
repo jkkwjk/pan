@@ -3,7 +3,7 @@ package com.jkk.dao.inter.Disk;
 import com.jkk.model.File;
 
 public interface FileBaseDAO {
-	int getFileIdByMD5(String MD5);
+	Integer getFileIdByMD5(String MD5);
 
 	String getFileMD5ByID(int id);
 
@@ -18,4 +18,6 @@ public interface FileBaseDAO {
 	String FindFilePathByMD5(String MD5);
 
 	int getFileNumInSystemFolder(String folder);
+
+	String getNextFolder();
 }

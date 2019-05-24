@@ -17,6 +17,7 @@
     <title>在线网盘-全部文件</title>
     <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/jquery-checkbox-set.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/md5.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/title.js"></script>
     <script src="${pageContext.request.contextPath}/static/js/file.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
@@ -28,6 +29,7 @@
         var base_path= "${pageContext.request.contextPath}";
         var folder_id_now = 0; // 当前页面所属用户的文件夹
         var has_next = 1; // 用户是否还有文件
+        var template="<tr class=\"file_tr\" id=\"{rs_id}\" type={file_type}><td class=\"file_left\"><div class=\"checkbox_div\"><input type=\"checkbox\"></div><img src=\""+base_path+"/static/img/file/file_ico/{file_ico}.png\" class=\"file_img\"><a href=\"#\" class=\"a_file_name\"><span class=\"file_name\">{file_name}</span></a></td><td class=\"file_mid\">{file_size}</td><td class=\"file_right\">{file_time}</td></tr>\n";
     </script> <!-- 全局变量 -->
 
     <script type="text/javascript">
@@ -58,12 +60,67 @@
         $(document).ready(function () {
             $("#upload_file").click(function () {
                 $("#upload_file_btn").click();
-                alert("1");
                 $(this).parent().parent().removeClass('open');
                 return false;
             });
-        })
+            $("#upload_file_btn").change(function (e) {
+                if($(this).val() != ""){
+                    var f = $(this)[0].files[0];
+                    upload_step1(f);
+                }
+            })
+
+        });
+
+        function file_upload_submit(f,md5){
+            var formData = new FormData();
+            formData.append('file',f);
+            formData.append('md5',md5);
+            formData.append('folder',folder_id_now);
+            $.ajax({
+                type:'POST',
+                url:base_path+'/file/up',
+                data:formData,
+                contentType: false,
+                processData: false,
+                success: function (ret) {
+                    ret = JSON.parse(ret);
+                    if(ret.status == '1') {
+                        clearPage();
+                        get_next_file(file_start,folder_id_now);
+                        tip_show("上传成功!",'success');
+                    }else {
+                        tip_show(ret.error_msg,'danger');
+                    }
+                }
+            });
+        }
     </script><!-- 文件上传 -->
+    <script type="text/javascript">
+        var timer = null;
+        function tip_show(s,wclass) {
+            $("#tip_span").text(s);
+            // success绿色 info蓝色 danger红色
+            $("#alert_div").attr('class','alert alert-'+wclass);
+            my_show();
+            setTimeout("my_hide();",1000);
+        }
+        function my_show(){
+            var elemt = $("#tip");
+            clearTimeout(timer);
+            elemt.stop(true);
+            elemt.css('display','inline');
+            elemt.css('margin-top','0px');
+            elemt.css('opacity','1');
+        }
+        function my_hide(){
+            var elemt = $("#tip");
+            elemt.stop(true);
+            elemt.animate({'margin-top':'30px'},{queue:false,duration:400});
+            elemt.animate({'opacity':'0'},{queue:false,duration:400});
+            timer = setTimeout("$(\"#tip\").css('display','none')",400);
+        }
+    </script> <!-- 动画 -->
     <script type="text/javascript">
         $(document).ready(function () {
             get_next_file(file_start,folder_id_now);
@@ -71,6 +128,13 @@
                 alert("${sessionScope[AttrToken.USER].name}");
             });
         });
+        function clearPage() {
+            $("#file_table").empty();
+            file_num = 0;
+            check_file_arr = new Array();
+            file_start=0;
+            has_next=1;
+        }
     </script> <!-- 页面加载完成 -->
 </head>
 <body>
@@ -173,7 +237,7 @@
                             <li role="separator" class="divider" style="margin: 2px 0;"></li>
                             <li id="upload_folder"><a href="#">上传文件夹</a></li>
                         </ul>
-                        <form style="display: none;" id="upload_file_form">
+                        <form style="display: none;" id="upload_file_form" enctype="multipart/form-data">
                             <input type="file" name="file" id="upload_file_btn">
                         </form>
                     </div>
@@ -223,7 +287,7 @@
             
         </div>
         <div id="tip" style="display: none;">
-            <div class="alert alert-danger" role="alert" style="font-size:17px;text-align: center;">
+            <div class="alert alert-danger" role="alert" style="font-size:17px;text-align: center;" id="alert_div">
                 <span id="tip_span"></span>
             </div>
         </div>

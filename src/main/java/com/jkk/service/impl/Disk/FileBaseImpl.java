@@ -6,7 +6,7 @@ import com.jkk.service.inter.Disk.FileBaseBiz;
 public class FileBaseImpl implements FileBaseBiz {
 	FileBaseDAOimpl file = new FileBaseDAOimpl();
 	@Override
-	public int getFileIdByMD5(String MD5) {
+	public Integer getFileIdByMD5(String MD5) {
 		return file.getFileIdByMD5(MD5);
 	}
 
@@ -44,4 +44,10 @@ public class FileBaseImpl implements FileBaseBiz {
 	public int getFileNumInSystemFolder(String folder) {
 		return file.getFileNumInSystemFolder(folder);
 	}
+
+	@Override
+	public String getNextFolder() {
+		return file.getNextFolder();
+	}
+
 }

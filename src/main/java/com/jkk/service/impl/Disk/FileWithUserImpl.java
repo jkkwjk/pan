@@ -67,7 +67,7 @@ public class FileWithUserImpl extends FileBaseImpl implements FileWithUserBiz{
 	 * @return 返回是否添加成功
 	 */
 	@Override
-	public boolean addFile(File file, String fileMD5, String fileSize) {
-		return fileWithUserDAOimpl.addFile(file,fileMD5,fileSize) == 1;
+	public File addFile(File file, String fileMD5, String fileSize,String objPath) {
+		return fileWithUserDAOimpl.addFile(file,fileMD5,fileSize,objPath);
 	}
 }

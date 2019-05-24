@@ -27,7 +27,7 @@ public class FileWithUserDAOimpl extends FileBaseDAOimpl implements FileWithUser
 	DButil dButil = new DButil();
 	@Override
 	public List<File> getFileInfo(Integer start,Integer limitSize,Integer folderId) {
-		List<Map<String,String>> map = dButil.exePresqlGetmap(String.format("SELECT * FROM %s where user_id=? and folder_id=? limit ?,?", DBInfo.USER_FILE),
+		List<Map<String,String>> map = dButil.exePresqlGetmap(String.format("SELECT * FROM %s where user_id=? and folder_id=? order by file_name limit ?,?", DBInfo.USER_FILE),
 				new Object[]{userId,folderId,start,limitSize});
 
 		return getFileFromMapList(map);
@@ -74,36 +74,24 @@ public class FileWithUserDAOimpl extends FileBaseDAOimpl implements FileWithUser
 	@Override
 	public File findFileByNameInFolder(int folderId, String fileName) {
 		List<Map<String,String>> map = dButil.exePresqlGetmap(String.format("SELECT * from %s where user_id=? and file_name =? and folder_id = ?", DBInfo.USER_FILE),new String[]{userId,fileName,String.valueOf(folderId)});
-
-		return getFileFromMapList(map).get(0);
+		if (map.size()==0) {
+			return null;
+		}else {
+			return getFileFromMapList(map).get(0);
+		}
 	}
 
 	@Override
-	public int addFile(File file,String fileMD5,String fileSize) {
+	public File addFile(File file,String fileMD5,String fileSize,String objPath) {
 		if (file.getFileId() == null) {
-			// 获得本地存放的地址
-			String objPath = null;
-			int i;
-			List<Map<String,String>> listMap = dButil.exePresqlGetmap(String.format("SELECT * from %s", DBInfo.FILE_NUM_IN_SYSTEM),null);
-			//遍历列表
-			for (i=0; i<listMap.size(); ++i) {
-				if ( Integer.parseInt(listMap.get(i).get("num"))<FileBaseDAOimpl.MAX_FILE_IN_SYSTEM_FOLDER ) {
-					//找到符合条件的目标路径
-					objPath = listMap.get(i).get("path");
-					break;
-				}
-			}
-			//没找到
-			if (i==listMap.size()) {
-				objPath = String.valueOf(i);
-			}
-
 			int fileId = dButil.addDataGetIncrement(String.format("INSERT into %s(md5,file_size,folder_path) VALUES(?,?,?)", DBInfo.FILE),
 					new Object[]{fileMD5,fileSize,objPath});
 			file.setFileId(fileId);
 		}
-		return dButil.exePresqlModifyData(String.format("INSERT into %s(user_id,file_id,file_name,file_time,folder_id) VALUES (?,?,?,?,?)", DBInfo.USER_FILE),
+		int rsid = dButil.addDataGetIncrement(String.format("INSERT into %s(user_id,file_id,file_name,file_time,folder_id) VALUES (?,?,?,?,?)", DBInfo.USER_FILE),
 				new Object[]{userId,file.getFileId(),file.getFileName(),file.getFileTime(),file.getFolderId()});
+		file.setRsId(rsid);
+		return file;
 	}
 
 	/**
@@ -112,13 +100,16 @@ public class FileWithUserDAOimpl extends FileBaseDAOimpl implements FileWithUser
 	 * @return
 	 */
 	private List<File> getFileFromMapList(List<Map<String,String>> map) {
+		if (map.size()==0) {
+			return null;
+		}
 		List<File> list = new ArrayList<>();
 		for (Map<String, String> stringStringMap : map) {
 			int fileId = Integer.parseInt(stringStringMap.get("file_id"));
 			String fileName = stringStringMap.get("file_name");
 			String folderIdStr = stringStringMap.get("folder_id");
 			Integer folderId = folderIdStr==null? null:Integer.parseInt(folderIdStr);
-			String fileTime = StampDate.dateToStamp(stringStringMap.get("file_time"));
+			String fileTime = stringStringMap.get("file_time");
 			Integer rsId = Integer.parseInt(stringStringMap.get("id"));
 			File file = new File(fileId, fileName, folderId, fileTime,rsId);
 			list.add(file);

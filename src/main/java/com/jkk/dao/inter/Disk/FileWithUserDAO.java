@@ -19,5 +19,5 @@ public interface FileWithUserDAO extends FileBaseDAO{
 
 	File findFileByNameInFolder(int folderId,String fileName);
 
-	int addFile(File file,String fileMD5,String fileSize);
+	File addFile(File file,String fileMD5,String fileSize,String objPath);
 }
