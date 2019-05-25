@@ -5,13 +5,12 @@ import com.alibaba.fastjson.JSONObject;
 import com.jkk.model.File;
 import com.jkk.model.User;
 import com.jkk.service.AttrToken;
+import com.jkk.service.ErrorPath;
 import com.jkk.service.impl.Disk.FileIOupImpl;
 import com.jkk.service.impl.Disk.FileWithUserImpl;
-import com.jkk.tools.FileIcoTool;
-import com.jkk.utils.FilesizeUtil;
 import com.jkk.utils.MD5Util;
-import com.jkk.utils.StampDate;
 import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
 
 
 import javax.servlet.ServletException;
@@ -23,8 +22,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 @WebServlet(name = "ServletUpload",urlPatterns = "/file/up")
@@ -39,7 +36,9 @@ public class ServletUpload extends HttpServlet {
 		FileIOupImpl up = new FileIOupImpl();
 
 		String systemPath = fileUser.getNextFolder();
-		String uploadPath = request.getServletContext().getRealPath("./")+"WEB-INF/file/"+systemPath;
+		StringBuffer realPath = new StringBuffer(request.getServletContext().getRealPath(""));
+		String uploadPath = realPath.substring(0,realPath.lastIndexOf("\\"));
+		uploadPath = uploadPath.substring(0,uploadPath.lastIndexOf("\\")+1)+"ttt_upload\\"+systemPath;
 
 		try {
 			Map<String,Object> param = up.parseRequest(request);
@@ -81,8 +80,9 @@ public class ServletUpload extends HttpServlet {
 				out.print(JSON.toJSONString(retObj));
 				return;
 			}
-		}catch (Exception e){
-			e.printStackTrace();
+		} catch (Exception e){
+			response.sendRedirect(request.getContextPath()+ErrorPath.html500);
+			// TODO: 2019/5/25 异常可以捕获但response对象无效?? 
 		}
 	}
 

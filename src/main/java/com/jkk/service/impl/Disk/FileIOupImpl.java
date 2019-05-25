@@ -30,18 +30,17 @@ public class FileIOupImpl implements FileIOup {
 		upload.setSizeMax(MAX_REQUEST_SIZE);
 	}
 	@Override
-	public boolean writeFile(String uploadDir, FileItem fileByte, String fileMD5) throws Exception{
+	public void writeFile(String uploadDir, FileItem fileByte, String fileMD5) throws Exception{
 		File existF = new File(uploadDir);
 		if (!existF.exists()){existF.mkdir();}
 
 		String filePath = uploadDir + File.separator + fileMD5;
 		File storeFile = new File(filePath);// 真正要写入的文件
 		fileByte.write(storeFile);
-		return true; //todo 重构??
 	}
 
 	@Override
-	public Map<String, Object> parseRequest(HttpServletRequest request) throws Exception {
+	public Map<String, Object> parseRequest(HttpServletRequest request) throws FileUploadException {
 		List<FileItem> formItems = upload.parseRequest(request);
 		Map<String,Object> obj = new HashMap<>();
 

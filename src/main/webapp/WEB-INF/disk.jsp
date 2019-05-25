@@ -66,7 +66,11 @@
             $("#upload_file_btn").change(function (e) {
                 if($(this).val() != ""){
                     var f = $(this)[0].files[0];
-                    upload_step1(f);
+                    if (f.size > 100*1024*1024) {
+                        tip_show("单次上传大小不能超过100MB!",'danger');
+                    }else {
+                        upload_step1(f);
+                    }
                 }
             })
 
@@ -92,6 +96,7 @@
                     }else {
                         tip_show(ret.error_msg,'danger');
                     }
+                    $("#upload_file_btn").val("");
                 }
             });
         }
@@ -136,6 +141,7 @@
             has_next=1;
         }
     </script> <!-- 页面加载完成 -->
+    <script type="text/javascript"></script>
 </head>
 <body>
     <div id="warp" style="min-width: 1100px;user-select: none;">

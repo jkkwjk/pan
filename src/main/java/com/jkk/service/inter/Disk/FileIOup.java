@@ -6,7 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.Map;
 
 public interface FileIOup {
-	boolean writeFile(String uploadDir, FileItem fileByte, String fileMD5) throws Exception;
+	void writeFile(String uploadDir, FileItem fileByte, String fileMD5) throws Exception;
 
 	/**
 	 * 需要保证 request 参数中不包含 __file__ 这个key

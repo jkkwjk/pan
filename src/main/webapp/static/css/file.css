@@ -213,26 +213,13 @@ input[type=checkbox]:checked{
     height: 50px;
     position: absolute;
     top: 30px;
-    left: 30%;
-    right: 30%;
+    margin: auto;
+    width: 400px;
+    left:0;right:0;
 }
 #tip_input{
     position: absolute;
     left: 30%;
     right: 30%;
     height: 100px;
-}
-test{
-    display: block;
-    padding: 3px 20px;
-    clear: both;
-    font-weight: 400;
-    line-height: 1.42857143;
-    color: #333;
-    white-space: nowrap;
-}
-test:focus,test:hover{
-    color: #262626;
-    text-decoration: none;
-    background-color: #f5f5f5;
 }
