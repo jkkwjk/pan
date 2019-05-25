@@ -127,21 +127,13 @@
         }
     </script> <!-- 动画 -->
     <script type="text/javascript">
+        
+    </script> <!-- 文件下载 -->
+    <script type="text/javascript">
         $(document).ready(function () {
             get_next_file(file_start,folder_id_now);
-            $(".a_file_name").click(function () {
-                alert("${sessionScope[AttrToken.USER].name}");
-            });
         });
-        function clearPage() {
-            $("#file_table").empty();
-            file_num = 0;
-            check_file_arr = new Array();
-            file_start=0;
-            has_next=1;
-        }
-    </script> <!-- 页面加载完成 -->
-    <script type="text/javascript"></script>
+    </script><!-- 初始化页面 -->
 </head>
 <body>
     <div id="warp" style="min-width: 1100px;user-select: none;">

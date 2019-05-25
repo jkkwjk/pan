@@ -50,6 +50,9 @@ public class ServletUpload extends HttpServlet {
 			String fileSize = String.valueOf(item.getSize());
 			Integer folderId = Integer.parseInt((String) param.get("folder"));
 
+			if (folderId != 0) {
+				// TODO: 2019/5/25 文件夹效验 是否为该用户的文件夹 
+			}
 			// 文件名重复
 			if (fileUser.findFileByNameInFolder(folderId,fileName) != null) {
 				retObj.put("status","0");

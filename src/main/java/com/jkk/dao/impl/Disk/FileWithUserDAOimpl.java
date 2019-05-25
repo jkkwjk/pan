@@ -94,6 +94,11 @@ public class FileWithUserDAOimpl extends FileBaseDAOimpl implements FileWithUser
 		return file;
 	}
 
+	@Override
+	public File getFileInfoByRSID(Integer rsID) {
+		dButil.exePresqlGetmap("")
+	}
+
 	/**
 	 * 要求 select * from DBInfo.USER_FILE
 	 * @param map

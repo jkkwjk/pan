@@ -20,4 +20,6 @@ public interface FileWithUserBiz extends FileBaseBiz{
 	File findFileByNameInFolder(int folderId,String fileName);
 
 	File addFile(File file,String fileMD5,String fileSize,String objPath);
+
+	File getFileInfoByRSID(Integer rsID);
 }

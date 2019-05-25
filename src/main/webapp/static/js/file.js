@@ -42,8 +42,13 @@ $(document).ready(function(){
     ///
     $(document).on("click",".a_file_name",a_file_name_click);
     function a_file_name_click(){
-        //文件夹 则打开
-        //文件 则下载
+        var obj = $(this).parent().parent();
+
+        if(obj.attr('type') == '1') {
+            
+        }else {
+            alert("open");
+        }
         return false;
     }
     ///
