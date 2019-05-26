@@ -11,9 +11,9 @@ public interface FileBaseBiz {
 
 	String getFileSizeByMD5(String MD5);
 
-	String FindFilePathByID(int id);
+	String findFilePathByID(int id);
 
-	String FindFilePathByMD5(String MD5);
+	String findFilePathByMD5(String MD5);
 
 	int getFileNumInSystemFolder(String folder);
 

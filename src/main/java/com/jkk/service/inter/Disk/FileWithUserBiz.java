@@ -22,4 +22,8 @@ public interface FileWithUserBiz extends FileBaseBiz{
 	File addFile(File file,String fileMD5,String fileSize,String objPath);
 
 	File getFileInfoByRSID(Integer rsID);
+
+	int deleteFile(Integer rsId);
+
+	int deleteAllFileInFolder(Integer folderId);
 }

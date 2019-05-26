@@ -42,12 +42,12 @@ public class FileBaseDAOimpl implements FileBaseDAO {
 	}
 
 	@Override
-	public String FindFilePathByID(int id) {
+	public String findFilePathByID(int id) {
 		return dButil.exePresqlSelect(String.format("SELECT folder_path FROM %s where id=? limit 1", DBInfo.FILE),new String[]{String.valueOf(id)}).get(0)[0];
 	}
 
 	@Override
-	public String FindFilePathByMD5(String MD5) {
+	public String findFilePathByMD5(String MD5) {
 		return dButil.exePresqlSelect(String.format("SELECT folder_path FROM %s where md5=? limit 1", DBInfo.FILE),new String[]{MD5}).get(0)[0];
 	}
 

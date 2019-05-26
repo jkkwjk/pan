@@ -45,7 +45,9 @@ $(document).ready(function(){
         var obj = $(this).parent().parent();
 
         if(obj.attr('type') == '1') {
-            
+            var rsid = obj.attr('id');
+            var url = base_path+'/file/down?rsid='+rsid;
+            window.location.href=url
         }else {
             alert("open");
         }

@@ -2,6 +2,8 @@ package com.jkk.controller.Disk;
 
 import com.jkk.model.User;
 import com.jkk.service.AttrToken;
+import com.jkk.service.ErrorPath;
+import com.jkk.service.impl.Disk.FileIOdownImpl;
 import com.jkk.service.impl.Disk.FileWithUserImpl;
 
 import javax.servlet.ServletException;
@@ -10,9 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
+import java.io.*;
 
 @WebServlet(name = "ServletDownload",urlPatterns = "/file/down")
 public class ServletDownload extends HttpServlet {
@@ -25,10 +25,19 @@ public class ServletDownload extends HttpServlet {
 		User user = (User) session.getAttribute(AttrToken.USER);
 		FileWithUserImpl fileWithUser = new FileWithUserImpl(user);
 
-		String fileName = "中文";
+		String rsID = request.getParameter("rsid");
+		com.jkk.model.File fileInfo = fileWithUser.getFileInfoByRSID(Integer.parseInt(rsID));
+		if (fileInfo != null){
+			String fileName = fileInfo.getFileName();
+			String fileInSystemPath = fileWithUser.findFilePathByID(fileInfo.getFileId());
 
-		response.setHeader("Content-Type","application/octet-stream");
-		response.setHeader("Content-Disposition","attachment;filename="+fileName);
-		FileInputStream in = new FileInputStream(fileSavePath + File.separator + fileName);
+			FileIOdownImpl downFile = new FileIOdownImpl();
+			downFile.downFile(getServletContext(),fileInSystemPath,fileName,response,
+					fileWithUser.getFileMD5ByID(fileInfo.getFileId()));
+
+		}else {
+			response.sendRedirect(request.getContextPath()+ ErrorPath.html500);
+		}
+
 	}
 }

@@ -70,4 +70,19 @@ public class FileWithUserImpl extends FileBaseImpl implements FileWithUserBiz{
 	public File addFile(File file, String fileMD5, String fileSize,String objPath) {
 		return fileWithUserDAOimpl.addFile(file,fileMD5,fileSize,objPath);
 	}
+
+	@Override
+	public File getFileInfoByRSID(Integer rsID) {
+		return fileWithUserDAOimpl.getFileInfoByRSID(rsID);
+	}
+
+	@Override
+	public int deleteFile(Integer rsId) {
+		return fileWithUserDAOimpl.deleteFile(rsId);
+	}
+
+	@Override
+	public int deleteAllFileInFolder(Integer folderId) {
+		return fileWithUserDAOimpl.deleteAllFileInFolder(folderId);
+	}
 }

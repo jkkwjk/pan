@@ -96,7 +96,23 @@ public class FileWithUserDAOimpl extends FileBaseDAOimpl implements FileWithUser
 
 	@Override
 	public File getFileInfoByRSID(Integer rsID) {
-		dButil.exePresqlGetmap("")
+		List<Map<String,String>> map = dButil.exePresqlGetmap(String.format("SELECT * FROM %s where id=? and user_id=?", DBInfo.USER_FILE),new Object[]{rsID,userId});
+		if (map.size()==0){
+			return null;
+		}else {
+			return getFileFromMapList(map).get(0);
+		}
+
+	}
+
+	@Override
+	public int deleteFile(Integer rsId) {
+		return dButil.exePresqlModifyData(String.format("DELETE FROM %s where id=?", DBInfo.USER_FILE),new Object[]{rsId});
+	}
+
+	@Override
+	public int deleteAllFileInFolder(Integer folderId) {
+		return dButil.exePresqlModifyData(String.format("DELETE FROM %s where folder_id=?", DBInfo.USER_FILE),new Object[]{folderId});
 	}
 
 	/**

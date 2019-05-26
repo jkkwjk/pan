@@ -19,8 +19,10 @@ public class FilterLoginCheck implements Filter {
 		HttpSession session = ((HttpServletRequest)req).getSession();
 		if (session.getAttribute(AttrToken.USER) == null) {
 			((HttpServletResponse)resp).sendRedirect(((HttpServletRequest)req).getContextPath()+ ErrorPath.html500);
+		} else {
+			chain.doFilter(req, resp);
 		}
-		chain.doFilter(req, resp);
+
 	}
 
 	public void init(FilterConfig config) throws ServletException {

@@ -112,7 +112,7 @@ public class DButil {
 	 * @param param
 	 * @return
 	 */
-	public Boolean hasData(String sql, String[] param){
+	public Boolean hasData(String sql, Object[] param){
 		List<String[]> list = exePresqlSelect(sql, param);
 		return !list.isEmpty();
 	}

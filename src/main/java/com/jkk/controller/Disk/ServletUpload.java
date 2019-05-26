@@ -36,9 +36,6 @@ public class ServletUpload extends HttpServlet {
 		FileIOupImpl up = new FileIOupImpl();
 
 		String systemPath = fileUser.getNextFolder();
-		StringBuffer realPath = new StringBuffer(request.getServletContext().getRealPath(""));
-		String uploadPath = realPath.substring(0,realPath.lastIndexOf("\\"));
-		uploadPath = uploadPath.substring(0,uploadPath.lastIndexOf("\\")+1)+"ttt_upload\\"+systemPath;
 
 		try {
 			Map<String,Object> param = up.parseRequest(request);
@@ -67,7 +64,7 @@ public class ServletUpload extends HttpServlet {
 				File file = new File(fileId, fileName, folderId,String.valueOf(new Date().getTime()/1000));
 
 				if (file.getFileId()==null){
-					up.writeFile(uploadPath,item,MD5_confim);
+					up.writeFile(request.getServletContext(),systemPath,item,MD5_confim);
 				}
 
 				fileUser.addFile(file,MD5_confim,fileSize,systemPath);
@@ -85,7 +82,7 @@ public class ServletUpload extends HttpServlet {
 			}
 		} catch (Exception e){
 			response.sendRedirect(request.getContextPath()+ErrorPath.html500);
-			// TODO: 2019/5/25 异常可以捕获但response对象无效?? 
+			// FIXME: 2019/5/25 异常可以捕获但response对象无效??
 		}
 	}
 

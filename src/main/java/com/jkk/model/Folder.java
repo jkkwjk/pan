@@ -1,24 +1,29 @@
 package com.jkk.model;
 
 public class Folder {
-	private int folderId;
+	private Integer folderId;
 	private String name;
-	private String pFloderId;
+	private String time;
+	private Integer pFolderId;
 
-	public Folder() {
+	public Folder(String name, String time, Integer pFolderId) {
+		this.name = name;
+		this.time = time;
+		this.pFolderId = pFolderId;
 	}
 
-	public Folder(int folderId, String name, String pFloderId) {
+	public Folder(Integer folderId, String name, String time, Integer pFolderId) {
 		this.folderId = folderId;
 		this.name = name;
-		this.pFloderId = pFloderId;
+		this.time = time;
+		this.pFolderId = pFolderId;
 	}
 
-	public int getFolderId() {
+	public Integer getFolderId() {
 		return folderId;
 	}
 
-	public void setFolderId(int folderId) {
+	public void setFolderId(Integer folderId) {
 		this.folderId = folderId;
 	}
 
@@ -30,11 +35,22 @@ public class Folder {
 		this.name = name;
 	}
 
-	public String getpFloderId() {
-		return pFloderId;
+	public String getTime() {
+		return time;
 	}
 
-	public void setpFloderId(String pFloderId) {
-		this.pFloderId = pFloderId;
+	public void setTime(String time) {
+		this.time = time;
+	}
+
+	public Integer getpFolderId() {
+		return pFolderId;
+	}
+
+	public Folder() {
+	}
+
+	public void setpFolderId(Integer pFolderId) {
+		this.pFolderId = pFolderId;
 	}
 }

@@ -8,13 +8,14 @@ import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class FileIOupImpl implements FileIOup {
+public class FileIOupImpl extends FileIOBaseImpl implements FileIOup{
 	private static final int MEMORY_LIMIT = 5*1024*1024;
 	private static final int MAX_FILE_SIZE = 100*1024*1024;
 	private static final int MAX_REQUEST_SIZE = 120*1024*1024; //请求大小 防止恶意提交
@@ -30,11 +31,13 @@ public class FileIOupImpl implements FileIOup {
 		upload.setSizeMax(MAX_REQUEST_SIZE);
 	}
 	@Override
-	public void writeFile(String uploadDir, FileItem fileByte, String fileMD5) throws Exception{
-		File existF = new File(uploadDir);
+	public void writeFile(ServletContext context, String folderPath, FileItem fileByte, String fileMD5) throws Exception{
+		String upPath = super.getBasePath(context)+folderPath;
+		File existF = new File(upPath);
 		if (!existF.exists()){existF.mkdir();}
 
-		String filePath = uploadDir + File.separator + fileMD5;
+
+		String filePath = upPath + File.separator + fileMD5;
 		File storeFile = new File(filePath);// 真正要写入的文件
 		fileByte.write(storeFile);
 	}

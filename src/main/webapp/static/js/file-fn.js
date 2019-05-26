@@ -48,10 +48,9 @@ function upload_step1(file){
     loadNext();
 }
 
-function clearPage() {
+function cleanPage() {
     $("#file_table").empty();
     file_num = 0;
-    check_file_arr = new Array();
     file_start=0;
     has_next=1;
 }

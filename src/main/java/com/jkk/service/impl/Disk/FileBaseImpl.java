@@ -31,13 +31,13 @@ public class FileBaseImpl implements FileBaseBiz {
 	}
 
 	@Override
-	public String FindFilePathByID(int id) {
-		return file.FindFilePathByID(id);
+	public String findFilePathByID(int id) {
+		return file.findFilePathByID(id);
 	}
 
 	@Override
-	public String FindFilePathByMD5(String MD5) {
-		return file.FindFilePathByMD5(MD5);
+	public String findFilePathByMD5(String MD5) {
+		return file.findFilePathByMD5(MD5);
 	}
 
 	@Override

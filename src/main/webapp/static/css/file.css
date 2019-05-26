@@ -210,12 +210,12 @@ input[type=checkbox]:checked{
     display: inline-block;
 }
 #tip{
-    height: 50px;
     position: absolute;
     top: 30px;
     margin: auto;
     width: 400px;
     left:0;right:0;
+    vertical-align: middle;
 }
 #tip_input{
     position: absolute;

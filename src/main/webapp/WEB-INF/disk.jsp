@@ -24,7 +24,6 @@
     <script src="${pageContext.request.contextPath}/static/js/file-fn.js"></script>
     <script type="text/javascript">
         var file_num = 0; //显示的文件数
-        var check_file_arr = new Array(); //选择的文件数组
         var file_start = 0; // 文件从哪开始找 分页
         var base_path= "${pageContext.request.contextPath}";
         var folder_id_now = 0; // 当前页面所属用户的文件夹
@@ -34,9 +33,17 @@
 
     <script type="text/javascript">
         $(document).ready(function () {
+            var title;
+            var r;
+            var t;
             $('#tipModal').on('show.bs.modal', function (event) {
                 var button = $(event.relatedTarget);
-                var recipient = button.data('title');
+                title = button.data('title');
+                var placeholder = button.data('placeholder');
+                var spant = button.data('spant');
+                r = button.data('r');
+                t = button.data('t');
+
                 var modal = $(this);
                 var modal_title = modal.find('.modal-title');
                 var modal_input = modal.find('.modal-body input');
@@ -47,13 +54,62 @@
                 modal_input.val('');
                 modal_span.text("");
 
-                modal_title.text(recipient);
-                modal_input.attr('placeholder',recipient);
-                modal_span.text(recipient);
+                modal_title.text(title);
+                modal_input.attr('placeholder',placeholder);
+                modal_span.text(spant);
+
             });
             $('#tipModal').find("#modal_btn").click(function () {
-                alert($('#tipModal').find(".modal-body input").val());
+                var val = $('#tipModal').find(".modal-body input").val();
+                if (val=="" || val==null){
+                    tip_show(title+"不能为空","danger");
+                } else {
+                    switch (r) {
+                        case "new":
+                            $.get(base_path+"/file/c",{'r':r,'val':val,'now':folder_id_now},function (data) {
+                                if (data.status==200){
+                                    cleanPage();
+                                    get_next_file(file_start,folder_id_now);
+                                }else {
+                                    tip_show(data.msg,"danger");
+                                }
+
+                            },"json");
+                            break;
+                        case "rename":
+                            break;
+                    }
+                }
             });
+
+
+            var willDel = [];
+            $('#yesnoModal').on('show.bs.modal', function (event) {
+                willDel = new Array();
+                var button = $(event.relatedTarget);
+                var modal = $(this);
+                var spant = modal.find('#spant');
+
+                $.each($(":checked").parent().parent().parent(),function (x,i) {
+                    var id = $(i).attr('id');
+                    var type = $(i).attr('type');
+                    willDel.push(base_path+"/file/c?r=del&t="+type+"&val="+id);
+                });
+                $(spant).text(willDel.length);
+            });
+            $("#modal_confim").click(function () {
+                (function delRun(index) {
+                    $.get(willDel[index],function () {
+                        if (++index < willDel.length){
+                            delRun(index);
+                        } else {
+                            cleanPage();
+                            get_next_file(file_start,folder_id_now);
+                        }
+                    })
+                })(0);
+            });
+
         });
     </script> <!-- 模态框处理 -->
     <script type="text/javascript">
@@ -87,16 +143,24 @@
                 data:formData,
                 contentType: false,
                 processData: false,
+                beforeSend: function(){
+                    $("#tip_span").text("正在上传,请稍后.....");
+                    $("#alert_div").attr('class','alert alert-info');
+                    my_show();
+                },
                 success: function (ret) {
                     ret = JSON.parse(ret);
                     if(ret.status == '1') {
-                        clearPage();
+                        cleanPage();
                         get_next_file(file_start,folder_id_now);
                         tip_show("上传成功!",'success');
                     }else {
                         tip_show(ret.error_msg,'danger');
                     }
                     $("#upload_file_btn").val("");
+                },
+                error: function () {
+                    tip_show("未知错误","danger");
                 }
             });
         }
@@ -127,8 +191,27 @@
         }
     </script> <!-- 动画 -->
     <script type="text/javascript">
-        
-    </script> <!-- 文件下载 -->
+        $(document).ready(function () {
+            $("#btn_download").click(function () {
+                $.each($(":checked").parent().parent().parent(),function (x,i) {
+                    var rsid = $(i).attr('id');
+                    var url = base_path+'/file/down?rsid='+rsid;
+                    createIFrame(url, 100, 10000);
+                });
+                // 没有好的办法了...
+                function createIFrame(url, triggerDelay, removeDelay) {
+                    setTimeout(function() {
+                        var frame = $('<iframe style="display: none;" class="multi-download"></iframe>');
+                        frame.attr('src', url);
+                        $(document.body).after(frame);
+                        setTimeout(function() {
+                            frame.remove();
+                        }, removeDelay);
+                    }, triggerDelay);
+                }
+            });
+        })
+    </script> <!-- 批量下载 -->
     <script type="text/javascript">
         $(document).ready(function () {
             get_next_file(file_start,folder_id_now);
@@ -239,7 +322,8 @@
                             <input type="file" name="file" id="upload_file_btn">
                         </form>
                     </div>
-                    <button type="button" class="btn btn-light button_main_main_top" data-toggle="modal" data-target="#tipModal" data-title="新建文件夹" style="border: 1px #C3EAFF solid;">
+                    <button type="button" class="btn btn-light button_main_main_top" data-toggle="modal" data-target="#tipModal"
+                            data-title="新建文件夹" data-placeholder="请输入文件夹名字" data-r="new" style="border: 1px #C3EAFF solid;">
                         <span class="glyphicon glyphicon-hdd" style="margin-right: 2px;"></span> 新建文件夹
                     </button>
                     <div class="btn-group button_main_main_top" id="btn_group" style="display: none;">
@@ -250,7 +334,7 @@
                             <span class="glyphicon glyphicon-tags" style="margin-right: 2px;"></span>
                             分享
                         </button>
-                        <button id="btn_delete" type="button" class="btn btn-default button_main_main_top">删除</button>
+                        <button id="btn_delete" type="button" class="btn btn-default button_main_main_top" data-toggle="modal" data-target="#yesnoModal">删除</button>
                         <button id="btn_rename" type="button" class="btn btn-default button_main_main_top">重命名</button>
                     </div>
                 </div>
@@ -306,6 +390,28 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
                         <button type="button" class="btn btn-primary" id="modal_btn" data-dismiss="modal">确定</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 确定取消框 -->
+        <div class="modal fade" id="yesnoModal" tabindex="-1" role="dialog" aria-labelledby="yesnoModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">删除文件</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        确认删除这
+                        <span id="spant"></span>
+                        个文件吗
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">我在想想</button>
+                        <button type="button" class="btn btn-primary" id="modal_confim" data-dismiss="modal">确认</button>
                     </div>
                 </div>
             </div>
