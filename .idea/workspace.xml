@@ -7,37 +7,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3fe5af18-3869-4659-975f-9ad1c6e92fc9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jkk/controller/Disk/ServletCommon.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jkk/dao/impl/Disk/FolderWithUserDAOimpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jkk/dao/inter/Disk/FolderWithUserDAO.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jkk/service/impl/Disk/FileIOBaseImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jkk/service/impl/Disk/FileIOdownImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jkk/service/impl/Disk/FolderWithUserImpl.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jkk/service/inter/Disk/FileIOBase.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jkk/service/inter/Disk/FileIOdown.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jkk/service/inter/Disk/FolderWithUserBiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/Administrator.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/Administrator.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jkk/controller/Disk/ServletDownload.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jkk/controller/Disk/ServletDownload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jkk/controller/Disk/ServletGetFile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jkk/controller/Disk/ServletGetFile.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jkk/controller/Disk/ServletUpload.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jkk/controller/Disk/ServletUpload.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jkk/controller/FilterLoginCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jkk/controller/FilterLoginCheck.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jkk/dao/impl/Disk/FileBaseDAOimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jkk/dao/impl/Disk/FileBaseDAOimpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jkk/dao/impl/Disk/FileWithUserDAOimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jkk/dao/impl/Disk/FileWithUserDAOimpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jkk/dao/inter/Disk/FileBaseDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jkk/dao/inter/Disk/FileBaseDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jkk/dao/inter/Disk/FileWithUserDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jkk/dao/inter/Disk/FileWithUserDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jkk/model/Folder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jkk/model/Folder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jkk/service/impl/Disk/FileBaseImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jkk/service/impl/Disk/FileBaseImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jkk/service/impl/Disk/FileIOupImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jkk/service/impl/Disk/FileIOupImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jkk/service/impl/Disk/FileWithUserImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jkk/service/impl/Disk/FileWithUserImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jkk/service/inter/Disk/FileBaseBiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jkk/service/inter/Disk/FileBaseBiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jkk/service/inter/Disk/FileIOup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jkk/service/inter/Disk/FileIOup.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jkk/service/inter/Disk/FileWithUserBiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jkk/service/inter/Disk/FileWithUserBiz.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jkk/utils/DButil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jkk/utils/DButil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/disk.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/disk.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/file.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/file.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/file-fn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/file-fn.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/js/file.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/js/file.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -50,7 +21,7 @@
     <session id="-874823794">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="22" />
+          <entry key="project.closed" value="23" />
           <entry key="project.open.time.1" value="3" />
           <entry key="project.open.time.10" value="6" />
           <entry key="project.open.time.11" value="2" />
@@ -106,13 +77,13 @@
           <entry key="gitignore" value="11" />
           <entry key="html" value="61" />
           <entry key="java" value="17345" />
-          <entry key="js" value="671" />
+          <entry key="js" value="701" />
           <entry key="json" value="78" />
           <entry key="jsp" value="6232" />
           <entry key="md" value="61" />
           <entry key="properties" value="138" />
           <entry key="tld" value="12" />
-          <entry key="txt" value="75" />
+          <entry key="txt" value="92" />
           <entry key="xml" value="231" />
         </counts>
       </usages-collector>
@@ -124,9 +95,9 @@
           <entry key="JAVA" value="17345" />
           <entry key="JSON" value="78" />
           <entry key="JSP" value="6228" />
-          <entry key="JavaScript" value="671" />
+          <entry key="JavaScript" value="701" />
           <entry key="Markdown" value="61" />
-          <entry key="PLAIN_TEXT" value="157" />
+          <entry key="PLAIN_TEXT" value="174" />
           <entry key="Properties" value="138" />
           <entry key="VTL" value="6" />
           <entry key="XML" value="243" />
@@ -190,11 +161,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/file-fn.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="75">
-              <caret line="3" column="19" lean-forward="true" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
+            <state relative-caret-position="646">
+              <caret line="55" column="42" lean-forward="true" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -211,10 +182,10 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/disk.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="359">
+            <state relative-caret-position="-1066">
               <caret line="146" column="55" selection-start-line="146" selection-start-column="55" selection-end-line="146" selection-end-column="55" />
               <folding>
                 <element signature="n#script#8;n#head#0;n#html#0;n#!!top" />
@@ -363,13 +334,13 @@
         <option value="$PROJECT_DIR$/src/main/java/com/jkk/controller/FilterLoginCheck.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/css/file.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/js/file.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/static/js/file-fn.js" />
         <option value="$PROJECT_DIR$/src/main/java/com/jkk/service/inter/Disk/FolderWithUserBiz.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jkk/dao/inter/Disk/FolderWithUserDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jkk/dao/impl/Disk/FolderWithUserDAOimpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jkk/service/impl/Disk/FolderWithUserImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jkk/controller/Disk/ServletCommon.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/disk.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/js/file-fn.js" />
       </list>
     </option>
   </component>
@@ -669,7 +640,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/src/main/java/com/jkk/test/match.java" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558881187237" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1558881531796" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -913,7 +884,7 @@
       <workItem from="1558755922454" duration="8526000" />
       <workItem from="1558770020734" duration="6389000" />
       <workItem from="1558793209067" duration="2563000" />
-      <workItem from="1558844828004" duration="25302000" />
+      <workItem from="1558844828004" duration="26254000" />
     </task>
     <task id="LOCAL-00001" summary="1.前端完成&#10;2.改写login.jsp">
       <created>1558077748030</created>
@@ -936,11 +907,18 @@
       <option name="project" value="LOCAL" />
       <updated>1558761604657</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="完成新建文件夹,批量下载,批量删除功能">
+      <created>1558881249359</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1558881249360</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="212167000" />
+    <option name="totallyTimeSpent" value="213119000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -953,18 +931,19 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.64306784" visible="true" weight="0.16471216" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.64386535" visible="true" weight="0.16471216" />
       <window_info id="Structure" order="1" sideWeight="0.24525745" side_tool="true" weight="0.14978679" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info id="Capture Tool" order="6" />
-      <window_info id="Web" order="7" sideWeight="0.35693216" side_tool="true" visible="true" weight="0.16471216" />
+      <window_info id="Web" order="7" sideWeight="0.35613462" side_tool="true" visible="true" weight="0.16471216" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.26384366" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.26384366" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.1878393" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1034,7 +1013,8 @@
     <MESSAGE value="1.前端完成&#10;2.改写login.jsp" />
     <MESSAGE value="1.login" />
     <MESSAGE value="完成上传文件界面优化" />
-    <option name="LAST_COMMIT_MESSAGE" value="完成上传文件界面优化" />
+    <MESSAGE value="完成新建文件夹,批量下载,批量删除功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="完成新建文件夹,批量下载,批量删除功能" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -1404,13 +1384,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/file-fn.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="3" column="19" lean-forward="true" selection-start-line="3" selection-start-column="19" selection-end-line="3" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/controller/Disk/ServletCommon.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="353">
@@ -1420,12 +1393,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/disk.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="359">
+        <state relative-caret-position="-1066">
           <caret line="146" column="55" selection-start-line="146" selection-start-column="55" selection-end-line="146" selection-end-column="55" />
           <folding>
             <element signature="n#script#8;n#head#0;n#html#0;n#!!top" />
             <element signature="n#style#0;n#iframe#0;n#!!top" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/file-fn.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="55" column="42" lean-forward="true" selection-start-line="55" selection-start-column="42" selection-end-line="55" selection-end-column="42" />
         </state>
       </provider>
     </entry>

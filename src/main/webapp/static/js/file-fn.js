@@ -53,5 +53,6 @@ function cleanPage() {
     file_num = 0;
     file_start=0;
     has_next=1;
+    $("#btn_group").css("display","none");
 }
 
