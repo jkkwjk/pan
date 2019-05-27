@@ -68,6 +68,7 @@
                         case "new":
                             $.get(base_path+"/file/c",{'r':r,'val':val,'now':folder_id_now},function (data) {
                                 if (data.status==200){
+                                    tip_show("新建文件夹成功","success");1
                                     cleanPage();
                                     get_next_file(file_start,folder_id_now);
                                 }else {
@@ -103,6 +104,7 @@
                         if (++index < willDel.length){
                             delRun(index);
                         } else {
+                            tip_show("删除成功","success");
                             cleanPage();
                             get_next_file(file_start,folder_id_now);
                         }
@@ -369,7 +371,7 @@
             
         </div>
         <div id="tip" style="display: none;">
-            <div class="alert alert-danger" role="alert" style="font-size:17px;text-align: center;" id="alert_div">
+            <div class="alert alert-danger" role="alert" style="font-size:17px;text-align: center;padding: 10px;" id="alert_div">
                 <span id="tip_span"></span>
             </div>
         </div>
