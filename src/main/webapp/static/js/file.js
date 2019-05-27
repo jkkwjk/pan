@@ -52,7 +52,10 @@ $(document).ready(function(){
             var url = base_path+'/file/down?rsid='+rsid;
             window.location.href=url
         }else {
-            alert("open");
+            //todo 层级导航栏
+            folder_id_now = obj.attr('id');
+            cleanPage();
+            get_next_file(file_start,folder_id_now);
         }
         return false;
     }

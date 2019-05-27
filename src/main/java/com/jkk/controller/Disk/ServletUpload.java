@@ -91,7 +91,6 @@ public class ServletUpload extends HttpServlet {
 			retObj.put("status","0");
 			retObj.put("error_msg","文件大小超过限制");
 			out.print(JSON.toJSONString(retObj));
-			// FIXME: 2019/5/25 异常可以捕获但response对象无效??
 		}
 	}
 
