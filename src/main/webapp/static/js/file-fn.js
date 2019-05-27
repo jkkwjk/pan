@@ -54,5 +54,6 @@ function cleanPage() {
     file_start=0;
     has_next=1;
     $("#btn_group").css("display","none");
+    $("#all_file").prop("checked",false);
 }
 

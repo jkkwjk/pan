@@ -30,6 +30,9 @@ $(document).ready(function(){
     /// 全选被单击
     ///
     $("#all_file").bind("click",function(){
+        if (file_num==0){
+            return false;
+        }
         if ($(this).get_checked()) { //check为0
             $(this).uncheck_all();
         } else { //check增加(没文件可能为0)

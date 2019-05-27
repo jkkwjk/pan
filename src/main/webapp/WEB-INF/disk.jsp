@@ -55,7 +55,7 @@
 
                 if(r=='rename'){
                     // 重命名默认打开就有文件名在input中
-                    rename_checked=$($(":checked")[0]).parent().parent();
+                    rename_checked=$($(":checked[id!='all_file']")[0]).parent().parent();
                     modal_input.val(rename_checked.find('.file_name').text());
                 }
 
@@ -93,9 +93,15 @@
                                 data:{'r':r,'val':rename_val,'t':t,'now':folder_id_now},
                                 dataType:'json',
                                 success: function (data) {
-
+                                    if (data.status==200){
+                                        tip_show("重命名成功","success");
+                                        cleanPage();
+                                        get_next_file(file_start,folder_id_now);
+                                    } else {
+                                        tip_show(data.msg,"danger");
+                                    }
                                 }
-                            })
+                            });
                             break;
                     }
                 }
@@ -109,7 +115,7 @@
                 var modal = $(this);
                 var spant = modal.find('#spant');
 
-                $.each($(":checked").parent().parent().parent(),function (x,i) {
+                $.each($(":checked[id!='all_file']").parent().parent().parent(),function (x,i) {
                     var id = $(i).attr('id');
                     var type = $(i).attr('type');
                     willDel.push(base_path+"/file/c?r=del&t="+type+"&val="+id);
@@ -213,7 +219,7 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $("#btn_download").click(function () {
-                $.each($(":checked").parent().parent().parent(),function (x,i) {
+                $.each($(":checked[id!='all_file']").parent().parent().parent(),function (x,i) {
                     var rsid = $(i).attr('id');
                     var url = base_path+'/file/down?rsid='+rsid;
                     createIFrame(url, 100, 10000);

@@ -8,6 +8,7 @@ import com.jkk.service.AttrToken;
 import com.jkk.service.ErrorPath;
 import com.jkk.service.impl.Disk.FileIOupImpl;
 import com.jkk.service.impl.Disk.FileWithUserImpl;
+import com.jkk.service.impl.Disk.FolderWithUserImpl;
 import com.jkk.utils.MD5Util;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
@@ -29,11 +30,13 @@ public class ServletUpload extends HttpServlet {
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute(AttrToken.USER);
 		JSONObject retObj = new JSONObject();
 		PrintWriter out = response.getWriter();
 
-		FileWithUserImpl fileUser = new FileWithUserImpl((User) session.getAttribute(AttrToken.USER));
+		FileWithUserImpl fileUser = new FileWithUserImpl(user);
 		FileIOupImpl up = new FileIOupImpl();
+		FolderWithUserImpl folderWithUser = new FolderWithUserImpl(user);
 
 		String systemPath = fileUser.getNextFolder();
 
@@ -48,7 +51,12 @@ public class ServletUpload extends HttpServlet {
 			Integer folderId = Integer.parseInt((String) param.get("folder"));
 
 			if (folderId != 0) {
-				// TODO: 2019/5/25 文件夹效验 是否为该用户的文件夹 
+				if (!folderWithUser.checkFolder(folderId)){
+					retObj.put("status","0");
+					retObj.put("error_msg","参数错误!");
+					out.print(JSON.toJSONString(retObj));
+					return;
+				}
 			}
 			// 文件名重复
 			if (fileUser.findFileByNameInFolder(folderId,fileName) != null) {
@@ -57,7 +65,6 @@ public class ServletUpload extends HttpServlet {
 				out.print(JSON.toJSONString(retObj));
 				return;
 			}
-
 
 			if (MD5_up.toLowerCase().equals(MD5_confim)) {
 				Integer fileId = fileUser.getFileIdByMD5(MD5_confim);
@@ -81,7 +88,9 @@ public class ServletUpload extends HttpServlet {
 				return;
 			}
 		} catch (Exception e){
-			response.sendRedirect(request.getContextPath()+ErrorPath.html500);
+			retObj.put("status","0");
+			retObj.put("error_msg","文件大小超过限制");
+			out.print(JSON.toJSONString(retObj));
 			// FIXME: 2019/5/25 异常可以捕获但response对象无效??
 		}
 	}

@@ -40,16 +40,18 @@ public class ServletGetFile extends HttpServlet {
 			List<Folder> folderList = folderWithUser.getAllFolderInPfolder(Integer.parseInt(pFolder));
 
 			nowNum += folderList.size();
-			for (Folder folder : folderList) {
-				JSONObject o = new JSONObject();
-				o.put("rs_id",folder.getFolderId());
-				o.put("file_type","0");
-				o.put("file_name",folder.getName());
-				o.put("file_size", "-");
-				o.put("file_time", StampDate.stampToDate(folder.getTime()));
+			if (folderList.size()!=0){
+				for (Folder folder : folderList) {
+					JSONObject o = new JSONObject();
+					o.put("rs_id",folder.getFolderId());
+					o.put("file_type","0");
+					o.put("file_name",folder.getName());
+					o.put("file_size", "-");
+					o.put("file_time", StampDate.stampToDate(folder.getTime()));
 
-				o.put("file_ico", "folder");
-				objectData.add(o);
+					o.put("file_ico", "folder");
+					objectData.add(o);
+				}
 			}
 		}
 
@@ -65,21 +67,26 @@ public class ServletGetFile extends HttpServlet {
 		FileWithUserImpl fileWithUser = new FileWithUserImpl(user);
 		List<File> fileList = fileWithUser.getFileInfo(Integer.parseInt(start),30-nowNum,Integer.parseInt(pFolder));
 
-		objectBase.put("has_next",fileList.size()<30-nowNum? '0':'1');
-		for (File file : fileList) {
-			JSONObject o = new JSONObject();
-			o.put("rs_id",file.getRsId());
-			o.put("file_type","1");
-			String fileName = file.getFileName();
-			o.put("file_name",fileName);
-			o.put("file_size", FilesizeUtil.BToOther(fileWithUser.getFileSizeByID(file.getFileId())));
-			o.put("file_time", StampDate.stampToDate(file.getFileTime()));
+		if (fileList!=null && fileList.size()>0){
+			objectBase.put("has_next",fileList.size()<30-nowNum? '0':'1');
+			objectBase.put("file_num",nowNum+fileList.size());
+			for (File file : fileList) {
+				JSONObject o = new JSONObject();
+				o.put("rs_id",file.getRsId());
+				o.put("file_type","1");
+				String fileName = file.getFileName();
+				o.put("file_name",fileName);
+				o.put("file_size", FilesizeUtil.BToOther(fileWithUser.getFileSizeByID(file.getFileId())));
+				o.put("file_time", StampDate.stampToDate(file.getFileTime()));
 
-			o.put("file_ico", FileIcoTool.getIco(fileName));
-			objectData.add(o);
+				o.put("file_ico", FileIcoTool.getIco(fileName));
+				objectData.add(o);
+			}
+		}else {
+			objectBase.put("has_next",'0');
+			objectBase.put("file_num",nowNum);
 		}
 
-		objectBase.put("file_num",nowNum+fileList.size());
 		objectBase.put("data",objectData);
 		out.print(JSONObject.toJSONString(objectBase));
 	}

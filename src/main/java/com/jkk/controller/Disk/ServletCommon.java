@@ -43,7 +43,7 @@ public class ServletCommon extends HttpServlet {
 		switch (r){
 			case "new":
 			{
-				if (val==null||val.equals("")){
+				if (val==null||val[0].equals("")){
 					response.sendRedirect(request.getContextPath()+ ErrorPath.html500);
 					return;
 				}
@@ -62,7 +62,7 @@ public class ServletCommon extends HttpServlet {
 				break;
 			case "rename":
 			{
-				if (val==null||val.equals("")){
+				if (val==null||val[0].equals("")||val[1].equals("")){
 					response.sendRedirect(request.getContextPath()+ ErrorPath.html500);
 					return;
 				}
@@ -74,14 +74,24 @@ public class ServletCommon extends HttpServlet {
 						if (fileWithUser.renameFile(Integer.parseInt(val[0]),val[1])!=1){
 							ret.put("status",201);
 							ret.put("msg","你TM别乱改我网页!!");
+						}else {
+							ret.put("status",200);
 						}
 					}else {
 						ret.put("status",201);
 						ret.put("msg","文件名重复!");
 					}
 				}else {
-					// TODO: 2019/5/27 文件夹名字重命名 
+					FolderWithUserImpl folderWithUser = new FolderWithUserImpl(user);
+					if (folderWithUser.checkFolder(Integer.parseInt(val[0]))){
+						folderWithUser.renameFolder(Integer.parseInt(val[0]),val[1]);
+						ret.put("status",200);
+					}else {
+						ret.put("status",201);
+						ret.put("msg","重命名失败!");
+					}
 				}
+				out.println(JSON.toJSONString(ret));
 				break;
 			}
 
