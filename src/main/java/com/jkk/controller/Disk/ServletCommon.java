@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONObject;
 import com.jkk.model.Folder;
 import com.jkk.model.User;
 import com.jkk.service.AttrToken;
+import com.jkk.service.ErrorPath;
 import com.jkk.service.impl.Disk.FileWithUserImpl;
 import com.jkk.service.impl.Disk.FolderWithUserImpl;
 import jdk.nashorn.internal.ir.debug.JSONWriter;
@@ -35,17 +36,21 @@ public class ServletCommon extends HttpServlet {
 		User user = (User) session.getAttribute(AttrToken.USER);
 		String r = request.getParameter("r");
 		String t = request.getParameter("t");
-		String val = request.getParameter("val");
+		String[] val = request.getParameterValues("val");
 		String now = request.getParameter("now");
 
 		PrintWriter out = response.getWriter();
 		switch (r){
 			case "new":
 			{
+				if (val==null||val.equals("")){
+					response.sendRedirect(request.getContextPath()+ ErrorPath.html500);
+					return;
+				}
 				JSONObject ret = new JSONObject();
 				FolderWithUserImpl folderWithUser = new FolderWithUserImpl(user);
-				if (!folderWithUser.hasFolder(val,Integer.parseInt(now))) {
-					Folder folder = new Folder(val,String.valueOf(new Date().getTime()/1000),Integer.parseInt(now));
+				if (!folderWithUser.hasFolder(val[0],Integer.parseInt(now))) {
+					Folder folder = new Folder(val[0],String.valueOf(new Date().getTime()/1000),Integer.parseInt(now));
 					folderWithUser.addFolder(folder);
 					ret.put("status",200);
 				} else {
@@ -56,20 +61,43 @@ public class ServletCommon extends HttpServlet {
 			}
 				break;
 			case "rename":
+			{
+				if (val==null||val.equals("")){
+					response.sendRedirect(request.getContextPath()+ ErrorPath.html500);
+					return;
+				}
+				JSONObject ret = new JSONObject();
+				if (t.equals("1")) {
+					FileWithUserImpl fileWithUser = new FileWithUserImpl(user);
+					// 文件名称重复检测
+					if (fileWithUser.findFileByNameInFolder(Integer.parseInt(now),val[0])==null){
+						if (fileWithUser.renameFile(Integer.parseInt(val[0]),val[1])!=1){
+							ret.put("status",201);
+							ret.put("msg","你TM别乱改我网页!!");
+						}
+					}else {
+						ret.put("status",201);
+						ret.put("msg","文件名重复!");
+					}
+				}else {
+					// TODO: 2019/5/27 文件夹名字重命名 
+				}
 				break;
+			}
+
 			case "del":
 			{
 				FileWithUserImpl fileWithUser = new FileWithUserImpl(user);
 
 				if (t.equals("1")) {
 					//文件
-					System.out.print("删除文件"+val);
-					fileWithUser.deleteFile(Integer.parseInt(val));
+					fileWithUser.deleteFile(Integer.parseInt(val[0]));
 				} else {
 					//文件夹
 					FolderWithUserImpl folderWithUser = new FolderWithUserImpl(user);
-					folderWithUser.deleteFolder(Integer.parseInt(val));
-					fileWithUser.deleteAllFileInFolder(Integer.parseInt(val)); //删除文件夹下所有文件
+					folderWithUser.deleteFolder(Integer.parseInt(val[0]));
+					folderWithUser.deleteAllFolderInPfolder(Integer.parseInt(val[0])); //删除文件夹下所有文件夹
+					fileWithUser.deleteAllFileInFolder(Integer.parseInt(val[0])); //删除文件夹下所有文件
 				}
 				break;
 			}

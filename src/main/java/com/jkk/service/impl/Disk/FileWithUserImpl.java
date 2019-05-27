@@ -85,4 +85,9 @@ public class FileWithUserImpl extends FileBaseImpl implements FileWithUserBiz{
 	public int deleteAllFileInFolder(Integer folderId) {
 		return fileWithUserDAOimpl.deleteAllFileInFolder(folderId);
 	}
+
+	@Override
+	public int renameFile(Integer rsId, String fileName) {
+		return fileWithUserDAOimpl.renameFile(rsId,fileName);
+	}
 }

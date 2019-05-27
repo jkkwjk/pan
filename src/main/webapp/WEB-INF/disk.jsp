@@ -35,14 +35,13 @@
         $(document).ready(function () {
             var title;
             var r;
-            var t;
+            var rename_checked;
             $('#tipModal').on('show.bs.modal', function (event) {
                 var button = $(event.relatedTarget);
                 title = button.data('title');
                 var placeholder = button.data('placeholder');
                 var spant = button.data('spant');
                 r = button.data('r');
-                t = button.data('t');
 
                 var modal = $(this);
                 var modal_title = modal.find('.modal-title');
@@ -53,6 +52,12 @@
                 modal_input.attr('placeholder',"");
                 modal_input.val('');
                 modal_span.text("");
+
+                if(r=='rename'){
+                    // 重命名默认打开就有文件名在input中
+                    rename_checked=$($(":checked")[0]).parent().parent();
+                    modal_input.val(rename_checked.find('.file_name').text());
+                }
 
                 modal_title.text(title);
                 modal_input.attr('placeholder',placeholder);
@@ -68,7 +73,7 @@
                         case "new":
                             $.get(base_path+"/file/c",{'r':r,'val':val,'now':folder_id_now},function (data) {
                                 if (data.status==200){
-                                    tip_show("新建文件夹成功","success");1
+                                    tip_show("新建成功","success");
                                     cleanPage();
                                     get_next_file(file_start,folder_id_now);
                                 }else {
@@ -78,6 +83,19 @@
                             },"json");
                             break;
                         case "rename":
+                            var t=rename_checked.parent().attr('type');
+                            var id=rename_checked.parent().attr('id');
+                            var rename_val = [id,val];
+                            $.ajax({
+                                type:'GET',
+                                traditional:true,
+                                url:base_path+"/file/c",
+                                data:{'r':r,'val':rename_val,'t':t,'now':folder_id_now},
+                                dataType:'json',
+                                success: function (data) {
+
+                                }
+                            })
                             break;
                     }
                 }
@@ -337,7 +355,8 @@
                             分享
                         </button>
                         <button id="btn_delete" type="button" class="btn btn-default button_main_main_top" data-toggle="modal" data-target="#yesnoModal">删除</button>
-                        <button id="btn_rename" type="button" class="btn btn-default button_main_main_top">重命名</button>
+                        <button id="btn_rename" type="button" class="btn btn-default button_main_main_top" data-toggle="modal" data-target="#tipModal"
+                                data-title="重命名" data-placeholder="请输入名称" data-r="rename">重命名</button>
                     </div>
                 </div>
 

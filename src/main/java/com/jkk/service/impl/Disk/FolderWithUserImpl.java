@@ -43,4 +43,9 @@ public class FolderWithUserImpl implements FolderWithUserBiz {
 	public boolean hasFolder(String folderName, Integer parFolderId) {
 		return folderWithUserDAOimpl.hasFolder(folderName,parFolderId);
 	}
+
+	@Override
+	public int renameFolder(Integer folderId, String name) {
+		return folderWithUserDAOimpl.renameFolder(folderId,name);
+	}
 }

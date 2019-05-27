@@ -16,4 +16,6 @@ public interface FolderWithUserBiz {
 	int deleteAllFolderInPfolder(Integer parFolder);
 
 	boolean hasFolder(String folderName,Integer parFolderId);
+
+	int renameFolder(Integer folderId,String name);
 }

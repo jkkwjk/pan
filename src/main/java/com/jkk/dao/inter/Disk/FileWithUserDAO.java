@@ -26,4 +26,6 @@ public interface FileWithUserDAO extends FileBaseDAO{
 	int deleteFile(Integer rsId);
 
 	int deleteAllFileInFolder(Integer folderId);
+
+	int renameFile(Integer rsId,String fileName);
 }

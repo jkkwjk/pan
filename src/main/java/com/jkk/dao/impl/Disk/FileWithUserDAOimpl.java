@@ -115,6 +115,12 @@ public class FileWithUserDAOimpl extends FileBaseDAOimpl implements FileWithUser
 		return dButil.exePresqlModifyData(String.format("DELETE FROM %s where folder_id=?", DBInfo.USER_FILE),new Object[]{folderId});
 	}
 
+	@Override
+	public int renameFile(Integer rsId, String fileName) {
+		return dButil.exePresqlModifyData(String.format("UPDATE %s set file_name=? where user_id=? and id=?", DBInfo.USER_FILE),
+				new Object[]{fileName,userId,rsId});
+	}
+
 	/**
 	 * 要求 select * from DBInfo.USER_FILE
 	 * @param map
