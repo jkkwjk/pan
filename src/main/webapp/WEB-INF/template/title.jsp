@@ -34,11 +34,12 @@
                     </div>
                 </div>
             </div>
-            <input type="text" class="form-control" placeholder="搜索文件" aria-describedby="basic-addon1" style="display: inline;width: 200px;border-radius: 100px;">
-            <button class="btn_search" style="font-size: 100%;margin-left: -35px;">
-                <span class="glyphicon glyphicon-search" style="margin-left: 5px;font-size: 15px;"></span>
-            </button>
-
+            <form action="${pageContext.request.contextPath}/file/search" method="get" id="form_search" style="display: none;">
+                <input type="text" class="form-control" placeholder="搜索文件" name="name" style="display: inline;width: 200px;border-radius: 100px;">
+                <button class="btn_search" style="font-size: 100%;margin-left: -35px;">
+                    <span class="glyphicon glyphicon-search" style="margin-left: 5px;font-size: 15px;"></span>
+                </button>
+            </form>
         </div>
     </div>
 </div>

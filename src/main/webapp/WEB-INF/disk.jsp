@@ -240,7 +240,15 @@
     </script> <!-- 批量下载 -->
     <script type="text/javascript">
         $(document).ready(function () {
+            $(".btn_search").click(function () {
+                alert("pok");
+            });
+        });
+    </script><!-- 搜索文件 -->
+    <script type="text/javascript">
+        $(document).ready(function () {
             get_next_file(file_start,folder_id_now);
+            $("#form_search").css('display','inline');
         });
     </script><!-- 初始化页面 -->
 </head>

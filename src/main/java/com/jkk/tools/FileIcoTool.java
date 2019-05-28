@@ -10,7 +10,7 @@ public class FileIcoTool {
 		int i = fileName.lastIndexOf('.');
 
 		if (i!=-1) {
-			String suffix = fileName.substring(i+1,fileName.length()).toLowerCase();
+			String suffix = fileName.substring(i+1).toLowerCase();
 			String Ico_f = (String) map.get(suffix);
 			if (Ico_f!=null){
 				fileIco = Ico_f;
