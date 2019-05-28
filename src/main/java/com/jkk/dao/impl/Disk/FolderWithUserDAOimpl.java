@@ -67,7 +67,7 @@ public class FolderWithUserDAOimpl implements FolderWithUserDAO {
 
 	@Override
 	public int renameFolder(Integer folderId, String name) {
-		return dButil.exePresqlModifyData(String.format("UPDATE %s set name=? where user_id=? and id=?", DBInfo.USER_FILE),
+		return dButil.exePresqlModifyData(String.format("UPDATE %s set name=? where user_id=? and id=?", DBInfo.FOLDER),
 				new Object[]{name,userID,folderId});
 	}
 }

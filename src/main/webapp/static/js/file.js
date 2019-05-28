@@ -2,6 +2,20 @@
 //对于文件 lable为md5 filetype=1
 //安全可选: 交提下载请求后 应判断md5和文件名是否为该用户
 $(document).ready(function(){
+    $(document).on("click","#ol_leader>li>a",ol_leader_click);
+    function ol_leader_click() {
+        var obj = $(this).parent();
+        obj.nextAll().remove();
+
+        obj.html($(this).text());
+
+        folder_id_now = obj.attr('fid');
+
+        cleanPage();
+        get_next_file(file_start,folder_id_now);
+
+        return false;
+    };
     ///
     /// 表格列单击 只会增加check数量
     ///
@@ -52,8 +66,13 @@ $(document).ready(function(){
             var url = base_path+'/file/down?rsid='+rsid;
             window.location.href=url
         }else {
-            //todo 层级导航栏
             folder_id_now = obj.attr('id');
+            var name = obj.find('.file_name').text();
+            $("#ol_leader").append("<li fid=\""+folder_id_now+"\">"+name+"</li>");
+            // 对倒数第二个对象可点击处理
+            var add_click_obj = $("#ol_leader>li").eq(-2);
+            add_click_obj.html("<a href='#'>"+ add_click_obj.html() +"</a>");
+
             cleanPage();
             get_next_file(file_start,folder_id_now);
         }

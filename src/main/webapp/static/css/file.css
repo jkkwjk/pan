@@ -134,7 +134,7 @@ input[type=checkbox]:checked{
     overflow-x: hidden;
     padding-top: 10px;
     width: 100%;
-    height: calc(100% - 103px);
+    height: calc(100% - 107px);
     padding-right: 10px;
 }
 #file_main::-webkit-scrollbar {
@@ -222,4 +222,14 @@ input[type=checkbox]:checked{
     left: 30%;
     right: 30%;
     height: 100px;
+}
+#ol_leader{
+    background-color: white;
+    width: 70%;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    margin-bottom: 0px;
+    padding: 0px;
+    text-overflow: ellipsis;
 }

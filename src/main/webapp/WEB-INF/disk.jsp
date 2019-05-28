@@ -245,7 +245,7 @@
     </script><!-- 初始化页面 -->
 </head>
 <body>
-    <div id="warp" style="min-width: 1100px;user-select: none;">
+    <div id="warp" style="min-width: 1000px;user-select: none;">
         <%@include file="template/title.jsp"%>
         <div id="main">
             <div id="main_left" style="position: relative;">
@@ -325,7 +325,9 @@
                 </div>
 
                 <div style="padding-right: 20px;padding-left: 20px;">
-                    <span>全部文件</span>
+                    <ol class="breadcrumb" id="ol_leader">
+                        <li fid="0">全部文件</li>
+                    </ol>
                     <div style="float: right">
                         <span>共加载</span>
                         <span id="file_num">0</span>

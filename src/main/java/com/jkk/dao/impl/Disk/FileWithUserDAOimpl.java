@@ -107,12 +107,12 @@ public class FileWithUserDAOimpl extends FileBaseDAOimpl implements FileWithUser
 
 	@Override
 	public int deleteFile(Integer rsId) {
-		return dButil.exePresqlModifyData(String.format("DELETE FROM %s where id=?", DBInfo.USER_FILE),new Object[]{rsId});
+		return dButil.exePresqlModifyData(String.format("DELETE FROM %s where id=? and user_id=?", DBInfo.USER_FILE),new Object[]{rsId,userId});
 	}
 
 	@Override
 	public int deleteAllFileInFolder(Integer folderId) {
-		return dButil.exePresqlModifyData(String.format("DELETE FROM %s where folder_id=?", DBInfo.USER_FILE),new Object[]{folderId});
+		return dButil.exePresqlModifyData(String.format("DELETE FROM %s where folder_id=? and user_id=?", DBInfo.USER_FILE),new Object[]{folderId,userId});
 	}
 
 	@Override

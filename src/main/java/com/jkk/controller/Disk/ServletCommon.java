@@ -106,8 +106,6 @@ public class ServletCommon extends HttpServlet {
 					//文件夹
 					FolderWithUserImpl folderWithUser = new FolderWithUserImpl(user);
 					folderWithUser.deleteFolder(Integer.parseInt(val[0]));
-					folderWithUser.deleteAllFolderInPfolder(Integer.parseInt(val[0])); //删除文件夹下所有文件夹
-					fileWithUser.deleteAllFileInFolder(Integer.parseInt(val[0])); //删除文件夹下所有文件
 				}
 				break;
 			}
