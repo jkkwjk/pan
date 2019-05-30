@@ -7,11 +7,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3fe5af18-3869-4659-975f-9ad1c6e92fc9" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/jkk/controller/Disk/ServletFileSearch.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jkk/tools/FileIcoTool.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jkk/tools/FileIcoTool.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/disk.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/disk.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/template/title.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/template/title.jsp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -111,7 +107,7 @@
     <session id="-191014818">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="4" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.13" value="1" />
           <entry key="project.open.time.14" value="1" />
@@ -152,7 +148,7 @@
           <entry key="js" value="1069" />
           <entry key="jsp" value="1196" />
           <entry key="properties" value="58" />
-          <entry key="txt" value="33" />
+          <entry key="txt" value="41" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
@@ -162,7 +158,7 @@
           <entry key="JAVA" value="1029" />
           <entry key="JSP" value="1196" />
           <entry key="JavaScript" value="1069" />
-          <entry key="PLAIN_TEXT" value="34" />
+          <entry key="PLAIN_TEXT" value="42" />
           <entry key="Properties" value="58" />
         </counts>
       </usages-collector>
@@ -206,8 +202,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/controller/Disk/ServletFileSearch.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="275">
-              <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="398">
+              <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
             </state>
           </provider>
         </entry>
@@ -512,7 +508,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/src/main/java/com/jkk/test/match.java" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559044255912" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559044373088" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -759,7 +755,7 @@
       <workItem from="1558844828004" duration="26254000" />
       <workItem from="1558924647467" duration="8643000" />
       <workItem from="1558953637543" duration="7480000" />
-      <workItem from="1559022580734" duration="15169000" />
+      <workItem from="1559022580734" duration="15203000" />
     </task>
     <task id="LOCAL-00001" summary="1.前端完成&#10;2.改写login.jsp">
       <created>1558077748030</created>
@@ -824,11 +820,18 @@
       <option name="project" value="LOCAL" />
       <updated>1559040554962</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="增加文件搜索功能">
+      <created>1559044385542</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1559044385542</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="244411000" />
+    <option name="totallyTimeSpent" value="244445000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -843,17 +846,17 @@
     <frame x="-7" y="-7" width="1563" height="845" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6389961" visible="true" weight="0.1807309" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.64044946" visible="true" weight="0.1807309" />
       <window_info id="Structure" order="1" sideWeight="0.24525745" side_tool="true" weight="0.14978679" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info id="Capture Tool" order="6" />
-      <window_info id="Web" order="7" sideWeight="0.36100388" side_tool="true" visible="true" weight="0.1807309" />
+      <window_info id="Web" order="7" sideWeight="0.35955057" side_tool="true" visible="true" weight="0.1807309" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49966776" visible="true" weight="0.2724719" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49966776" weight="0.2724719" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.28792134" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -929,7 +932,8 @@
     <MESSAGE value="重构4" />
     <MESSAGE value="push" />
     <MESSAGE value="数据库结构优化" />
-    <option name="LAST_COMMIT_MESSAGE" value="数据库结构优化" />
+    <MESSAGE value="增加文件搜索功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加文件搜索功能" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1328,8 +1332,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/controller/Disk/ServletFileSearch.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="275">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="398">
+          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
         </state>
       </provider>
     </entry>
