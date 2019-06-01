@@ -70,4 +70,9 @@ public class FolderWithUserDAOimpl implements FolderWithUserDAO {
 		return dButil.exePresqlModifyData(String.format("UPDATE %s set name=? where user_id=? and id=?", DBInfo.FOLDER),
 				new Object[]{name,userID,folderId});
 	}
+
+	@Override
+	public String getFolderName(Integer folderId) {
+		return dButil.exePresqlSelect(String.format("SELECT name from %s where id=? and user_id=?", DBInfo.FOLDER),new Object[]{folderId,userID}).get(0)[0];
+	}
 }

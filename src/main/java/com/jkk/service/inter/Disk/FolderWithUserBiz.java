@@ -18,4 +18,6 @@ public interface FolderWithUserBiz {
 	boolean hasFolder(String folderName,Integer parFolderId);
 
 	int renameFolder(Integer folderId,String name);
+
+	String getFolderName(Integer folderId);
 }

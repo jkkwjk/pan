@@ -48,4 +48,9 @@ public class FolderWithUserImpl implements FolderWithUserBiz {
 	public int renameFolder(Integer folderId, String name) {
 		return folderWithUserDAOimpl.renameFolder(folderId,name);
 	}
+
+	@Override
+	public String getFolderName(Integer folderId) {
+		return folderWithUserDAOimpl.getFolderName(folderId);
+	}
 }

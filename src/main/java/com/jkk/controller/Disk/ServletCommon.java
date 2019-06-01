@@ -22,15 +22,25 @@ import java.util.Date;
 
 @WebServlet(name = "ServletCommon",urlPatterns = "/file/c")
 
-/**
- *    负责 轻量级的请求 (新建文件夹 文件夹以及文件重命名 文件夹以及文件的删除)
- *    请求格式  r=new/rename/del  t=0/1 1文件0文件夹  val=    now=当前所在folder
- */
+
 public class ServletCommon extends HttpServlet {
+	/**
+	 *  负责 获得总容量和用户使用容量
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute(AttrToken.USER);
+		FileWithUserImpl fileWithUser = new FileWithUserImpl(user);
+
+		JSONObject ret = new JSONObject();
+		String used = fileWithUser.getAllFileSize();
 
 	}
 
+	/**
+	 *    负责 轻量级的请求 (新建文件夹 文件夹以及文件重命名 文件夹以及文件的删除)
+	 *    请求格式  r=new/rename/del  t=0/1 1文件0文件夹  val=    now=当前所在folder
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute(AttrToken.USER);
@@ -43,12 +53,13 @@ public class ServletCommon extends HttpServlet {
 		switch (r){
 			case "new":
 			{
-				if (val==null||val[0].equals("")){
+				FolderWithUserImpl folderWithUser = new FolderWithUserImpl(user);
+				if (val==null||val[0].equals("")|| (!now.equals("0") && !folderWithUser.checkFolder(Integer.parseInt(now)))){
 					response.sendRedirect(request.getContextPath()+ ErrorPath.html500);
 					return;
 				}
 				JSONObject ret = new JSONObject();
-				FolderWithUserImpl folderWithUser = new FolderWithUserImpl(user);
+
 				if (!folderWithUser.hasFolder(val[0],Integer.parseInt(now))) {
 					Folder folder = new Folder(val[0],String.valueOf(new Date().getTime()/1000),Integer.parseInt(now));
 					folderWithUser.addFolder(folder);

@@ -34,8 +34,15 @@ public class FileWithUserDAOimpl extends FileBaseDAOimpl implements FileWithUser
 	}
 
 	@Override
+	public List<File> getAll() {
+		List<Map<String,String>> map = dButil.exePresqlGetmap(String.format("SELECT * FROM %s where user_id=?", DBInfo.USER_FILE),new Object[]{userId});
+
+		return getFileFromMapList(map);
+	}
+
+	@Override
 	public int getAllFileCount() {
-		return dButil.exePresqlSelect(String.format("SELECT id FROM %s where user_id=?", DBInfo.USER_FILE),new String[]{userId}).size();
+		return Integer.parseInt(dButil.exePresqlSelect(String.format("SELECT count(id) FROM %s where user_id=?", DBInfo.USER_FILE),new String[]{userId}).get(0)[0]);
 	}
 
 	@Override

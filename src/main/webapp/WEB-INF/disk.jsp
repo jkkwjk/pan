@@ -241,14 +241,49 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $(".btn_search").click(function () {
-                alert("pok");
+                cleanPage();
+                start_search("搜索到的文件");
+                $("#left_list_active").attr('id',''); //左边列表没有选中的对象
+                search_file($("#search_val").val());
+            });
+            $(".a_left").click(function () {
+                $("#left_list_active").attr('id','');
+                $(this).attr('id','left_list_active');
+
+                var reg = $(this).find('li').attr('reg');
+                var action = $(this).find('li').attr('action');
+                if (reg != null && reg!= ""){
+                    cleanPage();
+                    start_search($(this).find('li').text()+"文件");
+                    $.get(base_path+'/file/search',{'name':reg},function (data) {
+                        $.each(data.data,function (i,item) {
+                            parse_file(item);
+                        });
+                        file_num += parseInt(data.file_num);
+                        $("#file_num").text(file_num);
+                    },'json');
+                } else {
+                    switch (action) {
+                        case "all":
+                            stop_search(0,"全部文件");
+                            get_next_file(file_start,folder_id_now);
+                            break;
+                        case "share":
+                            break;
+                    }
+                }
+                return false;
             });
         });
-    </script><!-- 搜索文件 -->
+    </script><!-- 搜索以及左列表框事件处理 -->
     <script type="text/javascript">
         $(document).ready(function () {
             get_next_file(file_start,folder_id_now);
             $("#form_search").css('display','inline');
+
+            // 获取总容量
+            $("#span_used_capacity")
+            $("#span_all_capacity").text()
         });
     </script><!-- 初始化页面 -->
 </head>
@@ -259,26 +294,20 @@
             <div id="main_left" style="position: relative;">
                 <ul class="ul_my">
                     <a href="#" class="a_left" style="margin-top: 10px;" id="left_list_active"> <!--bug可能-->
-                        <li class="li_left">
+                        <li class="li_left" action="all">
                             <span class="glyphicon glyphicon-folder-open" id="glyphicon_li_left"></span> <!--图标-->
                             全部文件
                         </li>
                     </a>
-                    <a href="#" class="a_left"><li class="li_left">图片</li></a>
-                    <a href="#" class="a_left"><li class="li_left">视频</li></a>
-                    <a href="#" class="a_left"><li class="li_left">音乐</li></a>
-                    <a href="#" class="a_left"><li class="li_left">文档</li></a>
-                    <a href="#" class="a_left"><li class="li_left">其他</li></a>
+                    <a href="#" class="a_left"><li class="li_left" reg=".*.(jpg|png|gif)">图片</li></a>
+                    <a href="#" class="a_left"><li class="li_left" reg=".*.(mp4|avi|mpg|mov|flv)">视频</li></a>
+                    <a href="#" class="a_left"><li class="li_left" reg=".*.(mp3|wma|wav)">音乐</li></a>
+                    <a href="#" class="a_left"><li class="li_left" reg=".*.pdf">文档</li></a>
+                    <a href="#" class="a_left"><li class="li_left" reg=".*.(doc|docx|ppt|xls|xlsx)">办公</li></a>
                     <a href="#" class="a_left">
-                        <li class="li_left">
+                        <li class="li_left" action="share">
                             <span class="glyphicon glyphicon-paperclip" id="glyphicon_li_left"></span>
                             我的分享
-                        </li>
-                    </a>
-                    <a href="#" class="a_left">
-                        <li class="li_left">
-                            <span class="glyphicon glyphicon-trash" id="glyphicon_li_left"></span>
-                            回收站
                         </li>
                     </a>
                 </ul>
@@ -301,23 +330,25 @@
             </div>
             <div id="main_main">
                 <div id="main_main_top">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="glyphicon glyphicon-cloud-upload" style="margin-right: 2px;"></span>上传
+                    <div id="search_display" style="display: inline-block;">
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="glyphicon glyphicon-cloud-upload" style="margin-right: 2px;"></span>上传
+                            </button>
+                            <ul class="dropdown-menu">
+                                <li id="upload_file"><a href="#">上传文件</a></li>
+                                <li role="separator" class="divider" style="margin: 2px 0;"></li>
+                                <li id="upload_folder"><a href="#">上传文件夹</a></li>
+                            </ul>
+                            <form style="display: none;" id="upload_file_form" enctype="multipart/form-data">
+                                <input type="file" name="file" id="upload_file_btn">
+                            </form>
+                        </div>
+                        <button type="button" class="btn btn-light button_main_main_top" data-toggle="modal" data-target="#tipModal"
+                                data-title="新建文件夹" data-placeholder="请输入文件夹名字" data-r="new" style="border: 1px #C3EAFF solid;">
+                            <span class="glyphicon glyphicon-hdd" style="margin-right: 2px;"></span> 新建文件夹
                         </button>
-                        <ul class="dropdown-menu">
-                            <li id="upload_file"><a href="#">上传文件</a></li>
-                            <li role="separator" class="divider" style="margin: 2px 0;"></li>
-                            <li id="upload_folder"><a href="#">上传文件夹</a></li>
-                        </ul>
-                        <form style="display: none;" id="upload_file_form" enctype="multipart/form-data">
-                            <input type="file" name="file" id="upload_file_btn">
-                        </form>
                     </div>
-                    <button type="button" class="btn btn-light button_main_main_top" data-toggle="modal" data-target="#tipModal"
-                            data-title="新建文件夹" data-placeholder="请输入文件夹名字" data-r="new" style="border: 1px #C3EAFF solid;">
-                        <span class="glyphicon glyphicon-hdd" style="margin-right: 2px;"></span> 新建文件夹
-                    </button>
                     <div class="btn-group button_main_main_top" id="btn_group" style="display: none;">
                         <button id="btn_download" type="button" class="btn btn-default button_main_main_top">
                             <span class="glyphicon glyphicon-cloud-download" style="margin-right: 2px;"></span>下载

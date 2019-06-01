@@ -7,6 +7,8 @@ import java.util.List;
 public interface FileWithUserDAO extends FileBaseDAO{
 	List<File> getFileInfo(Integer start,Integer limitSize,Integer folderId);
 
+	List<File> getAll();
+
 	int getAllFileCount();
 
 	String getAllFileSize();

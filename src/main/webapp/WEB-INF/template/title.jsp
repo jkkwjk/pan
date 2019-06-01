@@ -13,7 +13,7 @@
         <div id="title_right">
             <div id="user_name_group">
                 <img src="${pageContext.request.contextPath}/static/img/user/default.jpg" id="user_name_img">
-                <div id="user_name">用户名</div>
+                <div id="user_name">${sessionScope[AttrToken.USER].name}</div>
                 <span class="glyphicon glyphicon-chevron-down" style="margin-right: 20px;"></span><!--向下箭头-->
 
                 <div id="user_name_animation_nomal"><!--隐藏动画-->
@@ -21,7 +21,7 @@
                         <div id="user_name_animation_top_img_bg">
                             <img id="user_name_animation_top_img" src="${pageContext.request.contextPath}/static/img/user/default.jpg">
                         </div>
-                        <span id="user_name_animation_top_username">用户名</span>
+                        <span id="user_name_animation_top_username">${sessionScope[AttrToken.USER].name}</span>
                     </div>
 
                     <div id="user_name_animation_main">
@@ -34,12 +34,12 @@
                     </div>
                 </div>
             </div>
-            <form action="${pageContext.request.contextPath}/file/search" method="get" id="form_search" style="display: none;">
-                <input type="text" class="form-control" placeholder="搜索文件" name="name" style="display: inline;width: 200px;border-radius: 100px;">
+            <div id="form_search" style="display: none;">
+                <input type="text" id="search_val" class="form-control" placeholder="搜索文件" name="name" style="display: inline;width: 200px;border-radius: 100px;">
                 <button class="btn_search" style="font-size: 100%;margin-left: -35px;">
                     <span class="glyphicon glyphicon-search" style="margin-left: 5px;font-size: 15px;"></span>
                 </button>
-            </form>
+            </div>
         </div>
     </div>
 </div>

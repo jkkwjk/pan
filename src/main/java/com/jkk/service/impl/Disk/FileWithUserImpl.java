@@ -30,6 +30,11 @@ public class FileWithUserImpl extends FileBaseImpl implements FileWithUserBiz{
 	}
 
 	@Override
+	public List<File> getAll() {
+		return fileWithUserDAOimpl.getAll();
+	}
+
+	@Override
 	public int getAllFileCount() {
 		return fileWithUserDAOimpl.getAllFileCount();
 	}

@@ -60,6 +60,7 @@
     display: inline-block;
 }
 #user_name{
+    font-size: 15px;
     display: inline-block;
     margin-right: 10px;
 }
