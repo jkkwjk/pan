@@ -9,3 +9,5 @@ test/
 *.rar
 # maven生成文件
 target/
+#idea
+.idea/workspace.xml
