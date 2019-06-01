@@ -7,15 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/default.css"> <!--link_tag -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/title.css"> <!--link_tag -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/user_info_default.css"> <!--link_tag -->
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/user_info.css"> <!--link_tag -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/default.css"> <!--link_tag -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/title.css"> <!--link_tag -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/user_info_default.css"> <!--link_tag -->
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/user_info.css"> <!--link_tag -->
 
     <title>个人信息</title>
-    <script src="${pageContext.request.contextPath}/js/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/js/title.js"></script>
-    <script src="${pageContext.request.contextPath}/js/jquery-from.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/title.js"></script>
+    <script src="${pageContext.request.contextPath}/static/js/jquery-from.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
 <body>
@@ -26,7 +26,7 @@
             <div id="left_list">
                 <div id="left_list_userinfo">
                     <div id="left_list_userinfo_username">
-                        <img src="${pageContext.request.contextPath}/img/user/default.jpg" style="width: 70px;height: 70px;">
+                        <img src="${pageContext.request.contextPath}/static/img/user/default.jpg" style="width: 70px;height: 70px;">
                         <div id="left_list_userinfo_username_right">
                             <p style="margin-top: 20px;">
                                 <span class="span_left_list_userinfo_username" style="font-family: 微软雅黑;">用户名</span>
@@ -100,7 +100,7 @@
                         </div>
                     </div>
                     <div id="right_main_main_right">
-                        <input id="change_img" type="image" src="img/user/default.jpg" width="100" height="100">
+                        <input id="change_img" type="image" src="${pageContext.request.contextPath}/static/img/user/default.jpg" width="100" height="100">
                         <div id="in_img_tip">
                             <span class="glyphicon glyphicon-pencil"></span>
                             <span>点击以编辑</span>

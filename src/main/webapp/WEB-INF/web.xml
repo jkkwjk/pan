@@ -105,7 +105,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>ServletUserCommon</servlet-name>
-        <url-pattern>/user</url-pattern>
+        <url-pattern>/user/c</url-pattern>
     </servlet-mapping>
 
     <servlet>

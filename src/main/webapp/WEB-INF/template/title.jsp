@@ -3,6 +3,7 @@
     <div id="title_left" style="background-image: url(${pageContext.request.contextPath}/static/img/file/logo.png);"></div>
     <div id="title_main">
         <ul class="ul_my" id="ul_title">
+            <!-- todo 导航栏变成可复用的 -->
             <li class="li_float_left li_title title_active" style="margin-left: 10px;">
                 <a href="#" class="a_block">文件</a>
             </li>
@@ -26,7 +27,7 @@
 
                     <div id="user_name_animation_main">
                         <ul class="ul_my">
-                            <a href="#" class="a_user_name_animation"><li>个人资料</li></a>
+                            <a href="${pageContext.request.contextPath}/user/c?url=user%2Fuser.jsp" class="a_user_name_animation"><li>个人资料</li></a>
                             <!-- 无二级密码跳设置 有跳修改密码-->
                             <a href="#" class="a_user_name_animation"><li>二级密码</li></a>
                             <a href="#" class="a_user_name_animation"><li>退出</li></a>
