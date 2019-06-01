@@ -22,7 +22,6 @@ import java.io.PrintWriter;
 import java.util.*;
 import java.util.regex.Pattern;
 
-@WebServlet(name = "ServletFileSearch",urlPatterns = "/file/search")
 public class ServletFileSearch extends HttpServlet {
 	Map<String,String> FileTypemap = new HashMap<>();
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

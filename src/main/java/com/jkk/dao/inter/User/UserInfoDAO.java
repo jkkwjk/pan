@@ -1,8 +1,8 @@
-package com.jkk.service.inter.User;
+package com.jkk.dao.inter.User;
 
 import com.jkk.model.UserInfo;
 
-public interface UserInfoBiz {
+public interface UserInfoDAO {
 	UserInfo getInfo();
 
 	boolean updateAll(UserInfo userInfo);
@@ -21,4 +21,3 @@ public interface UserInfoBiz {
 
 	boolean updateMaxSize(String val);
 }
-

@@ -282,14 +282,18 @@
             $("#form_search").css('display','inline');
 
             // 获取总容量
-            $("#span_used_capacity")
-            $("#span_all_capacity").text()
+            $.post(base_path+"/file/c",function (data) {
+                $("#span_used_capacity").text(data.used);
+                $("#span_all_capacity").text(data.max);
+                $("#vol").css('width',data.scale+'%');
+            },'json')
+
         });
     </script><!-- 初始化页面 -->
 </head>
 <body>
     <div id="warp" style="min-width: 1000px;user-select: none;">
-        <%@include file="template/title.jsp"%>
+        <%@include file="/WEB-INF/template/title.jsp"%>
         <div id="main">
             <div id="main_left" style="position: relative;">
                 <ul class="ul_my">
@@ -313,10 +317,9 @@
                 </ul>
                 <div id="left_bottom">
                     <div id="left_process_bar">
-                        <!-- 进度条示例 -->
                         <div class="progress" style="height: 5px;">
                             <!-- 进度条填充 -->
-                            <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;"></div>
+                            <div class="progress-bar" style="width: 60%;" id="vol"></div>
                         </div>
                     </div>
                     <!-- 后端交互 -->

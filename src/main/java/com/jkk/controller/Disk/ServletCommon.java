@@ -4,11 +4,13 @@ import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.jkk.model.Folder;
 import com.jkk.model.User;
+import com.jkk.model.UserInfo;
 import com.jkk.service.AttrToken;
 import com.jkk.service.ErrorPath;
 import com.jkk.service.impl.Disk.FileWithUserImpl;
 import com.jkk.service.impl.Disk.FolderWithUserImpl;
-import jdk.nashorn.internal.ir.debug.JSONWriter;
+import com.jkk.service.impl.User.UserInfoImpl;
+import com.jkk.utils.FilesizeUtil;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,23 +20,35 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.math.BigDecimal;
 import java.util.Date;
-
-@WebServlet(name = "ServletCommon",urlPatterns = "/file/c")
-
 
 public class ServletCommon extends HttpServlet {
 	/**
 	 *  负责 获得总容量和用户使用容量
 	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		User user = (User) session.getAttribute(AttrToken.USER);
+		PrintWriter out = response.getWriter();
 		FileWithUserImpl fileWithUser = new FileWithUserImpl(user);
+		UserInfoImpl userInfoImpl = new UserInfoImpl(user);
 
 		JSONObject ret = new JSONObject();
-		String used = fileWithUser.getAllFileSize();
+		UserInfo userInfo = userInfoImpl.getInfo();
 
+		String max = userInfo.getMax_filesize();
+		ret.put("max", FilesizeUtil.BToOther(max));
+
+		String used = fileWithUser.getAllFileSize();
+		ret.put("used", FilesizeUtil.BToOther(used));
+
+		String scale_tmp = (new BigDecimal(used)).divide(new BigDecimal(max)).toString();
+		Integer scale = Integer.parseInt(scale_tmp.substring(0, scale_tmp.indexOf('.')))*100;
+		ret.put("scale", scale);
+
+		out.print(JSON.toJSONString(ret));
 	}
 
 	/**

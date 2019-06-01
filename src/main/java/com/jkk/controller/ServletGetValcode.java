@@ -14,9 +14,6 @@ import java.util.Map;
 
 import com.jkk.service.AttrToken;
 import com.jkk.service.impl.User.RegeditImpl;
-
-
-@WebServlet(name = "ServletGetValcode",urlPatterns = "/getcode")
 public class ServletGetValcode extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

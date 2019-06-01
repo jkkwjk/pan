@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-
-@WebFilter(filterName = "FilterLoginCheck",urlPatterns = "/file/*")
 public class FilterLoginCheck implements Filter {
 	public void destroy() {
 	}
