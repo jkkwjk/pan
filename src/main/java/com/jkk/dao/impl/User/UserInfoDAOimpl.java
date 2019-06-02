@@ -18,7 +18,8 @@ public class UserInfoDAOimpl implements UserInfoDAO {
 		Map<String,String> map = dButil.exePresqlGetmap(String.format("SELECT * FROM %s where userid=? limit 1", DBInfo.USER_INFO),new Object[]{userId}).get(0);
 
 		return new UserInfo(Integer.parseInt(map.get("userid")),map.get("username"),map.get("sex"),
-				map.get("e_mail"),map.get("phone"),map.get("website"),map.get("location"),map.get("max_filesize"));
+				map.get("e_mail"),map.get("phone"),map.get("website"),map.get("location"),map.get("max_filesize"),
+				map.get("last_login_time"),map.get("img_path"));
 	}
 
 	@Override
@@ -67,6 +68,18 @@ public class UserInfoDAOimpl implements UserInfoDAO {
 	@Override
 	public boolean updateMaxSize(String val) {
 		return dButil.exePresqlModifyData(String.format("update %s set max_filesize=? where userid=? limit 1", DBInfo.USER_INFO),
+				new Object[]{val,userId})==1;
+	}
+
+	@Override
+	public boolean updateLastLoginTime(String val) {
+		return dButil.exePresqlModifyData(String.format("update %s set last_login_time=? where userid=? limit 1", DBInfo.USER_INFO),
+				new Object[]{val,userId})==1;
+	}
+
+	@Override
+	public boolean updateImg(String val) {
+		return dButil.exePresqlModifyData(String.format("update %s set img_path=? where userid=? limit 1", DBInfo.USER_INFO),
 				new Object[]{val,userId})==1;
 	}
 }

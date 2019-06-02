@@ -116,4 +116,13 @@
         <servlet-name>ServletGetValcode</servlet-name>
         <url-pattern>/getcode</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletUpdateUserInfo</servlet-name>
+        <servlet-class>com.jkk.controller.User.ServletUpdateUserInfo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletUpdateUserInfo</servlet-name>
+        <url-pattern>/user/ud</url-pattern>
+    </servlet-mapping>
 </web-app>

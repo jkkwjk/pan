@@ -1,17 +1,16 @@
 <%@ page import="com.jkk.model.User" %>
 <%@ page import="com.jkk.service.AttrToken" %>
+<%@ page import="com.jkk.service.impl.User.LoginImpl" %>
 <html>
 <body>
 <h2>Hello World!</h2>
 <%--测试用--%>
 <%
-    User user = new User();
-    user.setName("test");
-    user.setUserId(1006);
-    user.setPermissionId(0);
+    LoginImpl login = new LoginImpl();
+    User user = login.login("test","Jkk112233");
     session.setAttribute(AttrToken.USER,user);
 %>
-<jsp:forward page="WEB-INF/disk.jsp"></jsp:forward>
+<jsp:forward page="WEB-INF/user/user.jsp"></jsp:forward>
 <%--END--%>
 </body>
 </html>

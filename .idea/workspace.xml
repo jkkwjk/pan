@@ -7,11 +7,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3fe5af18-3869-4659-975f-9ad1c6e92fc9" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jkk/controller/User/ServletUserCommon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jkk/controller/User/ServletUserCommon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/jkk/service/AttrToken.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jkk/service/AttrToken.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/jkk/controller/User/ServletUpdateUserInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jkk/controller/User/ServletGetUserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jkk/controller/User/ServletGetUserInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jkk/dao/impl/User/UserInfoDAOimpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jkk/dao/impl/User/UserInfoDAOimpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jkk/dao/inter/User/UserInfoDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jkk/dao/inter/User/UserInfoDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jkk/model/UserInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jkk/model/UserInfo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jkk/service/impl/Disk/FileIOupImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jkk/service/impl/Disk/FileIOupImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jkk/service/impl/User/LoginImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jkk/service/impl/User/LoginImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jkk/service/impl/User/UserInfoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jkk/service/impl/User/UserInfoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jkk/service/inter/Disk/FileIOup.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jkk/service/inter/Disk/FileIOup.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/jkk/service/inter/User/UserInfoBiz.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/jkk/service/inter/User/UserInfoBiz.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/disk.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/disk.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/template/title.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/template/title.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/user/user.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/user/user.jsp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/index.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/index.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/file.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/file.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/static/css/title.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/static/css/title.css" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -35,76 +48,76 @@
           <entry key="project.open.time.6" value="1" />
           <entry key="project.open.time.7" value="2" />
           <entry key="project.open.time.8" value="2" />
-          <entry key="project.open.time.9" value="6" />
-          <entry key="project.opened" value="27" />
+          <entry key="project.open.time.9" value="7" />
+          <entry key="project.opened" value="28" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="class" value="5" />
-          <entry key="css" value="22" />
+          <entry key="css" value="25" />
           <entry key="gitignore" value="2" />
           <entry key="html" value="8" />
-          <entry key="java" value="301" />
+          <entry key="java" value="327" />
           <entry key="jpg" value="2" />
-          <entry key="js" value="18" />
+          <entry key="js" value="19" />
           <entry key="json" value="5" />
-          <entry key="jsp" value="21" />
+          <entry key="jsp" value="25" />
           <entry key="md" value="1" />
           <entry key="png" value="1" />
           <entry key="properties" value="4" />
           <entry key="tld" value="2" />
-          <entry key="xml" value="13" />
+          <entry key="xml" value="14" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="CLASS" value="5" />
-          <entry key="CSS" value="22" />
+          <entry key="CSS" value="25" />
           <entry key="Git file" value="2" />
           <entry key="HTML" value="8" />
           <entry key="Image" value="3" />
-          <entry key="JAVA" value="301" />
+          <entry key="JAVA" value="327" />
           <entry key="JSON" value="5" />
-          <entry key="JSP" value="21" />
-          <entry key="JavaScript" value="18" />
+          <entry key="JSP" value="25" />
+          <entry key="JavaScript" value="19" />
           <entry key="Markdown" value="1" />
           <entry key="Properties" value="4" />
-          <entry key="XML" value="15" />
+          <entry key="XML" value="16" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="css" value="291" />
+          <entry key="css" value="293" />
           <entry key="dummy" value="82" />
           <entry key="ft" value="6" />
           <entry key="gitignore" value="11" />
           <entry key="html" value="61" />
-          <entry key="java" value="18013" />
+          <entry key="java" value="19503" />
           <entry key="js" value="701" />
           <entry key="json" value="78" />
-          <entry key="jsp" value="6891" />
+          <entry key="jsp" value="8497" />
           <entry key="md" value="61" />
           <entry key="properties" value="138" />
           <entry key="tld" value="12" />
           <entry key="txt" value="100" />
-          <entry key="xml" value="236" />
+          <entry key="xml" value="262" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="CSS" value="295" />
+          <entry key="CSS" value="297" />
           <entry key="Git file" value="11" />
           <entry key="HTML" value="61" />
-          <entry key="JAVA" value="18013" />
+          <entry key="JAVA" value="19503" />
           <entry key="JSON" value="78" />
-          <entry key="JSP" value="6887" />
+          <entry key="JSP" value="8493" />
           <entry key="JavaScript" value="701" />
           <entry key="Markdown" value="61" />
           <entry key="PLAIN_TEXT" value="182" />
           <entry key="Properties" value="138" />
           <entry key="VTL" value="6" />
-          <entry key="XML" value="248" />
+          <entry key="XML" value="274" />
         </counts>
       </usages-collector>
     </session>
@@ -171,58 +184,98 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/disk.jsp">
+        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/user/user.jsp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="25">
-              <caret line="244" column="15" selection-start-line="244" selection-start-column="15" selection-end-line="244" selection-end-column="15" />
+            <state relative-caret-position="621">
+              <caret line="63" column="31" selection-start-line="63" selection-start-column="31" selection-end-line="63" selection-end-column="31" />
               <folding>
-                <element signature="n#style#0;n#iframe#0;n#!!top" expanded="true" />
+                <element signature="n#script#7;n#head#0;n#html#0;n#!!top" />
+                <element signature="n#script#8;n#head#0;n#html#0;n#!!top" />
+                <element signature="n#style#0;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#form#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#1;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#button#0;n#div#6;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#input#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/model/UserInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="100">
+              <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/template/title.jsp">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/controller/User/ServletUpdateUserInfo.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="125">
-              <caret line="5" column="31" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
+            <state relative-caret-position="250">
+              <caret line="44" column="47" selection-start-line="44" selection-start-column="39" selection-end-line="44" selection-end-column="47" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/user/user.jsp">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/service/impl/User/UserInfoImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="18" column="86" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="86" />
+            <state relative-caret-position="227">
+              <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
+              <folding>
+                <element signature="e#657#658#0" expanded="true" />
+                <element signature="e#706#707#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/dao/impl/User/UserInfoDAOimpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="431">
-              <caret line="109" lean-forward="true" selection-start-line="109" selection-end-line="109" />
+            <state relative-caret-position="202">
+              <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/controller/User/ServletUserCommon.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/service/impl/Disk/FileIOupImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="325">
-              <caret line="22" column="78" selection-start-line="22" selection-start-column="78" selection-end-line="22" selection-end-column="78" />
+            <state relative-caret-position="452">
+              <caret line="77" column="24" lean-forward="true" selection-start-line="77" selection-start-column="24" selection-end-line="77" selection-end-column="24" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/service/AttrToken.java">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/service/impl/Disk/FileIOBaseImpl.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="7" column="41" selection-start-line="7" selection-start-column="41" selection-end-line="7" selection-end-column="41" />
+            <state relative-caret-position="150">
+              <caret line="8" column="48" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="48" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/controller/Disk/ServletUpload.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="223">
+              <caret line="71" column="23" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/controller/User/ServletGetUserInfo.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="220">
+              <caret line="23" column="51" lean-forward="true" selection-start-line="19" selection-start-column="8" selection-end-line="23" selection-end-column="51" />
             </state>
           </provider>
         </entry>
@@ -241,12 +294,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>regedit_pwd</find>
-      <find>regedit_code_btn</find>
-      <find>mysql</find>
-      <find>file_nam</find>
-      <find>搜索文件</find>
-      <find>用户名</find>
       <find>findSameFileByFileId</find>
       <find>parent</find>
       <find>par</find>
@@ -271,6 +318,12 @@
       <find>ol_leader</find>
       <find>del</find>
       <find>btn_search</find>
+      <find>user_name</find>
+      <find>image</find>
+      <find>男</find>
+      <find>info_form</find>
+      <find>cha</find>
+      <find>change</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -286,15 +339,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/webapp/static/js/md5.js" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jkk/controller/FilterCoding.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jkk/service/impl/Disk/FileIO.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jkk/service/inter/Disk/FileIOFac.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jkk/service/impl/Disk/FileIOFacImpl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jkk/utils/Stream2O.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jkk/utils/StreamWithOther.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jkk/utils/MD5Util.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jkk/service/impl/Disk/FileBaseImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jkk/dao/impl/Disk/FileBaseDAOimpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jkk/model/File.java" />
         <option value="$PROJECT_DIR$/用户添加文件返回.json" />
@@ -303,8 +347,6 @@
         <option value="$PROJECT_DIR$/src/main/java/com/jkk/service/inter/Disk/FileIO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jkk/service/impl/Disk/FileIOBaseImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jkk/service/inter/Disk/FileIOBase.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jkk/service/inter/Disk/FileIOup.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/jkk/service/impl/Disk/FileIOupImpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jkk/service/inter/Disk/FileBaseBiz.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jkk/dao/inter/Disk/FileBaseDAO.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jkk/service/impl/Disk/FileIOdownImpl.java" />
@@ -322,21 +364,32 @@
         <option value="$PROJECT_DIR$/src/main/java/com/jkk/controller/Disk/ServletGetFile.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jkk/controller/Disk/ServletUpload.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/js/file-fn.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/static/css/file.css" />
         <option value="$PROJECT_DIR$/src/main/webapp/static/js/file.js" />
-        <option value="$PROJECT_DIR$/src/main/webapp/index.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/jkk/dao/impl/Disk/FileWithUserDAOimpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jkk/controller/Disk/ServletCommon.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jkk/dao/impl/Disk/FolderWithUserDAOimpl.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jkk/tools/FileIcoTool.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jkk/controller/Disk/ServletFileSearch.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/disk.jsp" />
         <option value="$PROJECT_DIR$/src/main/java/com/jkk/test/match.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/jkk/service/AttrToken.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/jkk/controller/User/ServletUserCommon.java" />
-        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/user/user.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jkk/service/inter/User/UserInfoBiz.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jkk/dao/inter/User/UserInfoDAO.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jkk/dao/impl/User/UserInfoDAOimpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jkk/controller/User/ServletGetUserInfo.java" />
         <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/template/title.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jkk/service/impl/User/LoginImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/index.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jkk/service/impl/User/UserInfoImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/disk.jsp" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/css/file.css" />
+        <option value="$PROJECT_DIR$/src/main/webapp/static/css/title.css" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jkk/service/inter/Disk/FileIOup.java" />
+        <option value="$PROJECT_DIR$/src/main/webapp/WEB-INF/user/user.jsp" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jkk/model/UserInfo.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jkk/service/impl/Disk/FileIOupImpl.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/jkk/controller/User/ServletUpdateUserInfo.java" />
       </list>
     </option>
   </component>
@@ -418,6 +471,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -458,7 +512,7 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="jkk" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Pan" type="b2602c69:ProjectViewProjectNode" />
@@ -467,8 +521,40 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="jkk" type="462c0819:PsiDirectoryNode" />
-              <item name="controller" type="462c0819:PsiDirectoryNode" />
-              <item name="User" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Pan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Pan" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="jkk" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="impl" type="462c0819:PsiDirectoryNode" />
+              <item name="Disk" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Pan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Pan" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="jkk" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="inter" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Pan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Pan" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="jkk" type="462c0819:PsiDirectoryNode" />
+              <item name="service" type="462c0819:PsiDirectoryNode" />
+              <item name="inter" type="462c0819:PsiDirectoryNode" />
+              <item name="Disk" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Pan" type="b2602c69:ProjectViewProjectNode" />
@@ -476,6 +562,14 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="webapp" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Pan" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Pan" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="webapp" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="Pan" type="b2602c69:ProjectViewProjectNode" />
@@ -507,7 +601,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -516,7 +609,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/src/main/java/com/jkk/test/match.java" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559407253864" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1559489095944" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -765,6 +858,7 @@
       <workItem from="1558953637543" duration="7480000" />
       <workItem from="1559022580734" duration="15203000" />
       <workItem from="1559402562520" duration="2262000" />
+      <workItem from="1559446113375" duration="22822000" />
     </task>
     <task id="LOCAL-00001" summary="1.前端完成&#10;2.改写login.jsp">
       <created>1558077748030</created>
@@ -840,7 +934,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="246707000" />
+    <option name="totallyTimeSpent" value="269529000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -853,24 +947,23 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.63952225" visible="true" weight="0.18283582" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6371951" visible="true" weight="0.18496802" />
       <window_info id="Structure" order="1" sideWeight="0.24525745" side_tool="true" weight="0.14978679" />
       <window_info id="Designer" order="2" />
       <window_info id="Image Layers" order="3" />
       <window_info id="UI Designer" order="4" />
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info id="Capture Tool" order="6" />
-      <window_info id="Web" order="7" sideWeight="0.36047775" side_tool="true" visible="true" weight="0.18283582" />
+      <window_info id="Web" order="7" sideWeight="0.3628049" side_tool="true" visible="true" weight="0.18496802" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32899022" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49966776" weight="0.21715526" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.28792134" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.28773072" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" weight="0.18960674" />
-      <window_info anchor="bottom" id="Application Servers" order="7" weight="0.15870787" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.18892509" />
+      <window_info anchor="bottom" id="Application Servers" order="7" weight="0.15852335" />
       <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.50033224" side_tool="true" weight="0.2724719" />
       <window_info anchor="bottom" id="Terminal" order="9" weight="0.3286517" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.21606949" />
@@ -944,115 +1037,11 @@
     <MESSAGE value="增加文件搜索功能" />
     <option name="LAST_COMMIT_MESSAGE" value="增加文件搜索功能" />
   </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/jkk/controller/Disk/ServletUpload.java</url>
-          <line>31</line>
-          <properties />
-          <option name="timeStamp" value="11" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/jkk/service/impl/Disk/FileIOupImpl.java</url>
-          <line>35</line>
-          <properties />
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
-  </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/用户添加文件返回.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="14" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="14" column="4" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_201/src.zip!/java/lang/Override.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/commons-fileupload/commons-fileupload/1.3.3/commons-fileupload-1.3.3.jar!/org/apache/commons/fileupload/FileItem.class" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/service/inter/Disk/FileIOBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="47" selection-start-line="5" selection-start-column="47" selection-end-line="5" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/service/inter/Disk/FileIOup.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="17" column="27" lean-forward="true" selection-start-line="17" selection-start-column="27" selection-end-line="17" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/service/inter/Disk/FileBaseBiz.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="400">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/dao/inter/Disk/FileBaseDAO.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="15" column="27" selection-start-line="15" selection-start-column="27" selection-end-line="15" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/service/impl/Disk/FileIOBaseImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="150">
-          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/service/inter/Disk/FileIOdown.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="35" lean-forward="true" selection-start-column="35" selection-end-column="35" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/model/File.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="372">
-          <caret line="40" selection-start-line="40" selection-end-line="40" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/service/impl/Disk/FileIOdownImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="350">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/model/IO/FileUpLoad.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
-          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/model/Folder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="676">
-          <caret line="49" column="11" selection-start-line="49" selection-start-column="11" selection-end-line="49" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/请求文件格式.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -1063,7 +1052,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1-sources.jar!/javax/servlet/ServletRequest.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/dao/inter/Disk/FileWithUserDAO.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="502">
@@ -1099,13 +1087,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/controller/Disk/ServletGetFile.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="388">
-          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/service/impl/Disk/FileBaseImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="167">
@@ -1129,27 +1110,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
           <caret line="16" column="10" lean-forward="true" selection-start-line="16" selection-start-column="10" selection-end-line="16" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/controller/User/ServletGetUserInfo.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
-          <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/service/impl/Disk/FileIOupImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="750">
-          <caret line="42" selection-start-line="42" selection-end-line="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/css/file.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="318">
-          <caret line="231" column="23" lean-forward="true" selection-start-line="231" selection-start-column="23" selection-end-line="231" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -1212,13 +1172,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="8" column="22" selection-start-line="8" selection-start-column="22" selection-end-line="8" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/service/impl/Disk/FileWithUserImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="243">
@@ -1254,17 +1207,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/controller/Disk/ServletUpload.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/controller/Disk/ServletGetFile.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="26" column="13" selection-start-line="26" selection-start-column="13" selection-end-line="26" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="431">
-          <caret line="109" lean-forward="true" selection-start-line="109" selection-end-line="109" />
+        <state relative-caret-position="388">
+          <caret line="56" lean-forward="true" selection-start-line="56" selection-end-line="56" />
         </state>
       </provider>
     </entry>
@@ -1275,34 +1221,195 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/controller/User/ServletUserCommon.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/service/inter/User/UserInfoBiz.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="325">
-          <caret line="22" column="78" selection-start-line="22" selection-start-column="78" selection-end-line="22" selection-end-column="78" />
+        <state relative-caret-position="521">
+          <caret line="21" column="38" lean-forward="true" selection-start-line="21" selection-start-column="38" selection-end-line="25" selection-end-column="34" />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/dao/inter/User/UserInfoDAO.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="11" column="33" lean-forward="true" selection-start-line="11" selection-start-column="33" selection-end-line="11" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/controller/User/ServletLogin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="29" column="34" selection-start-line="29" selection-start-column="34" selection-end-line="29" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/dao/impl/User/LoginDAOimpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="350">
+          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/controller/User/ServletUserCommon.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="125">
+          <caret line="14" lean-forward="true" selection-start-line="14" selection-end-line="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/service/impl/User/LoginImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="19" lean-forward="true" selection-start-line="19" selection-end-line="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/index.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="39" lean-forward="true" selection-start-column="39" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="106" column="48" lean-forward="true" selection-start-line="106" selection-start-column="48" selection-end-line="106" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/controller/User/ServletGetUserInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="23" column="51" lean-forward="true" selection-start-line="19" selection-start-column="8" selection-end-line="23" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/css/title.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="139" column="1" selection-start-line="139" selection-start-column="1" selection-end-line="139" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/css/file.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="210" column="1" selection-start-line="210" selection-start-column="1" selection-end-line="210" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/service/inter/Disk/FileIOup.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="51" selection-start-line="10" selection-start-column="51" selection-end-line="10" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/service/impl/Disk/FileIOBaseImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="8" column="48" selection-start-line="8" selection-start-column="36" selection-end-line="8" selection-end-column="48" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/css/user_info.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="375">
+          <caret line="15" column="4" selection-start-line="15" selection-start-column="1" selection-end-line="15" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/static/js/title.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/disk.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="25">
-          <caret line="244" column="15" selection-start-line="244" selection-start-column="15" selection-end-line="244" selection-end-column="15" />
+        <state relative-caret-position="146">
+          <caret line="150" column="35" lean-forward="true" selection-start-line="150" selection-start-column="35" selection-end-line="150" selection-end-column="35" />
           <folding>
+            <element signature="n#script#8;n#head#0;n#html#0;n#!!top" />
+            <element signature="n#script#10;n#head#0;n#html#0;n#!!top" />
             <element signature="n#style#0;n#iframe#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/user/user.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/template/title.jsp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
-          <caret line="18" column="86" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="86" />
+        <state relative-caret-position="332">
+          <caret line="47" column="8" selection-start-line="47" selection-start-column="8" selection-end-line="52" selection-end-column="11" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/template/title.jsp">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/controller/Disk/ServletUpload.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="5" column="31" selection-start-line="5" selection-start-column="31" selection-end-line="5" selection-end-column="31" />
+        <state relative-caret-position="223">
+          <caret line="71" column="23" selection-start-line="71" selection-start-column="23" selection-end-line="71" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/javax/servlet/javax.servlet-api/4.0.1/javax.servlet-api-4.0.1-sources.jar!/javax/servlet/ServletRequest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="484" column="26" selection-start-line="484" selection-start-column="26" selection-end-line="484" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/WEB-INF/user/user.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="621">
+          <caret line="63" column="31" selection-start-line="63" selection-start-column="31" selection-end-line="63" selection-end-column="31" />
+          <folding>
+            <element signature="n#script#7;n#head#0;n#html#0;n#!!top" />
+            <element signature="n#script#8;n#head#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#ul#0;n#div#1;n#div#0;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#form#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#1;n#div#1;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#button#0;n#div#6;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#div#1;n#div#1;n#div#0;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#input#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/model/UserInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/service/impl/Disk/FileIOupImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="77" column="24" lean-forward="true" selection-start-line="77" selection-start-column="24" selection-end-line="77" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/dao/impl/User/UserInfoDAOimpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="25" column="19" selection-start-line="25" selection-start-column="19" selection-end-line="25" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/service/impl/User/UserInfoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="22" column="35" selection-start-line="22" selection-start-column="35" selection-end-line="22" selection-end-column="35" />
+          <folding>
+            <element signature="e#657#658#0" expanded="true" />
+            <element signature="e#706#707#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/jkk/controller/User/ServletUpdateUserInfo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="250">
+          <caret line="44" column="47" selection-start-line="44" selection-start-column="39" selection-end-line="44" selection-end-column="47" />
         </state>
       </provider>
     </entry>

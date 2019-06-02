@@ -129,3 +129,12 @@
 div{
     font-size: 12px;
 }
+
+#tip{
+    position: absolute;
+    top: 30px;
+    margin: auto;
+    width: 400px;
+    left:0;right:0;
+    vertical-align: middle;
+}

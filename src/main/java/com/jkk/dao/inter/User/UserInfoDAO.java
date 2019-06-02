@@ -20,4 +20,8 @@ public interface UserInfoDAO {
 	boolean updateLocation(String val);
 
 	boolean updateMaxSize(String val);
+
+	boolean updateLastLoginTime(String val);
+
+	boolean updateImg(String val);
 }

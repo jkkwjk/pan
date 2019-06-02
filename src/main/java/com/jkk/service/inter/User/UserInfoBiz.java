@@ -20,5 +20,9 @@ public interface UserInfoBiz {
 	boolean updateLocation(String val);
 
 	boolean updateMaxSize(String val);
+
+	boolean updateLastLoginTime(String val);
+
+	boolean updateImg(String val);
 }
 

@@ -4,6 +4,7 @@ import com.jkk.dao.impl.User.UserInfoDAOimpl;
 import com.jkk.model.User;
 import com.jkk.model.UserInfo;
 import com.jkk.service.inter.User.UserInfoBiz;
+import com.jkk.utils.StampDate;
 
 public class UserInfoImpl implements UserInfoBiz {
 	private UserInfoDAOimpl userInfoDAOimpl;
@@ -12,7 +13,9 @@ public class UserInfoImpl implements UserInfoBiz {
 	}
 	@Override
 	public UserInfo getInfo() {
-		return userInfoDAOimpl.getInfo();
+		UserInfo userInfo = userInfoDAOimpl.getInfo();
+		userInfo.setLastLoginTime(StampDate.stampToDate(userInfo.getLastLoginTime()));
+		return userInfo;
 	}
 
 	@Override
@@ -53,5 +56,15 @@ public class UserInfoImpl implements UserInfoBiz {
 	@Override
 	public boolean updateMaxSize(String val) {
 		return userInfoDAOimpl.updateMaxSize(val);
+	}
+
+	@Override
+	public boolean updateLastLoginTime(String val) {
+		return userInfoDAOimpl.updateLastLoginTime(val);
+	}
+
+	@Override
+	public boolean updateImg(String val) {
+		return userInfoDAOimpl.updateImg(val);
 	}
 }

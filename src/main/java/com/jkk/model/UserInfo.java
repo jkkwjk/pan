@@ -1,6 +1,9 @@
 package com.jkk.model;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 public class UserInfo {
+	@JSONField(serialize = false)
 	private Integer userId;
 	private String userName;
 	private String sex;
@@ -9,8 +12,35 @@ public class UserInfo {
 	private String website;
 	private String location;
 	private String max_filesize;
+	private String lastLoginTime;
+	private String imgPath;
 
-	public UserInfo(Integer userId, String userName, String sex, String eMail, String phone, String website, String location, String max_filesize) {
+	public String getLastLoginTime() {
+		return lastLoginTime;
+	}
+
+	public void setLastLoginTime(String lastLoginTime) {
+		this.lastLoginTime = lastLoginTime;
+	}
+
+	public String getImgPath() {
+		return imgPath;
+	}
+
+	public void setImgPath(String imgPath) {
+		this.imgPath = imgPath;
+	}
+
+	public UserInfo(String userName, String sex, String eMail, String phone, String website, String location) {
+		this.userName = userName;
+		this.sex = sex;
+		this.eMail = eMail;
+		this.phone = phone;
+		this.website = website;
+		this.location = location;
+	}
+
+	public UserInfo(Integer userId, String userName, String sex, String eMail, String phone, String website, String location, String max_filesize, String lastLoginTime, String imgPath) {
 		this.userId = userId;
 		this.userName = userName;
 		this.sex = sex;
@@ -19,6 +49,8 @@ public class UserInfo {
 		this.website = website;
 		this.location = location;
 		this.max_filesize = max_filesize;
+		this.lastLoginTime = lastLoginTime;
+		this.imgPath = imgPath;
 	}
 
 	public UserInfo() {

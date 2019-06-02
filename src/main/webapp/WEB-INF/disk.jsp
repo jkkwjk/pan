@@ -281,6 +281,8 @@
             get_next_file(file_start,folder_id_now);
             $("#form_search").css('display','inline');
 
+            $($("#ul_title").find("li")[0]).addClass('title_active');
+
             // 获取总容量
             $.post(base_path+"/file/c",function (data) {
                 $("#span_used_capacity").text(data.used);

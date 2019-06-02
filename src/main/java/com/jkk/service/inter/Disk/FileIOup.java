@@ -8,6 +8,7 @@ import java.util.Map;
 
 public interface FileIOup {
 	void writeFile(ServletContext context, String uploadDir, FileItem fileByte, String fileMD5) throws Exception;
+	void writeFile(String path, FileItem fileByte, String fileName) throws Exception;
 
 	/**
 	 * 需要保证 request 参数中不包含 __file__ 这个key
