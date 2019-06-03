@@ -24,4 +24,6 @@ public interface UserInfoDAO {
 	boolean updateLastLoginTime(String val);
 
 	boolean updateImg(String val);
+
+	boolean updateConfimPWD(String val);
 }

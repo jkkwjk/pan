@@ -46,6 +46,8 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
-        // todo 获取二级密码的跳转链接
+        $.post("${pageContext.request.contextPath}/user/get",{'a':'confimpwd'},function (data) {
+            $("#post_confim_pwd").attr('href','${pageContext.request.contextPath}/user/c?url='+data)
+        });
     });
-</script> <!-- 获得用户名 -->
+</script>

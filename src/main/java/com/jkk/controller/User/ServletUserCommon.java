@@ -3,6 +3,7 @@ package com.jkk.controller.User;
 import com.jkk.model.User;
 import com.jkk.model.UserInfo;
 import com.jkk.service.AttrToken;
+import com.jkk.service.ErrorPath;
 import com.jkk.service.impl.User.UserInfoImpl;
 
 import javax.servlet.ServletException;
@@ -39,6 +40,17 @@ public class ServletUserCommon extends HttpServlet {
 					request.setAttribute(AttrToken.DATA,userInfo);
 					break;
 				case "user/changePWD.jsp":
+					request.setAttribute(AttrToken.DATA,userInfo);
+					if (!(userInfo.getConfimPWD() == null||userInfo.getConfimPWD().equals(""))){
+						request.setAttribute(AttrToken.CONFIM,true);
+					}
+					break;
+				case "user/defineCPWD.jsp":
+					if (!(userInfo.getConfimPWD()==null || userInfo.getConfimPWD().equals(""))){
+						// 非法访问
+						response.sendRedirect(request.getContextPath()+ ErrorPath.html500);
+						return;
+					}
 					request.setAttribute(AttrToken.DATA,userInfo);
 					break;
 			}

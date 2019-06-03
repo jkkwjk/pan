@@ -14,6 +14,15 @@ public class UserInfo {
 	private String max_filesize;
 	private String lastLoginTime;
 	private String imgPath;
+	private String confimPWD;
+
+	public String getConfimPWD() {
+		return confimPWD;
+	}
+
+	public void setConfimPWD(String confimPWD) {
+		this.confimPWD = confimPWD;
+	}
 
 	public String getLastLoginTime() {
 		return lastLoginTime;
@@ -40,7 +49,7 @@ public class UserInfo {
 		this.location = location;
 	}
 
-	public UserInfo(Integer userId, String userName, String sex, String eMail, String phone, String website, String location, String max_filesize, String lastLoginTime, String imgPath) {
+	public UserInfo(Integer userId, String userName, String sex, String eMail, String phone, String website, String location, String max_filesize, String lastLoginTime, String imgPath, String confimPWD) {
 		this.userId = userId;
 		this.userName = userName;
 		this.sex = sex;
@@ -51,6 +60,7 @@ public class UserInfo {
 		this.max_filesize = max_filesize;
 		this.lastLoginTime = lastLoginTime;
 		this.imgPath = imgPath;
+		this.confimPWD = confimPWD;
 	}
 
 	public UserInfo() {

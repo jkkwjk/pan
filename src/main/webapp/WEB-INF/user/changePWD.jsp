@@ -25,6 +25,9 @@
     <script src="${pageContext.request.contextPath}/static/js/jquery-from.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <script type="text/javascript">
+        var base_path = "${pageContext.request.contextPath}";
+    </script>
+    <script type="text/javascript">
         $(document).ready(function(){
             $("#pwd").keyup(function(){
                 if(!($("#pwd").isPassword())){
@@ -63,6 +66,28 @@
                     $("#login_submit").attr("disabled",true);
                 }
             });
+            $("#login_submit").click(function () {
+                var old = $("#old_pwd").val();
+                var new_pwd = $("#pwd").val();
+                $.post(base_path+'/user/cp',{'old':old,'new':new_pwd},function (data) {
+                    if (data.status==200){
+                        tip_show("修改成功!",'success');
+                        $("#old_pwd").val("");
+                        $("#pwd").val("");
+                        $("#confim_pwd").val("");
+                    } else {
+                        tip_show(data.error_msg,'danger');
+                        $("#pwd").val("");
+                        $("#confim_pwd").val("");
+                    }
+
+                    if(can_submit()) {
+                        $("#login_submit").attr("disabled",false);
+                    }else {
+                        $("#login_submit").attr("disabled",true);
+                    }
+                },'json');
+            });
         });
         function can_submit(){
             if (($("#pwd").isPassword()) && $("#pwd").val() == $("#confim_pwd").val() && $("#old_pwd").val()!="") {
@@ -70,56 +95,8 @@
             }else {
                 return false;
             }
-        };
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $("#pwd_er").keyup(function(){
-                if(!($("#pwd_er").isPassword())){
-                    $("#span_pwd_er").css("display","inline");
-                }else{
-                    $("#span_pwd_er").css("display","none");
-                }
-
-                if ($("#pwd_er").val() != $("#confim_pwd_er").val()){
-                    $("#span_confim_er").css("display","inline");
-                }else {
-                    $("#span_confim_er").css("display","none");
-                }
-                if(can_submit()) {
-                    $("confim_submit").attr("disabled",false);
-                }else {
-                    $("#confim_submit").attr("disabled",true);
-                }
-            });
-            $("#confim_pwd_er").keyup(function(){
-                if ($("#pwd_er").val() != $("#confim_pwd_er").val()){
-                    $("#span_confim_er").css("display","inline");
-                }else {
-                    $("#span_confim_er").css("display","none");
-                }
-                if(can_submit_er()) {
-                    $("#confim_submit").attr("disabled",false);
-                }else {
-                    $("#confim_submit").attr("disabled",true);
-                }
-            });
-            $("#old_pwd_er").keyup(function(){
-                if(can_submit_er()) {
-                    $("#confim_submit").attr("disabled",false);
-                }else {
-                    $("#confim_submit").attr("disabled",true);
-                }
-            });
-        });
-        function can_submit_er(){
-            if (($("#pwd_er").isPassword()) && $("#pwd_er").val() == $("#confim_pwd_er").val() && $("#old_pwd_er").val()!="") {
-                return true;
-            }else {
-                return false;
-            }
-        };
-    </script>
+        }
+    </script> <!-- 登录密码修改 -->
     <script type="text/javascript">
         $(document).ready(function () {
             $($("#ul_title").find("li")[1]).addClass('title_active');
@@ -127,6 +104,31 @@
         });
 
     </script> <!-- 初始化页面 -->
+    <script type="text/javascript">
+        var timer = null;
+        function tip_show(s,wclass) {
+            $("#tip_span").text(s);
+            // success绿色 info蓝色 danger红色
+            $("#alert_div").attr('class','alert alert-'+wclass);
+            my_show();
+            setTimeout("my_hide();",1000);
+        }
+        function my_show(){
+            var elemt = $("#tip");
+            clearTimeout(timer);
+            elemt.stop(true);
+            elemt.css('display','inline');
+            elemt.css('margin-top','0px');
+            elemt.css('opacity','1');
+        }
+        function my_hide(){
+            var elemt = $("#tip");
+            elemt.stop(true);
+            elemt.animate({'margin-top':'30px'},{queue:false,duration:400});
+            elemt.animate({'opacity':'0'},{queue:false,duration:400});
+            timer = setTimeout("$(\"#tip\").css('display','none')",400);
+        }
+    </script> <!-- 动画 -->
 </head>
 <body>
 <div id="warp" style="min-width: 1100px;">
@@ -169,7 +171,77 @@
                             </div>
 
                         </div>
-                        <!--无二级密码 可以点击超链接跳转到二级密码-->
+                        <c:if test="${requestScope[AttrToken.CONFIM]}">
+                        <script type="text/javascript">
+                                $(document).ready(function(){
+                                    $("#pwd_er").keyup(function(){
+                                        if(!($("#pwd_er").isPassword())){
+                                            $("#span_pwd_er").css("display","inline");
+                                        }else{
+                                            $("#span_pwd_er").css("display","none");
+                                        }
+
+                                        if ($("#pwd_er").val() != $("#confim_pwd_er").val()){
+                                            $("#span_confim_er").css("display","inline");
+                                        }else {
+                                            $("#span_confim_er").css("display","none");
+                                        }
+                                        if(can_submit()) {
+                                            $("confim_submit").attr("disabled",false);
+                                        }else {
+                                            $("#confim_submit").attr("disabled",true);
+                                        }
+                                    });
+                                    $("#confim_pwd_er").keyup(function(){
+                                        if ($("#pwd_er").val() != $("#confim_pwd_er").val()){
+                                            $("#span_confim_er").css("display","inline");
+                                        }else {
+                                            $("#span_confim_er").css("display","none");
+                                        }
+                                        if(can_submit_er()) {
+                                            $("#confim_submit").attr("disabled",false);
+                                        }else {
+                                            $("#confim_submit").attr("disabled",true);
+                                        }
+                                    });
+                                    $("#old_pwd_er").keyup(function(){
+                                        if(can_submit_er()) {
+                                            $("#confim_submit").attr("disabled",false);
+                                        }else {
+                                            $("#confim_submit").attr("disabled",true);
+                                        }
+                                    });
+                                    $("#confim_submit").click(function () {
+                                        var old = $("#old_pwd_er").val();
+                                        var new_pwd = $("#pwd_er").val();
+                                        $.get(base_path+'/user/cp',{'old':old,'new':new_pwd},function (data) {
+                                            if (data.status==200){
+                                                tip_show("修改成功!",'success');
+                                                $("#old_pwd_er").val("");
+                                                $("#pwd_er").val("");
+                                                $("#confim_pwd_er").val("");
+                                            } else {
+                                                tip_show(data.error_msg,'danger');
+                                                $("#pwd_er").val("");
+                                                $("#confim_pwd_er").val("");
+                                            }
+
+                                            if(can_submit_er()) {
+                                                $("#confim_submit").attr("disabled",false);
+                                            }else {
+                                                $("#confim_submit").attr("disabled",true);
+                                            }
+                                        },'json');
+                                    });
+                                });
+                                function can_submit_er(){
+                                    if (($("#pwd_er").isPassword()) && $("#pwd_er").val() == $("#confim_pwd_er").val() && $("#old_pwd_er").val()!="") {
+                                        return true;
+                                    }else {
+                                        return false;
+                                    }
+                                };
+                            </script> <!-- 二次密码修改 -->
                         <div class="right_main_main_left_item" style="margin-top: 50px;">
                             <div class="right_main_main_left_item_top">
                                 <span class="span_right_main_top" style="font-size: 17px;">二级密码修改</span>
@@ -198,12 +270,25 @@
                                 </div>
                             </div>
                         </div>
+                        </c:if>
+                        <c:if test="${!requestScope[AttrToken.CONFIM]}">
+                        <div class="right_main_main_left_item" style="margin-top: 50px;">
+                            <div class="right_main_main_left_item_top" style="border-bottom: 0px;">
+                                <a style="display: inline-block;" href="${pageContext.request.contextPath}/user/c?url=user%2FdefineCPWD.jsp"><span class="span_right_main_top" style="font-size: 17px;">创建二级密码</span></a>
+                            </div>
+                        </div>
+                        </c:if>
                     </div>
                 </div>
             </div>
         </div>
     </div>
     <div id="warp_bottom"></div>
+    <div id="tip" style="display: none;">
+        <div class="alert alert-danger" role="alert" style="font-size:17px;text-align: center;padding: 10px;" id="alert_div">
+            <span id="tip_span"></span>
+        </div>
+    </div>
 </div>
 </body>
 </html>

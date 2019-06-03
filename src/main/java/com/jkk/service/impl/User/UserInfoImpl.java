@@ -4,6 +4,7 @@ import com.jkk.dao.impl.User.UserInfoDAOimpl;
 import com.jkk.model.User;
 import com.jkk.model.UserInfo;
 import com.jkk.service.inter.User.UserInfoBiz;
+import com.jkk.utils.MD5Util;
 import com.jkk.utils.StampDate;
 
 public class UserInfoImpl implements UserInfoBiz {
@@ -66,5 +67,16 @@ public class UserInfoImpl implements UserInfoBiz {
 	@Override
 	public boolean updateImg(String val) {
 		return userInfoDAOimpl.updateImg(val);
+	}
+
+	@Override
+	public boolean updateConfimPWD(String val) {
+		return userInfoDAOimpl.updateConfimPWD(MD5Util.md5two(val));
+	}
+
+	@Override
+	public boolean checkConfimPWD(String val) {
+		UserInfo userInfo = this.getInfo();
+		return userInfo.getConfimPWD().equals(MD5Util.md5two(val));
 	}
 }
