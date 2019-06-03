@@ -125,4 +125,13 @@
         <servlet-name>ServletUpdateUserInfo</servlet-name>
         <url-pattern>/user/ud</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletChangePWD</servlet-name>
+        <servlet-class>com.jkk.controller.User.ServletChangePWD</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletChangePWD</servlet-name>
+        <url-pattern>/user/cp</url-pattern>
+    </servlet-mapping>
 </web-app>

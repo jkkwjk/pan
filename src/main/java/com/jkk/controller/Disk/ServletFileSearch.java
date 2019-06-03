@@ -34,9 +34,11 @@ public class ServletFileSearch extends HttpServlet {
 
 		List<File> fileList = fileWithUser.getAll();
 		List<File> obj = new ArrayList<>();
-		for (File file : fileList) {
-			if (Pattern.compile(".*"+name+".*",Pattern.CASE_INSENSITIVE).matcher(file.getFileName()).find()){
-				obj.add(file);
+		if (fileList != null){
+			for (File file : fileList) {
+				if (Pattern.compile(".*"+name+".*",Pattern.CASE_INSENSITIVE).matcher(file.getFileName()).find()){
+					obj.add(file);
+				}
 			}
 		}
 		out.print(fileToJson(obj,user));
@@ -51,9 +53,11 @@ public class ServletFileSearch extends HttpServlet {
 
 		List<File> fileList = fileWithUser.getAll();
 		List<File> obj = new ArrayList<>();
-		for (File file : fileList) {
-			if (Pattern.compile(name,Pattern.CASE_INSENSITIVE).matcher(file.getFileName()).find()){
-				obj.add(file);
+		if (fileList != null){
+			for (File file : fileList) {
+				if (Pattern.compile(name,Pattern.CASE_INSENSITIVE).matcher(file.getFileName()).find()){
+					obj.add(file);
+				}
 			}
 		}
 		out.print(fileToJson(obj,user));

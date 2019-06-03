@@ -45,7 +45,13 @@ public class ServletCommon extends HttpServlet {
 		ret.put("used", FilesizeUtil.BToOther(used));
 
 		String scale_tmp = (new BigDecimal(used)).divide(new BigDecimal(max)).toString();
-		Integer scale = Integer.parseInt(scale_tmp.substring(0, scale_tmp.indexOf('.')))*100;
+		Integer scale;
+		int pos = scale_tmp.indexOf('.');
+		if (pos!=-1){
+			scale = Integer.parseInt(scale_tmp.substring(0,pos))*100;
+		} else {
+			scale = Integer.parseInt(scale_tmp)*100;
+		}
 		ret.put("scale", scale);
 
 		out.print(JSON.toJSONString(ret));

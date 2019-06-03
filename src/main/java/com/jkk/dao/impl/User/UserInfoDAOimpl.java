@@ -19,7 +19,7 @@ public class UserInfoDAOimpl implements UserInfoDAO {
 
 		return new UserInfo(Integer.parseInt(map.get("userid")),map.get("username"),map.get("sex"),
 				map.get("e_mail"),map.get("phone"),map.get("website"),map.get("location"),map.get("max_filesize"),
-				map.get("last_login_time"),map.get("img_path"));
+				map.get("last_login_time"),map.get("img_path"),map.get("confim_pwd"));
 	}
 
 	@Override
@@ -80,6 +80,12 @@ public class UserInfoDAOimpl implements UserInfoDAO {
 	@Override
 	public boolean updateImg(String val) {
 		return dButil.exePresqlModifyData(String.format("update %s set img_path=? where userid=? limit 1", DBInfo.USER_INFO),
+				new Object[]{val,userId})==1;
+	}
+
+	@Override
+	public boolean updateConfimPWD(String val) {
+		return dButil.exePresqlModifyData(String.format("update %s set confim_pwd=? where userid=? limit 1", DBInfo.USER_INFO),
 				new Object[]{val,userId})==1;
 	}
 }

@@ -25,4 +25,9 @@ public class LoginImpl implements LoginBiz {
 	public Boolean checkUserpwd(String username, String pwd) {
 		return loginDAOimpl.checkUserpwd(username, MD5Util.md5two(pwd));
 	}
+
+	@Override
+	public Boolean updatePwd(String pwd, String userId) {
+		return loginDAOimpl.updatePwd(MD5Util.md5two(pwd),userId);
+	}
 }

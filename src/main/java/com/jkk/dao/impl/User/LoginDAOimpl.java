@@ -23,4 +23,10 @@ public class LoginDAOimpl implements LoginDAO {
 	public Boolean checkUserpwd(String username, String md5pwd) {
 		return dButil.hasData(String.format("SELECT id FROM `%s` where name= ? and password= ? LIMIT 1", DBInfo.USER),new String[]{username, md5pwd});
 	}
+
+	@Override
+	public Boolean updatePwd(String pwd,String userId) {
+		return dButil.exePresqlModifyData(String.format("update %s set password=? where id=?", DBInfo.USER),
+				new Object[]{pwd,userId})==1;
+	}
 }

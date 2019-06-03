@@ -24,5 +24,9 @@ public interface UserInfoBiz {
 	boolean updateLastLoginTime(String val);
 
 	boolean updateImg(String val);
+
+	boolean updateConfimPWD(String val);
+
+	boolean checkConfimPWD(String val);
 }
 

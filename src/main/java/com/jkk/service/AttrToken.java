@@ -7,4 +7,5 @@ public class AttrToken {
 	public static final String LOGIN_NAME = "login-name";
 	public static final String URL = "url";
 	public static final String DATA = "data";
+	public static final String CONFIM = "confim";
 }

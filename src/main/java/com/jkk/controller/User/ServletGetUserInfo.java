@@ -34,6 +34,13 @@ public class ServletGetUserInfo extends HttpServlet {
 			case "img":
 				out.print(userInfo.getImgPath());
 				break;
+			case "confimpwd":
+				if (userInfo.getConfimPWD()==null || userInfo.getConfimPWD().equals("")){
+					out.print("user%2FdefineCPWD.jsp");
+				}else {
+					out.print("user%2FchangePWD.jsp");
+				}
+				break;
 		}
 	}
 
