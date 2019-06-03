@@ -25,6 +25,9 @@
     <script type="text/javascript">
         $(document).ready(function () {
             $($("#ul_title").find("li")[1]).addClass('title_active');
+
+            $($(".list_active")[0]).attr('id','left_list_active');
+
             $.post(base_path+"/user/get",{'a':'all'},function (data) {
                 $(".get_user_last_login").text(data.lastLoginTime);
 
@@ -55,7 +58,7 @@
                     success: function (ret) {
                         ret = JSON.parse(ret);
                         if(ret.status == '1') {
-                            tip_show("上传成功!",'success');
+                            tip_show("更新成功!",'success');
                             $.post("${pageContext.request.contextPath}/user/get",{'a':'name'},function (data) {
                                 $(".get_user_name").text(data);
                             });
@@ -131,47 +134,7 @@
     <%@include file="/WEB-INF/template/title.jsp"%>
     <div id="main">
         <div id="main_content">
-            <div id="left_list">
-                <div id="left_list_userinfo">
-                    <div id="left_list_userinfo_username">
-                        <img style="width: 70px;height: 70px;" class="get_user_img" src="${pageContext.request.contextPath}/static/img/user/default.jpg">
-                        <div id="left_list_userinfo_username_right">
-                            <p style="margin-top: 20px;">
-                                <span class="span_left_list_userinfo_username get_user_name" style="font-family: 微软雅黑;">用户名</span>
-                            </p>
-                            <p style="margin-top: 5px;">
-                                <span class="span_left_list_userinfo_username" style="font-size: 12px;color: #666;">欢迎您!</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div id="left_list_userinfo_bottom">
-                        <p><span class="span_left_list_userinfo_username" style="font-weight: 600;">最近一次登录在:</span></p>
-                        <p><span class="span_left_list_userinfo_username get_user_last_login" style="margin-left: 45px;"></span></p>
-                    </div>
-                </div>
-                <div id="div_left_ul">
-                    <ul class="ul_my" style="margin-top: 20px;">
-                        <a href="#" class="a_left" style="margin-top: 10px;" id="left_list_active">
-                            <li class="li_left">
-                                <span class="glyphicon glyphicon-user" id="glyphicon_li_left"></span> <!--图标-->
-                                个人信息
-                            </li>
-                        </a>
-                        <a href="#" class="a_left">
-                            <li class="li_left">
-                                <span class="glyphicon glyphicon-lock" id="glyphicon_li_left"></span> <!--图标-->
-                                修改密码
-                            </li>
-                        </a>
-                        <a href="#" class="a_left">
-                            <li class="li_left">
-                                <span class="glyphicon glyphicon-off" id="glyphicon_li_left"></span> <!--图标-->
-                                账号注销
-                            </li>
-                        </a>
-                    </ul>
-                </div>
-            </div>
+            <%@ include file="/WEB-INF/template/userinfo_left.jsp"%>
             <div id="right_main">
                 <div id="right_main_top">
                     <span class="span_right_main_top">个人信息</span>

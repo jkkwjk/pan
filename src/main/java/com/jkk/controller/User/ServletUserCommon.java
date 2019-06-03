@@ -11,7 +11,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 public class ServletUserCommon extends HttpServlet {
+	/**
+	 * 用于获得跳转的链接
+	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		User user = (User)session.getAttribute(AttrToken.USER);
 
 	}
 
@@ -20,6 +25,8 @@ public class ServletUserCommon extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String url = request.getParameter(AttrToken.URL);
-		request.getRequestDispatcher("/WEB-INF/"+url).forward(request,response);
+		if (url.contains("user")){
+			request.getRequestDispatcher("/WEB-INF/"+url).forward(request,response);
+		}
 	}
 }
