@@ -1,11 +1,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.jkk.service.AttrToken" %>
 <div id="left_list">
     <div id="left_list_userinfo">
         <div id="left_list_userinfo_username">
-            <img style="width: 70px;height: 70px;" class="get_user_img" src="${pageContext.request.contextPath}/static/img/user/default.jpg">
+            <img style="width: 70px;height: 70px;" class="get_user_img" src="${pageContext.request.contextPath}/static/img/user/${requestScope[AttrToken.DATA].imgPath}">
             <div id="left_list_userinfo_username_right">
                 <p style="margin-top: 20px;">
-                    <span class="span_left_list_userinfo_username get_user_name" style="font-family: 微软雅黑;">用户名</span>
+                    <span class="span_left_list_userinfo_username get_user_name" style="font-family: 微软雅黑;">${requestScope[AttrToken.DATA].userName}</span>
                 </p>
                 <p style="margin-top: 5px;">
                     <span class="span_left_list_userinfo_username" style="font-size: 12px;color: #666;">欢迎您!</span>
@@ -14,7 +15,7 @@
         </div>
         <div id="left_list_userinfo_bottom">
             <p><span class="span_left_list_userinfo_username" style="font-weight: 600;">最近一次登录在:</span></p>
-            <p><span class="span_left_list_userinfo_username get_user_last_login" style="margin-left: 45px;"></span></p>
+            <p><span class="span_left_list_userinfo_username" style="margin-left: 45px;">${requestScope[AttrToken.DATA].lastLoginTime}</span></p>
         </div>
     </div>
     <div id="div_left_ul">

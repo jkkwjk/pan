@@ -28,17 +28,9 @@
 
             $($(".list_active")[0]).attr('id','left_list_active');
 
-            $.post(base_path+"/user/get",{'a':'all'},function (data) {
-                $(".get_user_last_login").text(data.lastLoginTime);
-
-                $(".get_user_name_input").val(data.userName);
-                $(".get_user_email_input").val(data.eMail);
-                $(".get_user_phone_input").val(data.phone);
-                $(".get_user_website_input").val(data.website);
-                $(".get_user_location_input").val(data.location);
-
-                $("input[type=radio][name=sex][value="+data.sex+"]").prop('checked',true);
-            },'json');
+            $.post(base_path+"/user/get",{'a':'sex'},function (data) {
+                $("input[type=radio][name=sex][value="+data+"]").prop('checked',true);
+            })
         });
     </script><!-- 页面初始化 -->
     <script type="text/javascript">
@@ -144,7 +136,7 @@
                         <div id="right_main_main_left">
                             <div class="right_main_main_left_item">
                                 <span class="span_right_main_main_left_attr">用户名:</span>
-                                <input type="text" name="userName" class="form-control input_right_main_main_left user_name get_user_name_input" placeholder="User Name">
+                                <input type="text" name="userName" value="${requestScope[AttrToken.DATA].userName}" class="form-control input_right_main_main_left user_name" placeholder="User Name">
                             </div>
                             <div class="right_main_main_left_item">
                                 <span class="span_right_main_main_left_attr">性别:</span>
@@ -153,19 +145,19 @@
                             </div>
                             <div class="right_main_main_left_item">
                                 <span class="span_right_main_main_left_attr">公开邮箱:</span>
-                                <input type="text" name="eMail" class="form-control input_right_main_main_left get_user_email_input" placeholder="E-mail">
+                                <input type="text" name="eMail" value="${requestScope[AttrToken.DATA].eMail}" class="form-control input_right_main_main_left" placeholder="E-mail">
                             </div>
                             <div class="right_main_main_left_item">
                                 <span class="span_right_main_main_left_attr">手机号:</span>
-                                <input type="text" name="phone" class="form-control input_right_main_main_left get_user_phone_input" placeholder="Phone Number">
+                                <input type="text" name="phone" value="${requestScope[AttrToken.DATA].phone}" class="form-control input_right_main_main_left" placeholder="Phone Number">
                             </div>
                             <div class="right_main_main_left_item">
                                 <span class="span_right_main_main_left_attr">个人网站:</span>
-                                <input type="text" name="website" class="form-control input_right_main_main_left get_user_website_input" placeholder="URL">
+                                <input type="text" name="website" value="${requestScope[AttrToken.DATA].website}" class="form-control input_right_main_main_left" placeholder="URL">
                             </div>
                             <div class="right_main_main_left_item">
                                 <span class="span_right_main_main_left_attr">地理位置:</span>
-                                <input type="text" name="location" class="form-control input_right_main_main_left get_user_location_input" placeholder="Location">
+                                <input type="text" name="location" value="${requestScope[AttrToken.DATA].location}" class="form-control input_right_main_main_left" placeholder="Location">
                             </div>
                             <div class="right_main_main_left_item" style="float: right;">
                                 <button id="submit_btn" type="button" class="btn btn-success" style="margin-right: 5px;width: 100px;">交提更新</button>
@@ -173,7 +165,7 @@
                         </div>
                     </form>
                     <div id="right_main_main_right">
-                        <input class="get_user_img" style="border-radius: 5px 5px 5px 5px;" id="change_img" type="image" src="${pageContext.request.contextPath}/static/img/user/default.jpg" width="100" height="100">
+                        <input class="get_user_img" style="border-radius: 5px 5px 5px 5px;" id="change_img" type="image" src="${pageContext.request.contextPath}/static/img/user/${requestScope[AttrToken.DATA].imgPath}" width="100" height="100">
                         <div id="in_img_tip">
                             <span class="glyphicon glyphicon-pencil"></span>
                             <span>点击以编辑</span>

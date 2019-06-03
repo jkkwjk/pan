@@ -1,4 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page import="com.jkk.service.AttrToken" %>
 <div id="title">
     <div id="title_left" style="background-image: url(${pageContext.request.contextPath}/static/img/file/logo.png);"></div>
     <div id="title_main">
@@ -12,16 +13,16 @@
         </ul>
         <div id="title_right">
             <div id="user_name_group">
-                <img class="get_user_img" id="user_name_img" src="${pageContext.request.contextPath}/static/img/user/default.jpg">
-                <div id="user_name" class="get_user_name"></div>
+                <img class="get_user_img" id="user_name_img" src="${pageContext.request.contextPath}/static/img/user/${requestScope[AttrToken.DATA].imgPath}">
+                <div id="user_name" class="get_user_name">${requestScope[AttrToken.DATA].userName}</div>
                 <span class="glyphicon glyphicon-chevron-down" style="margin-right: 20px;"></span><!--向下箭头-->
 
                 <div id="user_name_animation_nomal"><!--隐藏动画-->
                     <div id="user_name_animation_top" style="background-image: url(${pageContext.request.contextPath}/static/img/file/user-level-bg-0.png);"><!--顶部-->
                         <div id="user_name_animation_top_img_bg">
-                            <img id="user_name_animation_top_img" class="get_user_img" src="${pageContext.request.contextPath}/static/img/user/default.jpg">
+                            <img id="user_name_animation_top_img" class="get_user_img" src="${pageContext.request.contextPath}/static/img/user/${requestScope[AttrToken.DATA].imgPath}">
                         </div>
-                        <span id="user_name_animation_top_username" class="get_user_name"></span>
+                        <span id="user_name_animation_top_username" class="get_user_name">${requestScope[AttrToken.DATA].userName}</span>
                     </div>
 
                     <div id="user_name_animation_main">
@@ -45,12 +46,6 @@
 </div>
 <script type="text/javascript">
     $(document).ready(function () {
-        $.post("${pageContext.request.contextPath}/user/get",{'a':'name'},function (data) {
-            $(".get_user_name").text(data);
-        });
-        $.post("${pageContext.request.contextPath}/user/get",{'a':'img'},function (data) {
-            $(".get_user_img").attr('src','${pageContext.request.contextPath}/static/img/user/'+data);
-        });
         // todo 获取二级密码的跳转链接
     });
 </script> <!-- 获得用户名 -->

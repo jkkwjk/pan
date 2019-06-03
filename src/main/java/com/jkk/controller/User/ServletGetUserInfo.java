@@ -28,8 +28,8 @@ public class ServletGetUserInfo extends HttpServlet {
 			case "name":
 				out.print(userInfo.getUserName());
 				break;
-			case "all":
-				out.print(JSON.toJSONString(userInfo));
+			case "sex":
+				out.print(userInfo.getSex());
 				break;
 			case "img":
 				out.print(userInfo.getImgPath());

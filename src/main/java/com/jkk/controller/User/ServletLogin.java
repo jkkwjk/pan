@@ -1,8 +1,10 @@
 package com.jkk.controller.User;
 
 import com.jkk.model.User;
+import com.jkk.model.UserInfo;
 import com.jkk.service.AttrToken;
 import com.jkk.service.impl.User.LoginImpl;
+import com.jkk.service.impl.User.UserInfoImpl;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,6 +34,8 @@ public class ServletLogin extends HttpServlet {
 			}
 		}
 		if (session.getAttribute(AttrToken.USER) != null) {
+			UserInfo userInfo = (new UserInfoImpl((User) session.getAttribute(AttrToken.USER))).getInfo();
+			request.setAttribute(AttrToken.DATA,userInfo);
 			request.getRequestDispatcher("/WEB-INF/disk.jsp").forward(request,response);
 		} else {
 			session.setAttribute(AttrToken.ERROR_MSG,"用户名或密码错误");
@@ -46,6 +50,8 @@ public class ServletLogin extends HttpServlet {
 		if (session.getAttribute(AttrToken.USER) == null) {
 			response.sendRedirect(request.getContextPath()+"/login.jsp");
 		}else {
+			UserInfo userInfo = (new UserInfoImpl((User) session.getAttribute(AttrToken.USER))).getInfo();
+			request.setAttribute(AttrToken.DATA,userInfo);
 			request.getRequestDispatcher("/WEB-INF/disk.jsp").forward(request,response);
 		}
 	}
