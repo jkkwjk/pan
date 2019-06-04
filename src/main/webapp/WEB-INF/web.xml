@@ -143,4 +143,13 @@
         <servlet-name>ServletUserDel</servlet-name>
         <url-pattern>/user/del</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletShare</servlet-name>
+        <servlet-class>com.jkk.controller.Share.ServletShare</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletShare</servlet-name>
+        <url-pattern>/share</url-pattern>
+    </servlet-mapping>
 </web-app>

@@ -44,13 +44,13 @@ public class ServletCommon extends HttpServlet {
 		String used = fileWithUser.getAllFileSize();
 		ret.put("used", FilesizeUtil.BToOther(used));
 
-		String scale_tmp = (new BigDecimal(used)).divide(new BigDecimal(max)).toString();
-		Integer scale;
+		String scale_tmp = (new BigDecimal(used)).divide(new BigDecimal(max),10,BigDecimal.ROUND_HALF_DOWN).toString();
+		Double scale;
 		int pos = scale_tmp.indexOf('.');
 		if (pos!=-1){
-			scale = Integer.parseInt(scale_tmp.substring(0,pos))*100;
+			scale = Double.parseDouble(scale_tmp.substring(0,pos+3))*100;
 		} else {
-			scale = Integer.parseInt(scale_tmp)*100;
+			scale = Double.parseDouble(scale_tmp)*100;
 		}
 		ret.put("scale", scale);
 

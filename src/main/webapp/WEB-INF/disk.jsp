@@ -204,7 +204,11 @@
             });
         }
     </script> <!-- 文件上传 -->
-
+    <script type="text/javascript">
+        $(document).ready(function () {
+            // todo 分享交互界面
+        });
+    </script> <!-- 文件分享 -->
     <script type="text/javascript">
         $(document).ready(function () {
             $("#btn_download").click(function () {
@@ -258,6 +262,7 @@
                             get_next_file(file_start,folder_id_now);
                             break;
                         case "share":
+                            cleanPage();
                             start_search("我的分享");
 
                             break;
