@@ -44,7 +44,7 @@
                 }
             });
         });
-    </script><!-- 分页查询 -->
+    </script> <!-- 分页查询 -->
     <script type="text/javascript">
         $(document).ready(function () {
             var title;
@@ -203,7 +203,7 @@
                 }
             });
         }
-    </script><!-- 文件上传 -->
+    </script> <!-- 文件上传 -->
 
     <script type="text/javascript">
         $(document).ready(function () {
@@ -258,6 +258,7 @@
                             get_next_file(file_start,folder_id_now);
                             break;
                         case "share":
+                            start_search("我的分享");
 
                             break;
                     }
@@ -265,7 +266,7 @@
                 return false;
             });
         });
-    </script><!-- 搜索以及左列表框事件处理 -->
+    </script> <!-- 搜索以及左列表框事件处理 -->
     <script type="text/javascript">
         $(document).ready(function () {
             get_next_file(file_start,folder_id_now);
