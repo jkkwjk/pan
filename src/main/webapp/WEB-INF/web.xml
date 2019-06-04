@@ -134,4 +134,13 @@
         <servlet-name>ServletChangePWD</servlet-name>
         <url-pattern>/user/cp</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletUserDel</servlet-name>
+        <servlet-class>com.jkk.controller.User.ServletUserDel</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletUserDel</servlet-name>
+        <url-pattern>/user/del</url-pattern>
+    </servlet-mapping>
 </web-app>

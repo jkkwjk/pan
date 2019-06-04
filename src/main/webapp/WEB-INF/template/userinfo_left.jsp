@@ -32,7 +32,7 @@
                     修改密码
                 </li>
             </a>
-            <a href="#" class="a_left list_active">
+            <a href="${pageContext.request.contextPath}/user/c?url=user%2Fdel.jsp" class="a_left list_active">
                 <li class="li_left">
                     <span class="glyphicon glyphicon-off" id="glyphicon_li_left"></span> <!--图标-->
                     账号注销

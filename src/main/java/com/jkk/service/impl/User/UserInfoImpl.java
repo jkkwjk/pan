@@ -7,6 +7,8 @@ import com.jkk.service.inter.User.UserInfoBiz;
 import com.jkk.utils.MD5Util;
 import com.jkk.utils.StampDate;
 
+import java.util.Date;
+
 public class UserInfoImpl implements UserInfoBiz {
 	private UserInfoDAOimpl userInfoDAOimpl;
 	public UserInfoImpl(User user){
@@ -15,8 +17,13 @@ public class UserInfoImpl implements UserInfoBiz {
 	@Override
 	public UserInfo getInfo() {
 		UserInfo userInfo = userInfoDAOimpl.getInfo();
-		userInfo.setLastLoginTime(StampDate.stampToDate(userInfo.getLastLoginTime()));
-		return userInfo;
+		try {
+			userInfo.setLastLoginTime(StampDate.stampToDate(userInfo.getLastLoginTime()));
+		}catch (Exception e){
+			userInfo.setLastLoginTime(StampDate.stampToDate(new Date().getTime()/1000)); //只有在输出化的时候可能会抛出异常
+		}finally {
+			return userInfo;
+		}
 	}
 
 	@Override

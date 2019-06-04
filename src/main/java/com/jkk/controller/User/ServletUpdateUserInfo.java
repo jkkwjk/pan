@@ -5,7 +5,9 @@ import com.alibaba.fastjson.JSONObject;
 import com.jkk.model.User;
 import com.jkk.model.UserInfo;
 import com.jkk.service.AttrToken;
+import com.jkk.service.ErrorPath;
 import com.jkk.service.impl.Disk.FileIOupImpl;
+import com.jkk.service.impl.User.RegeditImpl;
 import com.jkk.service.impl.User.UserInfoImpl;
 import com.jkk.service.inter.Disk.FileIOup;
 import com.jkk.utils.MD5Util;
@@ -24,7 +26,6 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Map;
 
-@WebServlet(name = "ServletUpdateUserInfo")
 public class ServletUpdateUserInfo extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		HttpSession session = request.getSession();
@@ -67,7 +68,32 @@ public class ServletUpdateUserInfo extends HttpServlet {
 
 	}
 
+	/**
+	 * 增加二级密码 (暂时)
+	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		User user = (User)session.getAttribute(AttrToken.USER);
+		UserInfoImpl userInfoimpl = new UserInfoImpl(user);
+		UserInfo userInfo = userInfoimpl.getInfo();
+		RegeditImpl regedit = new RegeditImpl();
+		JSONObject ret = new JSONObject();
 
+		if (!(userInfo.getConfimPWD()==null || userInfo.getConfimPWD().equals(""))){
+			// 非法访问
+			response.sendRedirect(request.getContextPath()+ ErrorPath.html500);
+			return;
+		}
+
+		String pwd = request.getParameter("pwd");
+		if (regedit.checkPwdIsstrong(pwd)){
+			userInfoimpl.updateConfimPWD(pwd);
+			ret.put("status",200);
+		}else {
+			ret.put("status",201);
+			ret.put("error_msg","密码强度不足");
+		}
+		PrintWriter out = response.getWriter();
+		out.print(JSON.toJSONString(ret));
 	}
 }

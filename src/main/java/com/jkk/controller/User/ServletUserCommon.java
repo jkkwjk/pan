@@ -33,14 +33,13 @@ public class ServletUserCommon extends HttpServlet {
 		if (url.contains("user")){
 			HttpSession session = request.getSession();
 			User user = (User) session.getAttribute(AttrToken.USER);
+
 			UserInfoImpl userInfoimpl = new UserInfoImpl(user);
 			UserInfo userInfo = userInfoimpl.getInfo();
+			request.setAttribute(AttrToken.DATA,userInfo);
+
 			switch (url){
-				case "user/user.jsp":
-					request.setAttribute(AttrToken.DATA,userInfo);
-					break;
 				case "user/changePWD.jsp":
-					request.setAttribute(AttrToken.DATA,userInfo);
 					if (!(userInfo.getConfimPWD() == null||userInfo.getConfimPWD().equals(""))){
 						request.setAttribute(AttrToken.CONFIM,true);
 					}
@@ -51,7 +50,6 @@ public class ServletUserCommon extends HttpServlet {
 						response.sendRedirect(request.getContextPath()+ ErrorPath.html500);
 						return;
 					}
-					request.setAttribute(AttrToken.DATA,userInfo);
 					break;
 			}
 			request.getRequestDispatcher("/WEB-INF/"+url).forward(request,response);

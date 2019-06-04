@@ -190,32 +190,7 @@
             });
         }
     </script><!-- 文件上传 -->
-    
-    <script type="text/javascript">
-        var timer = null;
-        function tip_show(s,wclass) {
-            $("#tip_span").text(s);
-            // success绿色 info蓝色 danger红色
-            $("#alert_div").attr('class','alert alert-'+wclass);
-            my_show();
-            setTimeout("my_hide();",1000);
-        }
-        function my_show(){
-            var elemt = $("#tip");
-            clearTimeout(timer);
-            elemt.stop(true);
-            elemt.css('display','inline');
-            elemt.css('margin-top','0px');
-            elemt.css('opacity','1');
-        }
-        function my_hide(){
-            var elemt = $("#tip");
-            elemt.stop(true);
-            elemt.animate({'margin-top':'30px'},{queue:false,duration:400});
-            elemt.animate({'opacity':'0'},{queue:false,duration:400});
-            timer = setTimeout("$(\"#tip\").css('display','none')",400);
-        }
-    </script> <!-- 动画 -->
+
     <script type="text/javascript">
         $(document).ready(function () {
             $("#btn_download").click(function () {
@@ -399,11 +374,7 @@
             </div>
             
         </div>
-        <div id="tip" style="display: none;">
-            <div class="alert alert-danger" role="alert" style="font-size:17px;text-align: center;padding: 10px;" id="alert_div">
-                <span id="tip_span"></span>
-            </div>
-        </div>
+        <%@ include file="/WEB-INF/template/tip_show.jsp"%>
         <!-- 通用输入框 -->
         <div class="modal fade" id="tipModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">

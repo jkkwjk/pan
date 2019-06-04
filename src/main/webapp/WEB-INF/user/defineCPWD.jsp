@@ -68,6 +68,23 @@
             $($("#ul_title").find("li")[1]).addClass('title_active');
         });
     </script><!-- 页面初始化 -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#submit").click(function () {
+                var pwd = $("#pwd").val();
+                $.get("${pageContext.request.contextPath}/user/ud",{'pwd':pwd},function (data) {
+                    if (data.status==200){
+                        tip_show("添加二级密码成功,正在跳转...","success");
+                        setTimeout(function () {
+                            window.location.href = "${pageContext.request.contextPath}/user/c?url=user%2Fuser.jsp";
+                        },1400);
+                    } else {
+                        tip_show("密码强度不足","danger");
+                    }
+                },'json');
+            });
+        });
+    </script>
 </head>
 <body>
 <div id="warp" style="min-width: 1100px;">
@@ -92,6 +109,7 @@
             </div>
         </div>
     </div>
+    <%@ include file="/WEB-INF/template/tip_show.jsp"%>
 </div>
 </body>
 </html>
