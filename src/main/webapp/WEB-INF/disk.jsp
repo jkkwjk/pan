@@ -28,9 +28,23 @@
         var base_path= "${pageContext.request.contextPath}";
         var folder_id_now = 0; // 当前页面所属用户的文件夹
         var has_next = 1; // 用户是否还有文件
+        var isloding = false; // 是否正在加载,只针对get_file_next有效
         var template="<tr class=\"file_tr\" id=\"{rs_id}\" type={file_type}><td class=\"file_left\"><div class=\"checkbox_div\"><input type=\"checkbox\"></div><img src=\""+base_path+"/static/img/file/file_ico/{file_ico}.png\" class=\"file_img\"><a href=\"#\" class=\"a_file_name\"><span class=\"file_name\">{file_name}</span></a></td><td class=\"file_mid\">{file_size}</td><td class=\"file_right\">{file_time}</td></tr>\n";
     </script> <!-- 全局变量 -->
-
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var nScrollHight;
+            var nScrollTop;
+            var nDivHight=$("#file_main").height();
+            $("#file_main").on('scroll',function () {
+                nScrollHight = $(this)[0].scrollHeight;
+                nScrollTop = $(this)[0].scrollTop;
+                if(nScrollTop + nDivHight >= nScrollHight-40){
+                    get_next_file(file_start,folder_id_now);
+                }
+            });
+        });
+    </script><!-- 分页查询 -->
     <script type="text/javascript">
         $(document).ready(function () {
             var title;
@@ -244,6 +258,7 @@
                             get_next_file(file_start,folder_id_now);
                             break;
                         case "share":
+
                             break;
                     }
                 }

@@ -1,14 +1,15 @@
 function get_next_file(start,folder) {
-    if (has_next == 1){
+    if (has_next == 1 && isloding==false){
+        isloding=true;
         $.post(base_path+"/file/getfile",{'start':start,'folder':folder},function (data) {
             $.each(data.data,function (i,item) {
                 parse_file(item);
             });
+            isloding=false;
             file_num += parseInt(data.file_num);
-            file_start += data.file_num;
             has_next = data.has_next;
             $("#file_num").text(file_num);
-        },'json')
+        },'json');
     }
 }
 
@@ -26,6 +27,7 @@ function parse_file(item) {
     var add = template;
     add = add.replace("{rs_id}",item.rs_id);
     add = add.replace("{file_type}",item.file_type);
+    if (item.file_type==1){file_start++;}
     add = add.replace("{file_name}",item.file_name);
     add = add.replace("{file_size}",item.file_size);
     add = add.replace("{file_time}",item.file_time);
@@ -69,6 +71,7 @@ function cleanPage() {
     has_next=1;
     $("#btn_group").css("display","none");
     $("#all_file").prop("checked",false);
+    isloding=false;
 }
 function start_search(text) {
     folder_id_now = -1;

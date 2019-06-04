@@ -7,10 +7,10 @@
 <%--测试用--%>
 <%
     LoginImpl login = new LoginImpl();
-    User user = login.login("test","jKK112233");
+    User user = login.login("fenye","jKK112233");
     session.setAttribute(AttrToken.USER,user);
 %>
-<jsp:forward page="/user/c?url=user%2FchangePWD.jsp"></jsp:forward>
+<jsp:forward page="/login"></jsp:forward>
 <%--END--%>
 </body>
 </html>

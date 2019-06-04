@@ -1,16 +1,20 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page import="com.jkk.service.AttrToken" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div id="title">
     <div id="title_left" style="background-image: url(${pageContext.request.contextPath}/static/img/file/logo.png);"></div>
     <div id="title_main">
         <ul class="ul_my" id="ul_title">
+            <c:if test="${sessionScope[AttrToken.USER] != null}">
             <li class="li_float_left li_title" style="margin-left: 10px;">
                 <a href="${pageContext.request.contextPath}/login" class="a_block">文件</a>
             </li>
             <li class="li_float_left li_title">
                 <a href="${pageContext.request.contextPath}/user/c?url=user%2Fuser.jsp" class="a_block">个人资料</a>
             </li>
+            </c:if>
         </ul>
+        <c:if test="${sessionScope[AttrToken.USER] != null}">
         <div id="title_right">
             <div id="user_name_group">
                 <img class="get_user_img" id="user_name_img" src="${pageContext.request.contextPath}/static/img/user/${requestScope[AttrToken.DATA].imgPath}">
@@ -42,6 +46,7 @@
                 </button>
             </div>
         </div>
+        </c:if>
     </div>
 </div>
 <script type="text/javascript">
