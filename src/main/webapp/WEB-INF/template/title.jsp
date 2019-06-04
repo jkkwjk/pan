@@ -30,7 +30,7 @@
                             <a href="${pageContext.request.contextPath}/user/c?url=user%2Fuser.jsp" class="a_user_name_animation"><li>个人资料</li></a>
                             <!-- 无二级密码跳设置 有跳修改密码-->
                             <a href="#" class="a_user_name_animation" id="post_confim_pwd"><li>二级密码</li></a>
-                            <a href="#" class="a_user_name_animation" id="exit"><li>退出</li></a>
+                            <a href="${pageContext.request.contextPath}/user/del" class="a_user_name_animation" id="exit"><li>退出</li></a>
                         </ul>
                     </div>
                 </div>

@@ -38,21 +38,19 @@
         }
     </script> <!-- 倒计时按钮 -->
     <script type="text/javascript">
-        $("#modal_confim").click(function () {
-            $.post("${pageContext.request.contextPath}/user/del",function (data) {
-                if (data.status==200){
-                    <%
-                    session.removeAttribute(AttrToken.USER);
-                    // FIXME: 2019/6/4 修复无论如何都会执行
-                    %>
-                    tip_show("注销成功","info");
-                    setTimeout(function () {
-                        window.location.href = "${pageContext.request.contextPath}/login.jsp";
-                    },1400);
-                } else {
-                    tip_show(data.error_msg,"danger");
-                }
-            },'json');
+        $(document).ready(function () {
+            $("#modal_confim").click(function () {
+                $.post("${pageContext.request.contextPath}/user/del",function (data) {
+                    if (data.status==200){
+                        tip_show("注销成功","info");
+                        setTimeout(function () {
+                            window.location.href = "${pageContext.request.contextPath}/login.jsp";
+                        },1400);
+                    } else {
+                        tip_show(data.error_msg,"danger");
+                    }
+                },'json');
+            });
         });
     </script><!-- 模态框处理 -->
     <script type="text/javascript">
@@ -83,7 +81,7 @@
                                 <li class="ul_main_li"><span class="span_li_black">丢失文件数据</span></li>
                                 <li class="ul_main_li"><span class="span_li_black">分享链接失效</span></li>
                             </ul>
-                            <button type="button" class="btn btn-danger my_btn" id="btn" disabled>确定注销</button>
+                            <button type="button" class="btn btn-danger my_btn" id="btn" disabled data-toggle="modal" data-target="#yesnoModal">确定注销</button>
                         </div>
                     </div>
                 </div>
