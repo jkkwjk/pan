@@ -174,4 +174,13 @@
         <servlet-name>ServletShareDel</servlet-name>
         <url-pattern>/share/del</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletShareDown</servlet-name>
+        <servlet-class>com.jkk.controller.Share.ServletShareDown</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletShareDown</servlet-name>
+        <url-pattern>/share/down</url-pattern>
+    </servlet-mapping>
 </web-app>

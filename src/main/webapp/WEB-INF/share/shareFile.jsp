@@ -25,6 +25,14 @@
     <script src="${pageContext.request.contextPath}/static/js/title.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 </head>
+<script type="text/javascript">
+    var url = "${requestScope[AttrToken.SHARE_FILE].url}";
+    $(document).ready(function () {
+        $("#download_btn").click(function () {
+            window.location.href="${pageContext.request.contextPath}/share/down?url="+url;
+        });
+    });
+</script>
 <body style="background-color: #F7F7F7;">
 <div id="warp" style="min-width: 900px;">
     <%@ include file="/WEB-INF/template/title.jsp"%>
@@ -45,12 +53,14 @@
                             $(document).ready(function () {
                                 $("#ban_share_btn").click(function () {
                                     var type = 1;
-                                    var url = "${sessionScope[AttrToken.SHARE_FILE].url}";
                                     $.post("${pageContext.request.contextPath}/share/del",{'type':type,'url':url},function (data) {
                                         if (data.status == 200){
-                                            window.
+                                            tip_show("取消分享成功!","success");
+                                            setTimeout(function () {
+                                                window.location.href="${pageContext.request.contextPath}/login";
+                                            },1400);
                                         } else {
-
+                                            tip_show(data.error_msg,"danger");
                                         }
                                     },'json');
                                 });
@@ -93,6 +103,7 @@
             </div>
         </div>
     </div>
+    <%@ include file="/WEB-INF/template/tip_show.jsp"%>
 </div>
 </body>
 </html>

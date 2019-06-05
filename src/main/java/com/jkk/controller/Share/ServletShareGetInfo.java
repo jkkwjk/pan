@@ -5,6 +5,8 @@ import com.alibaba.fastjson.JSONObject;
 import com.jkk.model.Share.ShareFile;
 import com.jkk.model.User;
 import com.jkk.service.AttrToken;
+import com.jkk.service.impl.Disk.FileBaseImpl;
+import com.jkk.service.impl.Disk.FileIOdownImpl;
 import com.jkk.service.impl.Disk.FileWithUserImpl;
 import com.jkk.service.impl.Disk.FolderWithUserImpl;
 import com.jkk.service.impl.Share.ShareFileImpl;
