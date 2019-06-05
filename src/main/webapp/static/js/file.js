@@ -96,10 +96,11 @@ function div_able(elemt){
 function btn_group_display(){
     var num = $.check_num();
     if(num > 0){
-        div_able($("#btn_group"));
+        div_able($(".btn_group"));
     } else{
-        div_disable($("#btn_group"));
+        div_disable($(".btn_group"));
     }
+
     if(num == 1){
         $("#btn_share").attr('disabled',false);
         $("#btn_rename").attr('disabled',false);
@@ -113,7 +114,21 @@ function btn_group_display(){
         $.set_elemt_check($("#all_file"),false);
     }
 
-
+    // 分享按钮行为
+    if (num == 1){
+        $("#btn_ban_share").attr('disabled',false);
+        $("#btn_open_url").attr('disabled',false);
+        $("#btn_re_share").attr('disabled',false);
+    } else {
+        $("#btn_ban_share").attr('disabled',true);
+        $("#btn_open_url").attr('disabled',true);
+        $("#btn_re_share").attr('disabled',true);
+    }
+    // 过期文件不能打开链接
+    var guoqi_obj = $($($("input:checked[id!='all_file']").parent().parent().parent()[0]).find("#guoqi")[0]);
+    if (guoqi_obj.text() != ''){
+        $("#btn_open_url").attr('disabled',true);
+    }
     // 文件夹不能下载
     var b=1;
     $.each($(":checked"),function (i,item) {

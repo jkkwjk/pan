@@ -30,6 +30,7 @@
         var has_next = 1; // 用户是否还有文件
         var isloding = false; // 是否正在加载,只针对get_file_next有效
         var template="<tr class=\"file_tr\" id=\"{rs_id}\" type={file_type}><td class=\"file_left\"><div class=\"checkbox_div\"><input type=\"checkbox\"></div><img src=\""+base_path+"/static/img/file/file_ico/{file_ico}.png\" class=\"file_img\"><a href=\"#\" class=\"a_file_name\"><span class=\"file_name\">{file_name}</span></a></td><td class=\"file_mid\">{file_size}</td><td class=\"file_right\">{file_time}</td></tr>\n";
+        var true_url = "${pageContext.request.scheme}${'://'}${pageContext.request.serverName}${':'}${pageContext.request.serverPort}${pageContext.request.contextPath}";
     </script> <!-- 全局变量 -->
     <script type="text/javascript">
         $(document).ready(function () {
@@ -206,7 +207,62 @@
     </script> <!-- 文件上传 -->
     <script type="text/javascript">
         $(document).ready(function () {
-            // todo 分享交互界面
+            $("#btn_share").click(function () {
+                var obj = $($("input:checked[id!='all_file']").parent().parent().parent()[0]);
+                var type = obj.attr('type');
+                var id = obj.attr('id');
+                if (obj.attr('type')==1){
+                    $.post(base_path+"/share",{'id':id,'type':type},function (data) {
+                        if (data.status==200) {
+                            $("#share_url").text("分享链接: "+true_url+'/share?type=1&url='+data.url);
+                            $("#shareModal").modal();
+                        } else if(data.status==202){
+                            $("#share_url").text("分享已存在! 分享链接: "+true_url+'/share?type=1&url='+data.url);
+                            $("#shareModal").modal();
+                        } else {
+                            tip_show(data.error_msg,'danger');
+                        }
+                    },'json');
+                }else {
+                    alert("暂不支持文件夹分享");
+                }
+            });
+
+            // 分享按钮事件
+            $("#btn_open_url").click(function () {
+                var obj = $($("input:checked[id!='all_file']").parent().parent().parent()[0]);
+                var url = obj.attr('url');
+                var type = obj.attr('type');
+                window.open(true_url+'/share?type='+type+'&url='+url);
+            });
+            $("#btn_ban_share").click(function () {
+                var obj = $($("input:checked[id!='all_file']").parent().parent().parent()[0]);
+                var url = obj.attr('url');
+                var type = obj.attr('type');
+                $.post(base_path+'/share/del',{'url':url,'type':type},function (data) {
+                    if (data.status == 200){
+                        tip_show("删除分享成功","success");
+                        cleanPage();
+                        get_share_file();
+                    } else {
+                        tip_show(data.error_msg,"danger");
+                    }
+                },'json');
+            });
+            $("#btn_re_share").click(function () {
+                var obj = $($("input:checked[id!='all_file']").parent().parent().parent()[0]);
+                var rsid = obj.attr('id');
+                var type = obj.attr('type');
+                $.post(base_path+'/share',{'id':rsid,'type':type},function (data) {
+                    if(data.status==202){
+                        tip_show("重新分享成功","success");
+                        cleanPage();
+                        get_share_file();
+                    }else {
+                        tip_show("重新分享失败","danger");
+                    }
+                },'json');
+            });
         });
     </script> <!-- 文件分享 -->
     <script type="text/javascript">
@@ -243,6 +299,9 @@
                 $("#left_list_active").attr('id','');
                 $(this).attr('id','left_list_active');
 
+                $("#not_share_display").css('display','inline-block');
+                $("#share_display").css('display','none');
+
                 var reg = $(this).find('li').attr('reg');
                 var action = $(this).find('li').attr('action');
                 if (reg != null && reg!= ""){
@@ -264,7 +323,10 @@
                         case "share":
                             cleanPage();
                             start_search("我的分享");
+                            $("#not_share_display").css('display','none');
+                            $("#share_display").css('display','inline-block');
 
+                            get_share_file();
                             break;
                     }
                 }
@@ -350,17 +412,34 @@
                             <span class="glyphicon glyphicon-hdd" style="margin-right: 2px;"></span> 新建文件夹
                         </button>
                     </div>
-                    <div class="btn-group button_main_main_top" id="btn_group" style="display: none;">
-                        <button id="btn_download" type="button" class="btn btn-default button_main_main_top">
-                            <span class="glyphicon glyphicon-cloud-download" style="margin-right: 2px;"></span>下载
-                        </button>
-                        <button id="btn_share" type="button" class="btn btn-default button_main_main_top">
-                            <span class="glyphicon glyphicon-tags" style="margin-right: 2px;"></span>
-                            分享
-                        </button>
-                        <button id="btn_delete" type="button" class="btn btn-default button_main_main_top" data-toggle="modal" data-target="#yesnoModal">删除</button>
-                        <button id="btn_rename" type="button" class="btn btn-default button_main_main_top" data-toggle="modal" data-target="#tipModal"
-                                data-title="重命名" data-placeholder="请输入名称" data-r="rename">重命名</button>
+                    <div id="not_share_display" style="display: inline-block;">
+                        <div class="btn-group button_main_main_top btn_group" id="btn_group" style="display: none;">
+                            <button id="btn_download" type="button" class="btn btn-default button_main_main_top">
+                                <span class="glyphicon glyphicon-cloud-download" style="margin-right: 2px;"></span>下载
+                            </button>
+                            <button id="btn_share" type="button" class="btn btn-default button_main_main_top">
+                                <span class="glyphicon glyphicon-tags" style="margin-right: 2px;"></span>
+                                分享
+                            </button>
+                            <button id="btn_delete" type="button" class="btn btn-default button_main_main_top" data-toggle="modal" data-target="#yesnoModal">删除</button>
+                            <button id="btn_rename" type="button" class="btn btn-default button_main_main_top" data-toggle="modal" data-target="#tipModal"
+                                    data-title="重命名" data-placeholder="请输入名称" data-r="rename">重命名</button>
+                        </div>
+                    </div>
+                    <div id="share_display" style="display: none;">
+                        <div class="btn-group button_main_main_top btn_group" id="btn_group" style="display: none;">
+                            <button id="btn_open_url" type="button" class="btn btn-default button_main_main_top">
+                                <span class="glyphicon glyphicon-eye-open" style="margin-right: 2px;"></span>打开链接
+                            </button>
+                            <button id="btn_re_share" type="button" class="btn btn-default button_main_main_top">
+                                <span class="glyphicon glyphicon-tags" style="margin-right: 2px;"></span>
+                                重新分享
+                            </button>
+                            <button id="btn_ban_share" type="button" class="btn btn-default button_main_main_top">
+                                <span class="glyphicon glyphicon-ban-circle" style="margin-right: 2px;"></span>
+                                取消分享
+                            </button>
+                        </div>
                     </div>
                 </div>
 
@@ -435,6 +514,25 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">我在想想</button>
                         <button type="button" class="btn btn-primary" id="modal_confim" data-dismiss="modal">确认</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- 分享成功返回窗口 -->
+        <div class="modal fade" id="shareModal" tabindex="-1" role="dialog" aria-hidden="true">
+            <div class="modal-dialog" style="max-width: 600px;">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">分享成功 √ (于15天之后到期)</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="share_url" style="user-select: text;">
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">确定</button>
                     </div>
                 </div>
             </div>

@@ -4,6 +4,7 @@ import com.jkk.dao.inter.Share.ShareFileDAO;
 import com.jkk.model.DBInfo;
 import com.jkk.model.File;
 import com.jkk.model.Share.ShareFile;
+import com.jkk.model.User;
 import com.jkk.utils.DButil;
 
 import java.util.ArrayList;
@@ -11,7 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 public class ShareFileDAOimpl implements ShareFileDAO {
-	DButil dButil = new DButil();
+	private DButil dButil = new DButil();
 	@Override
 	public boolean share(String uuid, Integer rsid, String limitTime, String pwd) {
 		return dButil.exePresqlModifyData(String.format("INSERT INTO %s(url,link_id,limit_time,pwd) VALUES(?,?,?,?)", DBInfo.SHARE_FILE),
@@ -32,10 +33,16 @@ public class ShareFileDAOimpl implements ShareFileDAO {
 
 	@Override
 	public ShareFile getShareByurl(String url) {
-		Map<String,String> map = dButil.exePresqlGetmap(String.format("SELECT * FROM %s WHERE url=? limit 1", DBInfo.SHARE_FILE),
-				new Object[]{url}).get(0);
-		String rsid = map.get("link_id");
-		return new ShareFile(map.get("url"),map.get("limit_time"),map.get("pwd"),getFileByrsid(Integer.parseInt(rsid)));
+		List<Map<String,String>> mapList = dButil.exePresqlGetmap(String.format("SELECT * FROM %s WHERE url=? limit 1", DBInfo.SHARE_FILE),
+				new Object[]{url});
+		if (mapList.size()==0){
+			return null;
+		}else {
+			Map<String,String> map = mapList.get(0);
+			String rsid = map.get("link_id");
+			return new ShareFile(map.get("url"),map.get("limit_time"),map.get("pwd"),getFileByrsid(Integer.parseInt(rsid)));
+		}
+
 	}
 
 	@Override
@@ -50,6 +57,35 @@ public class ShareFileDAOimpl implements ShareFileDAO {
 			list.add(shareFile);
 		}
 		return list;
+	}
+
+	@Override
+	public boolean delShare(String url, Integer userId) {
+		return dButil.exePresqlModifyData(String.format("DELETE t1 from %s t1,%s t2 where t1.url=? and t1.link_id=t2.id and t2.user_id=?", DBInfo.SHARE_FILE,DBInfo.USER_FILE),
+				new Object[]{url,userId})==1;
+	}
+
+	@Override
+	public String hasShareByRsid(Integer rsid, Integer userId) {
+		List<String[]> list = dButil.exePresqlSelect(String.format("select t1.url from %s t1,%s t2 where t1.link_id=t2.id and t2.user_id=? and t2.id=? limit 1", DBInfo.SHARE_FILE,DBInfo.USER_FILE),
+				new Object[]{userId,rsid});
+		if (list.size()==0){
+			return null;
+		}else {
+			return list.get(0)[0];
+		}
+	}
+
+	@Override
+	public User getShareUser(String url) {
+		List<Map<String,String>> mapList = dButil.exePresqlGetmap(String.format("select t3.* from %s t1,%s t2,%s t3 where t1.link_id=t2.id and t1.url=? and t2.user_id=t3.id limit 1", DBInfo.SHARE_FILE,DBInfo.USER_FILE,DBInfo.USER),
+				new Object[]{url});
+		if (mapList.size()==0){
+			return null;
+		}else {
+			Map<String,String> map = mapList.get(0);
+			return new User(Integer.parseInt(map.get("id")),map.get("name"),Integer.parseInt(map.get("permission_id")));
+		}
 	}
 
 	private File getFileByrsid(Integer rsid) {

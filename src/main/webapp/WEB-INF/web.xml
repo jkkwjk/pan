@@ -25,6 +25,10 @@
         <filter-name>FilterLoginCheck</filter-name>
         <url-pattern>/user/*</url-pattern>
     </filter-mapping>
+    <filter-mapping>
+        <filter-name>FilterLoginCheck</filter-name>
+        <url-pattern>/share/get</url-pattern>
+    </filter-mapping>
 
 
     <servlet>
@@ -151,5 +155,23 @@
     <servlet-mapping>
         <servlet-name>ServletShare</servlet-name>
         <url-pattern>/share</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletShareGetInfo</servlet-name>
+        <servlet-class>com.jkk.controller.Share.ServletShareGetInfo</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletShareGetInfo</servlet-name>
+        <url-pattern>/share/get</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ServletShareDel</servlet-name>
+        <servlet-class>com.jkk.controller.Share.ServletShareDel</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ServletShareDel</servlet-name>
+        <url-pattern>/share/del</url-pattern>
     </servlet-mapping>
 </web-app>
