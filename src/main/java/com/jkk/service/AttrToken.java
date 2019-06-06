@@ -13,4 +13,5 @@ public class AttrToken {
 	public static final String NOW_TIME = "now_time";
 	public static final String FILE_SIZE = "file_size";
 	public static final String SHARE_USER = "share_user";
+	public static final String RET = "ret";
 }

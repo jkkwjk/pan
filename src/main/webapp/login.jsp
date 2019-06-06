@@ -72,12 +72,8 @@
             <c:if test="${!empty sessionScope[AttrToken.ERROR_MSG]}">
             $("#login_name").val("${sessionScope[AttrToken.LOGIN_NAME]}");
             tip_show("${sessionScope[AttrToken.ERROR_MSG]}");
-            <%
-            session.removeAttribute(AttrToken.ERROR_MSG);
-            session.removeAttribute(AttrToken.LOGIN_NAME);
-            %>
-            <%--<c:remove var="error-msg" scope="session" />--%>
-            <%--<c:remove var="login-name" scope="session" />--%>
+            ${sessionScope.remove(AttrToken.ERROR_MSG)}
+            ${sessionScope.remove(AttrToken.LOGIN_NAME)}
             </c:if>
         });
     </script><!-- 用户名或密码错误 -->
