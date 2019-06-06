@@ -9,7 +9,7 @@
 <%@ page import="com.jkk.utils.StampDate" %>
 <%@ page import="com.jkk.utils.FilesizeUtil" %>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
