@@ -346,8 +346,7 @@
                 $("#span_used_capacity").text(data.used);
                 $("#span_all_capacity").text(data.max);
                 $("#vol").css('width',data.scale+'%');
-            },'json')
-
+            },'json');
         });
     </script><!-- 初始化页面 -->
 </head>
