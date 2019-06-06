@@ -75,6 +75,15 @@ public class ServletShare extends HttpServlet {
 		String url = request.getParameter("url");
 		Integer type = Integer.parseInt(request.getParameter("type"));
 		JSONObject retError = new JSONObject();
+
+		// 自己的信息
+		HttpSession session = request.getSession();
+		User user = (User) session.getAttribute(AttrToken.USER);
+		if (user != null){
+			UserInfoImpl userInfoimpl = new UserInfoImpl(user);
+			request.setAttribute(AttrToken.DATA,userInfoimpl.getInfo());
+		}
+
 		if (type == 1){
 			// 文件
 			ShareFileImpl shareFileimpl = new ShareFileImpl();
@@ -82,14 +91,6 @@ public class ServletShare extends HttpServlet {
 			if (shareFile!=null){
 				if (Long.valueOf(shareFile.getLimitTime()) > new Date().getTime()/1000){
 					// 可以访问
-
-					// 自己的信息
-					HttpSession session = request.getSession();
-					User user = (User) session.getAttribute(AttrToken.USER);
-					if (user != null){
-						UserInfoImpl userInfoimpl = new UserInfoImpl(user);
-						request.setAttribute(AttrToken.DATA,userInfoimpl.getInfo());
-					}
 
 					// 分享文件信息
 					FileBaseImpl fileBase = new FileBaseImpl();
@@ -105,10 +106,16 @@ public class ServletShare extends HttpServlet {
 				}else {
 					retError.put("status",202);
 					retError.put("error_msg","分享文件已过期");
+					request.setAttribute(AttrToken.RET,retError);
+					request.getRequestDispatcher("/WEB-INF/share/shareError.jsp").forward(request,response);
+
 				}
 			}else {
 				retError.put("status",201);
 				retError.put("error_msg","分享文件不存在");
+				request.setAttribute(AttrToken.RET,retError);
+				request.getRequestDispatcher("/WEB-INF/share/shareError.jsp").forward(request,response);
+
 			}
 		}
 
