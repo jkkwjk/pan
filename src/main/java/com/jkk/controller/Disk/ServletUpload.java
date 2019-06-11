@@ -86,6 +86,7 @@ public class ServletUpload extends HttpServlet {
 				return;
 			}
 		} catch (Exception e){
+			e.printStackTrace();
 			retObj.put("status","0");
 			retObj.put("error_msg","文件大小超过限制");
 			out.print(JSON.toJSONString(retObj));
