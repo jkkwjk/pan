@@ -32,7 +32,7 @@
             keyboard:false,
             direction:'horizontal'
         });
-        //setTimeout("time_loop_img_scoll(1)",5000);
+        setTimeout("time_loop_img_scoll(1)",5000);
     });
     function time_loop_img_scoll(index){
         var add = '<section style="width: 100%; height: 100%; position: absolute; top: 0px; left: {1}00%;" data-index="{2}"><div class="bg_can_resize pic_blur" style="position: absolute; background-image: url(${pageContext.request.contextPath}/static/img/index/{0}.jpg);z-index: -1;"></div><div id="text_pic" style="height: 100px;width: {3}px;"><img src="${pageContext.request.contextPath}/static/img/index/leftquote.png" alt=""><div class="quote_text" style="margin-left: 48px; margin-top: -23px;">{4}</div><img src="${pageContext.request.contextPath}/static/img/index/rightquote.png" alt="" style="float: right;margin-top: 10px;"><div class="quote_text" style="margin-left: 83px;">{5}</div></div></section>';
