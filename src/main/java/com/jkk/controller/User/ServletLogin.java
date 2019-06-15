@@ -1,5 +1,7 @@
 package com.jkk.controller.User;
 
+import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.JSONObject;
 import com.jkk.model.User;
 import com.jkk.model.UserInfo;
 import com.jkk.service.AttrToken;
@@ -33,16 +35,14 @@ public class ServletLogin extends HttpServlet {
 				session.setAttribute(AttrToken.USER,user);
 			}
 		}
+		JSONObject ret = new JSONObject();
 		if (session.getAttribute(AttrToken.USER) != null) {
-			UserInfo userInfo = (new UserInfoImpl((User) session.getAttribute(AttrToken.USER))).getInfo();
-			request.setAttribute(AttrToken.DATA,userInfo);
-			request.getRequestDispatcher("/WEB-INF/disk.jsp").forward(request,response);
+			ret.put("status","200");
 		} else {
-			session.setAttribute(AttrToken.ERROR_MSG,"用户名或密码错误");
-			session.setAttribute(AttrToken.LOGIN_NAME,name);
-			response.sendRedirect(request.getContextPath()+"/login.jsp");
+			ret.put("status","201");
+			ret.put("error_msg","用户名或密码错误");
 		}
-
+		response.getWriter().print(JSON.toJSONString(ret));
 	}
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

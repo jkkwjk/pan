@@ -1,10 +1,3 @@
-<%@ page import="com.jkk.service.AttrToken" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Administrator
-  Date: 2019/5/17
-  Time: 14:19
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
@@ -32,7 +25,7 @@
             keyboard:false,
             direction:'horizontal'
         });
-        setTimeout("time_loop_img_scoll(1)",5000);
+        //setTimeout("time_loop_img_scoll(1)",5000);
     });
     function time_loop_img_scoll(index){
         var add = '<section style="width: 100%; height: 100%; position: absolute; top: 0px; left: {1}00%;" data-index="{2}"><div class="bg_can_resize pic_blur" style="position: absolute; background-image: url(${pageContext.request.contextPath}/static/img/index/{0}.jpg);z-index: -1;"></div><div id="text_pic" style="height: 100px;width: {3}px;"><img src="${pageContext.request.contextPath}/static/img/index/leftquote.png" alt=""><div class="quote_text" style="margin-left: 48px; margin-top: -23px;">{4}</div><img src="${pageContext.request.contextPath}/static/img/index/rightquote.png" alt="" style="float: right;margin-top: 10px;"><div class="quote_text" style="margin-left: 83px;">{5}</div></div></section>';
@@ -55,7 +48,15 @@
                 setTimeout(function (){$("#regedit_main").animate({'margin-left':'0px'});},500);
             });
             $("#login_btn").click(function () {
-                $("#login_form").submit();
+                var dataFrom = $("#login_form").serializeArray();
+                $.post("${pageContext.request.contextPath}/login",dataFrom,function (data) {
+                    if (data.status==200){
+                        window.location.href = "${pageContext.request.contextPath}/login";
+                    } else {
+                        tip_show(data.error_msg);
+                        $("#login_pwd").val('');
+                    }
+                },'json');
             });
             $("#regedit_code_btn").click(function () {
                 change_imgcode();
@@ -67,16 +68,6 @@
             $("#regedit_code_btn").attr("src","${pageContext.request.contextPath}/getcode?ts="+(new Date()).valueOf());
         }
     </script> <!-- 登录界面 验证码 -->
-    <script type="text/javascript">
-        $(document).ready(function () {
-            <c:if test="${!empty sessionScope[AttrToken.ERROR_MSG]}">
-            $("#login_name").val("${sessionScope[AttrToken.LOGIN_NAME]}");
-            tip_show("${sessionScope[AttrToken.ERROR_MSG]}");
-            ${sessionScope.remove(AttrToken.ERROR_MSG)}
-            ${sessionScope.remove(AttrToken.LOGIN_NAME)}
-            </c:if>
-        });
-    </script><!-- 用户名或密码错误 -->
     <script type="text/javascript">
         $(document).ready(function(){
             $("#regedit_btn").click(function () {
@@ -179,7 +170,7 @@
                 </div>
                 <div style="margin-top: 5px;">
                     <span class="login_span">密码:</span>
-                    <input type="password" class="form-control input_my" placeholder="密码" name="pwd">
+                    <input id="login_pwd" type="password" class="form-control input_my" placeholder="密码" name="pwd">
                 </div>
                 <div style="margin-top: 10px;">
                     <button id="login_btn" type="button" class="btn btn-primary" style="width:379px;height: 40px;">立刻登录</button>
