@@ -8,10 +8,9 @@ public class DButil {
 	private String[] connAttr = new String[4];
 	private Connection conn = null;
 	private void readConfigFile(){
-		Properties props = new Properties();
 		try {
-			InputStream infile = this.getClass().getResourceAsStream("/DB.properties");
-			props.load(infile);
+			PropertiesUtil propertiesUtil = new PropertiesUtil("/DB.properties");
+			Properties props = propertiesUtil.getProps();
 
 			connAttr[0] = props.getProperty("driver");
 			connAttr[1] = props.getProperty("url");
