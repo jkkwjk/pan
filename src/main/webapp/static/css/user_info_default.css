@@ -3,16 +3,12 @@ p{
     padding: 0px;
 }
 #main{
-   position: absolute;
-   right: 0px;
-   width: 80%;
-   min-width: 1100px;
+   width: 1100px;
+   margin: 0 auto;
    height: calc(100% - 90px);
 }
 #main_content{
-    width: 1100px;
-    height: calc(100% - 2px); /*莫名有上下滚动*/
-    border: 1px #eee solid;
+    height: 100%;
     margin-top: 30px;
 }
 #left_list{
@@ -119,7 +115,7 @@ p{
     background: #EEE;
     border-top: 1px #AAA solid;
     text-align: center;
-    z-index: -2;
+    z-index: 2;
 }
 .input_right_main_main_left{
     margin-top: 5px;
