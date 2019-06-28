@@ -25,7 +25,7 @@ public class ServletRegedit extends HttpServlet {
 		String code = map.get("code")[0];
 
 		// 服务端二次验证
-		if (!regedit.checkUsernameIsSame(name) && regedit.checkPwdIsstrong(pwd) && code.equals(session.getAttribute(AttrToken.VALCODE))) {
+		if (regedit.checkUsernameIsSame(name) || !regedit.checkPwdIsstrong(pwd) || !code.equals(session.getAttribute(AttrToken.VALCODE))) {
 			response.sendRedirect(request.getContextPath()+ErrorPath.html500);
 		} else {
 			User user = regedit.addUser(name,pwd);
