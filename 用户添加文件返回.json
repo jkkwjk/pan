@@ -1,10 +1,10 @@
 {
-    "status":"0/1",
-    "error_msg":"",
-    "rs_id":"",
-    "file_type":"",
-    "file_name":"",
-    "file_size":"",
-    "file_time":"",
-    "file_ico":""
+  "status": "0/1",
+  "error_msg": "",
+  "rs_id": "",
+  "file_type": "",
+  "file_name": "",
+  "file_size": "",
+  "file_time": "",
+  "file_ico": ""
 }
