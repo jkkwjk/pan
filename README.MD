@@ -14,6 +14,6 @@ tools     | \
 utils     | \
 |controller|service,tools,utils|
 #### 线上
-http://101.132.168.131:8080/pan/
+http://101.132.168.131:8080/pan/  (密码需要大小写+数字 用户名需要长度大于6)
 
 欢迎大佬提出安全建议!
