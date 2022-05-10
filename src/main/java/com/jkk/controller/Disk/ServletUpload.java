@@ -48,7 +48,7 @@ public class ServletUpload extends HttpServlet {
 			String fileSize = String.valueOf(item.getSize());
 			Integer folderId = Integer.parseInt((String) param.get("folder"));
 
-			if (folderId != 0) {
+			if (folderId != 1) {
 				if (!folderWithUser.checkFolder(folderId)){
 					retObj.put("status","0");
 					retObj.put("error_msg","参数错误!");

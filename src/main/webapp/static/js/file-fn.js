@@ -99,7 +99,7 @@ function start_search(text) {
     folder_id_now = -1;
     has_next = 0;
     $("#ol_leader").empty();
-    $("#ol_leader").append("<li fid=\"0\">"+text+"</li>");
+    $("#ol_leader").append("<li fid=\"1\">"+text+"</li>");
     $("#search_display").find("button").attr('disabled',true);
 }
 function stop_search(fid,text) {
@@ -107,7 +107,7 @@ function stop_search(fid,text) {
     folder_id_now = fid;
     has_next=1;
     $("#ol_leader").empty();
-    $("#ol_leader").append("<li fid=\"0\">"+text+"</li>");
+    $("#ol_leader").append("<li fid=\"1\">"+text+"</li>");
     $("#search_display").find("button").attr('disabled',false);
 }
 

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Locale;
 import java.util.Map;
 public class ServletRegedit extends HttpServlet {
 
@@ -25,7 +26,8 @@ public class ServletRegedit extends HttpServlet {
 		String code = map.get("code")[0];
 
 		// 服务端二次验证
-		if (regedit.checkUsernameIsSame(name) || !regedit.checkPwdIsstrong(pwd) || !code.equals(session.getAttribute(AttrToken.VALCODE))) {
+//		regedit.checkUsernameIsSame(name) || !regedit.checkPwdIsstrong(pwd) ||
+		if (!code.toUpperCase(Locale.ROOT).equals(session.getAttribute(AttrToken.VALCODE))) {
 			response.sendRedirect(request.getContextPath()+ErrorPath.html500);
 		} else {
 			User user = regedit.addUser(name,pwd);

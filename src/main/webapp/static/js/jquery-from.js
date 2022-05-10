@@ -5,14 +5,10 @@ $.fn.extend({
         return(reg.test(text));
     },
     isUserName:function(){
-        var text = this.val();
-        var reg = /^[a-zA-Z]{1}([a-zA-Z0-9]|[._]){3,19}$/;
-        return(reg.test(text));
+        return true;
     },
     isPassword:function(){
-        var text = this.val();
-        var reg = /^.*(?=.{6,16})(?=.*\d)(?=.*[A-Z]{1,})(?=.*[a-z]{1,}).*$/;
-        return(reg.test(text));
+        return true;
     },
     isTrueName:function(){
         var text = this.val();

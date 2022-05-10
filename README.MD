@@ -13,7 +13,36 @@ service    | dao
 tools     | \
 utils     | \
 |controller|service,tools,utils|
-#### 线上
-http://101.132.168.131:8080/pan/  (密码需要大小写+数字 用户名需要长度大于6)
+#### 启动
 
-欢迎大佬提出安全建议!
+##### 准备
+
+tomcat
+
+idea
+
+mysql
+
+##### 步骤
+
+1. mysql中创建pan数据库，编码选用utf8mb4，创建完成之后运行pan.sql文件
+2. 更改DB.properties中的数据库账户密码
+3. 更改system.properties中的保存文件配置
+4. idea配置tomcat启动
+5. 测试账户密码：test/test
+6. 碰到问题可以提issue
+
+#### 预览
+
+![1](img/1.png)
+
+![2](img/2.png)
+
+![3](img/3.png)
+
+![4](img/4.png)
+
+![5](img/5.png)
+
+![6](img/6.png)
+

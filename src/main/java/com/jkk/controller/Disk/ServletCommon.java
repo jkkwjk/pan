@@ -74,7 +74,7 @@ public class ServletCommon extends HttpServlet {
 			case "new":
 			{
 				FolderWithUserImpl folderWithUser = new FolderWithUserImpl(user);
-				if (val==null||val[0].equals("")|| (!now.equals("0") && !folderWithUser.checkFolder(Integer.parseInt(now)))){
+				if (val==null||val[0].equals("")|| (!now.equals("1") && !folderWithUser.checkFolder(Integer.parseInt(now)))){
 					response.sendRedirect(request.getContextPath()+ ErrorPath.html500);
 					return;
 				}

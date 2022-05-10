@@ -26,7 +26,7 @@
         var file_num = 0; //显示的文件数
         var file_start = 0; // 文件从哪开始找 分页
         var base_path= "${pageContext.request.contextPath}";
-        var folder_id_now = 0; // 当前页面所属用户的文件夹
+        var folder_id_now = 1; // 当前页面所属用户的文件夹
         var has_next = 1; // 用户是否还有文件
         var isloding = false; // 是否正在加载,只针对get_file_next有效
         var template="<tr class=\"file_tr\" id=\"{rs_id}\" type={file_type}><td class=\"file_left\"><div class=\"checkbox_div\"><input type=\"checkbox\"></div><img src=\""+base_path+"/static/img/file/file_ico/{file_ico}.png\" class=\"file_img\"><a href=\"#\" class=\"a_file_name\"><span class=\"file_name\">{file_name}</span></a></td><td class=\"file_mid\">{file_size}</td><td class=\"file_right\">{file_time}</td></tr>\n";
@@ -317,7 +317,7 @@
                 } else {
                     switch (action) {
                         case "all":
-                            stop_search(0,"全部文件");
+                            stop_search(1,"全部文件");
                             get_next_file(file_start,folder_id_now);
                             break;
                         case "share":
@@ -444,7 +444,7 @@
 
                 <div style="padding-right: 20px;padding-left: 20px;">
                     <ol class="breadcrumb" id="ol_leader">
-                        <li fid="0">全部文件</li>
+                        <li fid="1">全部文件</li>
                     </ol>
                     <div style="float: right">
                         <span>共加载</span>

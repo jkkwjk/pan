@@ -59,7 +59,7 @@ public class ServletShareGetInfo extends HttpServlet {
 			}
 
 			Integer folder_id = shareFile.getFile().getFolderId();
-			if (folder_id==0){
+			if (folder_id==1){
 				o.put("file_name",fileName);
 			}else {
 				o.put("file_name",fileName+"&nbsp;&nbsp;&nbsp;-("+folderWithUser.getFolderName(folder_id)+")");
